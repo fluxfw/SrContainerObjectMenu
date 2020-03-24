@@ -5,6 +5,7 @@ namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 use ActiveRecord;
 use arConnector;
 use ilContainer;
+use ilMMItemFacadeInterface;
 use ilObjectFactory;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
@@ -81,11 +82,11 @@ class ContainerObject extends ActiveRecord
 
 
     /**
-     * @return ilContainer
+     * @return array
      */
-    public function getObject() : ilContainer
+    public function getChildren() : array
     {
-        return ilObjectFactory::getInstanceByRefId($this->obj_ref_id, false);
+        return self::srContainerObjectMenu()->containerObjects()->getChildren($this->obj_ref_id);
     }
 
 
@@ -101,20 +102,22 @@ class ContainerObject extends ActiveRecord
 
 
     /**
-     * @return array
+     * @param int|null $child_obj_ref_id
+     *
+     * @return ilMMItemFacadeInterface|null
      */
-    public function getChilds() : array
+    public function getMenuItem(/*?*/ int $child_obj_ref_id = null)/* : ?ilMMItemFacadeInterface*/
     {
-        return array_reduce(self::dic()->tree()->getChilds($this->obj_ref_id), function (array $childs, array $child) : array {
+        return self::srContainerObjectMenu()->containerObjects()->getMenuItem($this->getMenuIdentifier($child_obj_ref_id));
+    }
 
-            if (intval($this->obj_ref_id) === intval(ROOT_FOLDER_ID) && intval($child["child"]) === intval(SYSTEM_FOLDER_ID)) {
-                return $childs;
-            }
 
-            $childs[$child["child"]] = $child["title"];
-
-            return $childs;
-        }, []);
+    /**
+     * @return ilContainer
+     */
+    public function getObject() : ilContainer
+    {
+        return ilObjectFactory::getInstanceByRefId($this->obj_ref_id, false);
     }
 
 

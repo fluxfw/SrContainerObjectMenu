@@ -3,6 +3,7 @@
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
 use ilDBConstants;
+use ilMMItemFacadeInterface;
 use ilMMItemRepository;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
@@ -94,6 +95,7 @@ final class Repository
     public function dropTables()/*:void*/
     {
         self::dic()->database()->dropTable(ContainerObject::TABLE_NAME, false);
+
         $this->deleteCoreMenuItems();
     }
 
@@ -104,6 +106,26 @@ final class Repository
     public function factory() : Factory
     {
         return Factory::getInstance();
+    }
+
+
+    /**
+     * @param int $obj_ref_id
+     *
+     * @return array
+     */
+    public function getChildren(int $obj_ref_id) : array
+    {
+        return array_reduce(self::dic()->tree()->getChilds($obj_ref_id), function (array $childs, array $child) use ($obj_ref_id) : array {
+
+            if (intval($obj_ref_id) === intval(ROOT_FOLDER_ID) && intval($child["child"]) === intval(SYSTEM_FOLDER_ID)) {
+                return $childs;
+            }
+
+            $childs[$child["child"]] = $child["title"];
+
+            return $childs;
+        }, []);
     }
 
 
@@ -134,6 +156,25 @@ final class Repository
         }
 
         return ContainerObject::get();
+    }
+
+
+    /**
+     * @param string $menu_identifier
+     *
+     * @return ilMMItemFacadeInterface|null
+     */
+    public function getMenuItem(string $menu_identifier)/* : ?ilMMItemFacadeInterface*/
+    {
+        $item = self::dic()->database()->fetchAssoc(self::dic()->database()->query('SELECT identification FROM il_mm_items WHERE ' . self::dic()
+                ->database()
+                ->like("identification", ilDBConstants::T_TEXT, '%' . $menu_identifier)));
+
+        if (!$item) {
+            return null;
+        }
+
+        return $this->coreMenu()->getItemFacadeForIdentificationString($item["identification"]);
     }
 
 

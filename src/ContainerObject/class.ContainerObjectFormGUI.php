@@ -55,7 +55,7 @@ class ContainerObjectFormGUI extends PropertyFormGUI
         switch ($key) {
             case "obj_ref_id":
                 if (!empty($this->container_object->getContainerObjectId())) {
-                    return $this->container_object->getObject()->getTitle();
+                    return $this->container_object->getObject()->getTitle() . " (" . $this->container_object->getMenuItem()->getDefaultTitle() . ")";
                 } else {
                     return $this->container_object->getObjRefId();
                 }

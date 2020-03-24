@@ -36,7 +36,7 @@ class Menu extends AbstractStaticPluginMainMenuProvider
                     return self::plugin()->getPluginObject()->isActive();
                 })
                 ->withVisibilityCallable(function () : bool {
-                    return true;
+                    return self::plugin()->getPluginObject()->isActive();
                 });
         }, self::srContainerObjectMenu()->containerObjects()->getContainerObjects());
     }
@@ -52,7 +52,7 @@ class Menu extends AbstractStaticPluginMainMenuProvider
 
             $position = 0;
 
-            foreach ($container_object->getChilds() as $child_id => $child_title) {
+            foreach ($container_object->getChildren() as $child_id => $child_title) {
 
                 $sub_items[] = $this->mainmenu->link($this->if->identifier($container_object->getMenuIdentifier($child_id)))
                     ->withParent($parent->getProviderIdentification())
