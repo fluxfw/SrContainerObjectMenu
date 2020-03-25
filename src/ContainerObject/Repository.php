@@ -120,10 +120,16 @@ final class Repository
     {
         $children = [];
 
+        $types = ilContainerSorting::_getInstance($object->getId())->getBlockPositions();
+        if (empty($types)) {
+            $types = array_keys(self::dic()
+                ->objDefinition()
+                ->getGroupedRepositoryObjectTypes($object->getType()));
+        }
+
         $sub_items = $object->getSubItems();
 
-        foreach ((array) ilContainerSorting::_getInstance($object->getId())->getBlockPositions() as $type) {
-
+        foreach ($types as $type) {
             foreach ((array) $sub_items[$type] as $sub_item) {
                 $children[$sub_item["child"]] = $sub_item["title"];
             }
