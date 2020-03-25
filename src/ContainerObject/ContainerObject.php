@@ -118,7 +118,7 @@ class ContainerObject extends ActiveRecord
             }
         }
 
-        return implode("_", ilSrContainerObjectMenuPlugin::PLUGIN_ID);
+        return implode("_", $parts);
     }
 
 
