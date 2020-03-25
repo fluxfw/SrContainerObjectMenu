@@ -22,6 +22,33 @@ class Menu extends AbstractStaticPluginMainMenuProvider
     use DICTrait;
     use SrContainerObjectMenuTrait;
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
+    /**
+     * @var self|null
+     */
+    protected static $instance = null;
+
+
+    /**
+     * @return self
+     */
+    public static function getInstance() : self
+    {
+        if (self::$instance === null) {
+            self::$instance = new self(self::dic()->dic(), self::plugin()->getPluginObject());
+        }
+
+        return self::$instance;
+    }
+
+
+    /**
+     * @var array|null
+     */
+    protected $top_items = null;
+    /**
+     * @var array|null
+     */
+    protected $sub_items = null;
 
 
     /**
@@ -29,16 +56,20 @@ class Menu extends AbstractStaticPluginMainMenuProvider
      */
     public function getStaticTopItems() : array
     {
-        return array_map(function (ContainerObject $container_object) : isItem {
-            return $this->mainmenu->topParentItem($this->if->identifier($container_object->getMenuIdentifier()))
-                ->withTitle($container_object->getObject()->getTitle())
-                ->withAvailableCallable(function () : bool {
-                    return self::plugin()->getPluginObject()->isActive();
-                })
-                ->withVisibilityCallable(function () : bool {
-                    return self::plugin()->getPluginObject()->isActive();
-                });
-        }, self::srContainerObjectMenu()->containerObjects()->getContainerObjects());
+        if ($this->top_items === null) {
+            $this->top_items = array_map(function (ContainerObject $container_object) : isItem {
+                return $this->mainmenu->topParentItem($this->if->identifier($container_object->getMenuIdentifier()))
+                    ->withTitle($container_object->getObject()->getTitle())
+                    ->withAvailableCallable(function () : bool {
+                        return self::plugin()->getPluginObject()->isActive();
+                    })
+                    ->withVisibilityCallable(function () : bool {
+                        return self::plugin()->getPluginObject()->isActive();
+                    });
+            }, self::srContainerObjectMenu()->containerObjects()->getContainerObjects());
+        }
+
+        return $this->top_items;
     }
 
 
@@ -47,27 +78,33 @@ class Menu extends AbstractStaticPluginMainMenuProvider
      */
     public function getStaticSubItems() : array
     {
-        return array_reduce(self::srContainerObjectMenu()->containerObjects()->getContainerObjects(), function (array $sub_items, ContainerObject $container_object) : array {
-            $parent = $this->getStaticTopItems()[$container_object->getContainerObjectId()];
+        if ($this->sub_items === null) {
+            $this->sub_items = array_reduce(self::srContainerObjectMenu()->containerObjects()->getContainerObjects(), function (array $sub_items, ContainerObject $container_object) : array {
+                $parent = $this->getStaticTopItems()[$container_object->getContainerObjectId()];
 
-            $position = 0;
+                $position = 0;
 
-            foreach ($container_object->getChildren() as $child_id => $child_title) {
+                foreach ($container_object->getChildren() as $child_id => $child_title) {
 
-                $sub_items[] = $this->mainmenu->link($this->if->identifier($container_object->getMenuIdentifier($child_id)))
-                    ->withParent($parent->getProviderIdentification())
-                    ->withTitle($child_title)
-                    ->withAction(ilLink::_getLink($child_id))
-                    ->withPosition($position += 10)
-                    ->withAvailableCallable(function () : bool {
-                        return self::plugin()->getPluginObject()->isActive();
-                    })
-                    ->withVisibilityCallable(function () use ($child_id) : bool {
-                        return self::dic()->access()->checkAccess("read", "", $child_id);
-                    });
-            }
+                    $position += 10;
 
-            return $sub_items;
-        }, []);
+                    $sub_items[] = $this->mainmenu->link($this->if->identifier($container_object->getMenuIdentifier($child_id) . "_" . $position))
+                        ->withParent($parent->getProviderIdentification())
+                        ->withTitle($child_title)
+                        ->withAction(ilLink::_getLink($child_id))
+                        ->withPosition($position)
+                        ->withAvailableCallable(function () : bool {
+                            return self::plugin()->getPluginObject()->isActive();
+                        })
+                        ->withVisibilityCallable(function () use ($child_id) : bool {
+                            return self::dic()->access()->checkAccess("read", "", $child_id);
+                        });
+                }
+
+                return $sub_items;
+            }, []);
+        }
+
+        return $this->sub_items;
     }
 }

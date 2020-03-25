@@ -91,8 +91,6 @@ final class Factory
      */
     public function newMenuInstance() : Menu
     {
-        $menu = new Menu(self::dic()->dic(), self::plugin()->getPluginObject());
-
-        return $menu;
+        return Menu::getInstance();
     }
 }

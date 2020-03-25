@@ -67,6 +67,10 @@ class ContainerObject extends ActiveRecord
      * @con_is_notnull   true
      */
     protected $obj_ref_id = 0;
+    /**
+     * @var ilContainer|null
+     */
+    protected $object = null;
 
 
     /**
@@ -86,7 +90,7 @@ class ContainerObject extends ActiveRecord
      */
     public function getChildren() : array
     {
-        return self::srContainerObjectMenu()->containerObjects()->getChildren($this->obj_ref_id);
+        return self::srContainerObjectMenu()->containerObjects()->getChildren($this->getObject());
     }
 
 
@@ -117,7 +121,11 @@ class ContainerObject extends ActiveRecord
      */
     public function getObject() : ilContainer
     {
-        return ilObjectFactory::getInstanceByRefId($this->obj_ref_id, false);
+        if ($this->object === null) {
+            $this->object = ilObjectFactory::getInstanceByRefId($this->obj_ref_id, false);
+        }
+
+        return $this->object;
     }
 
 

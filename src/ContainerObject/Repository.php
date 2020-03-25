@@ -2,6 +2,8 @@
 
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
+use ilContainer;
+use ilContainerSorting;
 use ilDBConstants;
 use ilMMItemFacadeInterface;
 use ilMMItemRepository;
@@ -110,22 +112,24 @@ final class Repository
 
 
     /**
-     * @param int $obj_ref_id
+     * @param ilContainer $object
      *
      * @return array
      */
-    public function getChildren(int $obj_ref_id) : array
+    public function getChildren(ilContainer $object) : array
     {
-        return array_reduce(self::dic()->tree()->getChilds($obj_ref_id), function (array $childs, array $child) use ($obj_ref_id) : array {
+        $children = [];
 
-            if (intval($obj_ref_id) === intval(ROOT_FOLDER_ID) && intval($child["child"]) === intval(SYSTEM_FOLDER_ID)) {
-                return $childs;
+        $sub_items = $object->getSubItems();
+
+        foreach ((array) ilContainerSorting::_getInstance($object->getId())->getBlockPositions() as $type) {
+
+            foreach ((array) $sub_items[$type] as $sub_item) {
+                $children[$sub_item["child"]] = $sub_item["title"];
             }
+        }
 
-            $childs[$child["child"]] = $child["title"];
-
-            return $childs;
-        }, []);
+        return $children;
     }
 
 
