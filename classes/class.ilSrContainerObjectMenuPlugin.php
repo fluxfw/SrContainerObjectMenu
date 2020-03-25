@@ -73,6 +73,8 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
         parent::updateLanguages($a_lang_keys);
 
         $this->installRemovePluginDataConfirmLanguages();
+
+        self::srContainerObjectMenu()->dataTable()->installLanguages(self::plugin());
     }
 
 

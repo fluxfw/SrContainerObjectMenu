@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c700efce69d7c79a68a60895cd95003b",
+    "content-hash": "051efe03dc726f21b3ff23e8e5d8185f",
     "packages": [
         {
             "name": "srag/custominputguis",
@@ -27,7 +27,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "srag\\CustomInputGUIs\\": "src/"
+                    "srag\\CustomInputGUIs\\SrContainerObjectMenu\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -52,6 +52,52 @@
                 "table"
             ],
             "time": "2020-03-23T13:03:52+00:00"
+        },
+        {
+            "name": "srag/datatable",
+            "version": "v0.25.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/studer-raimann/DataTableUI.git",
+                "reference": "1bbbe035e62a34c2628b95d829bf7f0d8c9b20ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/studer-raimann/DataTableUI/zipball/1bbbe035e62a34c2628b95d829bf7f0d8c9b20ea",
+                "reference": "1bbbe035e62a34c2628b95d829bf7f0d8c9b20ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "srag/custominputguis": ">=0.1.0",
+                "srag/dic": ">=0.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "srag\\DataTable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "studer + raimann ag - Team Custom 1",
+                    "email": "support-custom1@studer-raimann.ch",
+                    "homepage": "https://studer-raimann.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "ILIAS 6.0 Data Table UI",
+            "homepage": "https://github.com/studer-raimann/DataTableUI",
+            "keywords": [
+                "ILIAS",
+                "table",
+                "ui"
+            ],
+            "time": "2020-03-25T09:58:52+00:00"
         },
         {
             "name": "srag/dic",

@@ -59,14 +59,11 @@ final class Factory
 
 
     /**
-     * @param ContainerObjectsGUI $parent
-     * @param string              $cmd
-     *
      * @return ContainerObjectsTableGUI
      */
-    public function newTableInstance(ContainerObjectsGUI $parent, string $cmd = ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS) : ContainerObjectsTableGUI
+    public function newTableInstance() : ContainerObjectsTableGUI
     {
-        $table = new ContainerObjectsTableGUI($parent, $cmd);
+        $table = new ContainerObjectsTableGUI();
 
         return $table;
     }

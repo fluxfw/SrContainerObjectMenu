@@ -3,8 +3,12 @@
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
 use ilSrContainerObjectMenuPlugin;
-use srag\CustomInputGUIs\SrContainerObjectMenu\PropertyFormGUI\Items\Items;
-use srag\CustomInputGUIs\SrContainerObjectMenu\TableGUI\TableGUI;
+use srag\DataTable\SrContainerObjectMenu\Component\Data\Data;
+use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions\AbstractActionsFormatter;
+use srag\DataTable\SrContainerObjectMenu\Implementation\Data\Fetcher\AbstractDataFetcher;
+use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -14,139 +18,81 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
-class ContainerObjectsTableGUI extends TableGUI
+class ContainerObjectsTableGUI
 {
 
+    use DICTrait;
     use SrContainerObjectMenuTrait;
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
-    const LANG_MODULE = ContainerObjectsGUI::LANG_MODULE;
 
 
     /**
      * ContainerObjectsTableGUI constructor
-     *
-     * @param ContainerObjectsGUI $parent
-     * @param string              $parent_cmd
      */
-    public function __construct(ContainerObjectsGUI $parent, string $parent_cmd)
+    public function __construct()
     {
-        parent::__construct($parent, $parent_cmd);
+
     }
 
 
     /**
-     * @inheritDoc
-     *
-     * @param ContainerObject $container_object
+     * @return string
      */
-    protected function getColumnValue(/*string*/ $column, /*ContainerObject*/ $container_object, /*int*/ $format = self::DEFAULT_FORMAT) : string
+    public function render() : string
     {
-        switch ($column) {
-            case "object_title":
-                $column = htmlspecialchars($container_object->getObject()->getTitle());
-                break;
+        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
+            ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_ADD_CONTAINER_OBJECT, "", "", false, false)));
 
-            default:
-                $column = htmlspecialchars(Items::getter($container_object, $column));
-                break;
-        }
+        $table = self::srContainerObjectMenu()->dataTable()->table(ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_container_objects",
+            self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectsGUI::class, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS),
+            self::plugin()->translate("container_objects", ContainerObjectsGUI::LANG_MODULE), [
+                self::srContainerObjectMenu()->dataTable()->column()->column("object_title",
+                    self::plugin()->translate("container_object", ContainerObjectsGUI::LANG_MODULE))
+                    ->withSortable(false)
+                    ->withFormatter(self::srContainerObjectMenu()->dataTable()->column()->formatter()->chainGetter(["object", "title"])),
+                self::srContainerObjectMenu()->dataTable()->column()->column("actions",
+                    self::plugin()->translate("actions", ContainerObjectsGUI::LANG_MODULE))->withFormatter(new class() extends AbstractActionsFormatter {
 
-        return strval($column);
-    }
-
-
-    /**
-     * @inheritDoc
-     */
-    public function getSelectableColumns2() : array
-    {
-        $columns = [
-            "object_title" => [
-                "id"      => "object_title",
-                "default" => true,
-                "sort"    => false,
-                "txt"     => $this->txt("container_object")
-            ]
-        ];
-
-        return $columns;
-    }
+                    use SrContainerObjectMenuTrait;
+                    const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
 
 
-    /**
-     * @inheritDoc
-     */
-    protected function initColumns()/*: void*/
-    {
-        parent::initColumns();
+                    /**
+                     * @inheritDoc
+                     */
+                    protected function getActions(RowData $row) : array
+                    {
+                        self::dic()->ctrl()->setParameterByClass(ContainerObjectGUI::class, ContainerObjectGUI::GET_PARAM_CONTAINER_OBJECT_ID, $row->getRowId());
 
-        $this->addColumn($this->txt("actions"));
-    }
+                        return [
+                            self::dic()->ui()->factory()->link()->standard(self::plugin()->translate("edit_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
+                                ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_EDIT_CONTAINER_OBJECT)),
+                            self::dic()->ui()->factory()->link()->standard(self::plugin()->translate("remove_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
+                                ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_REMOVE_CONTAINER_OBJECT_CONFIRM))
+                        ];
+                    }
+                })
+            ],
+            new class() extends AbstractDataFetcher {
 
-
-    /**
-     * @inheritDoc
-     */
-    protected function initCommands()/*: void*/
-    {
-        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard($this->txt("add_container_object"), self::dic()->ctrl()
-            ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_ADD_CONTAINER_OBJECT)));
-    }
-
-
-    /**
-     * @inheritDoc
-     */
-    protected function initData()/*: void*/
-    {
-        $this->setExternalSegmentation(true);
-        $this->setExternalSorting(true);
-
-        $this->setData(self::srContainerObjectMenu()->containerObjects()->getContainerObjects());
-    }
+                use SrContainerObjectMenuTrait;
+                const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
 
 
-    /**
-     * @inheritDoc
-     */
-    protected function initFilterFields()/*: void*/
-    {
-        $this->filter_fields = [];
-    }
+                /**
+                 * @inheritDoc
+                 */
+                public function fetchData(Settings $settings) : Data
+                {
+                    $data = self::srContainerObjectMenu()->containerObjects()->getContainerObjects();
 
+                    return self::srContainerObjectMenu()->dataTable()->data()->data(array_map(function (ContainerObject $container_object
+                    ) : RowData {
+                        return self::srContainerObjectMenu()->dataTable()->data()->row()->getter($container_object->getContainerObjectId(), $container_object);
+                    }, $data), count($data));
+                }
+            })->withPlugin(self::plugin());
 
-    /**
-     * @inheritDoc
-     */
-    protected function initId()/*: void*/
-    {
-        $this->setId(ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_container_objects");
-    }
-
-
-    /**
-     * @inheritDoc
-     */
-    protected function initTitle()/*: void*/
-    {
-        $this->setTitle($this->txt("container_objects"));
-    }
-
-
-    /**
-     * @param ContainerObject $container_object
-     */
-    protected function fillRow(/*ContainerObject*/ $container_object)/*: void*/
-    {
-        self::dic()->ctrl()->setParameterByClass(ContainerObjectGUI::class, ContainerObjectGUI::GET_PARAM_CONTAINER_OBJECT_ID, $container_object->getContainerObjectId());
-
-        parent::fillRow($container_object);
-
-        $this->tpl->setVariable("COLUMN", self::output()->getHTML(self::dic()->ui()->factory()->dropdown()->standard([
-            self::dic()->ui()->factory()->link()->standard($this->txt("edit_container_object"), self::dic()->ctrl()
-                ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_EDIT_CONTAINER_OBJECT)),
-            self::dic()->ui()->factory()->link()->standard($this->txt("remove_container_object"), self::dic()->ctrl()
-                ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_REMOVE_CONTAINER_OBJECT_CONFIRM))
-        ])->withLabel($this->txt("actions"))));
+        return self::output()->getHTML($table);
     }
 }

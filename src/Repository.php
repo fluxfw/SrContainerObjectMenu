@@ -3,6 +3,8 @@
 namespace srag\Plugins\SrContainerObjectMenu;
 
 use ilSrContainerObjectMenuPlugin;
+use srag\DataTable\SrContainerObjectMenu\Component\Factory as DataTableFactoryInterface;
+use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\Repository as ContainerObjectsRepository;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
@@ -19,6 +21,9 @@ final class Repository
 
     use DICTrait;
     use SrContainerObjectMenuTrait;
+    use DataTableTrait {
+        dataTable as protected _dataTable;
+    }
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     /**
      * @var self|null
@@ -54,6 +59,15 @@ final class Repository
     public function containerObjects() : ContainerObjectsRepository
     {
         return ContainerObjectsRepository::getInstance();
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function dataTable() : DataTableFactoryInterface
+    {
+        return self::_dataTable();
     }
 
 
