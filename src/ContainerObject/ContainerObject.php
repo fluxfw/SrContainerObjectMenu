@@ -96,12 +96,29 @@ class ContainerObject extends ActiveRecord
 
     /**
      * @param int|null $child_obj_ref_id
+     * @param int|null $position
      *
      * @return string
      */
-    public function getMenuIdentifier(/*?*/ int $child_obj_ref_id = null) : string
+    public function getMenuIdentifier(/*?*/ int $child_obj_ref_id = null,/*?*/ int $position = null) : string
     {
-        return ilSrContainerObjectMenuPlugin::PLUGIN_ID . (!empty($this->container_object_id) ? "_" . $this->container_object_id . (!empty($child_obj_ref_id) ? "_" . $child_obj_ref_id : "") : "");
+        $parts = [
+            ilSrContainerObjectMenuPlugin::PLUGIN_ID
+        ];
+
+        if (!empty($this->container_object_id)) {
+            $parts[] = $this->container_object_id;
+
+            if (!empty($child_obj_ref_id)) {
+                $parts[] = $child_obj_ref_id;
+
+                if (!empty($position)) {
+                    $parts[] = $position;
+                }
+            }
+        }
+
+        return implode("_", ilSrContainerObjectMenuPlugin::PLUGIN_ID);
     }
 
 

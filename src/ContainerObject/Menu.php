@@ -88,7 +88,7 @@ class Menu extends AbstractStaticPluginMainMenuProvider
 
                     $position += 10;
 
-                    $sub_items[] = $this->mainmenu->link($this->if->identifier($container_object->getMenuIdentifier($child_id) . "_" . $position))
+                    $sub_items[] = $this->mainmenu->link($this->if->identifier($container_object->getMenuIdentifier($child_id, $position)))
                         ->withParent($parent->getProviderIdentification())
                         ->withTitle($child_title)
                         ->withAction(ilLink::_getLink($child_id))
