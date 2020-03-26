@@ -84,7 +84,7 @@ class ContainerObjectsTableGUI
                  */
                 public function fetchData(Settings $settings) : Data
                 {
-                    $data = self::srContainerObjectMenu()->containerObjects()->getContainerObjects($settings);
+                    $data = self::srContainerObjectMenu()->containerObjects()->getContainerObjects();
 
                     return self::srContainerObjectMenu()->dataTable()->data()->data(array_map(function (ContainerObject $container_object
                     ) : RowData {
