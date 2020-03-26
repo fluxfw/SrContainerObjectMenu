@@ -91,7 +91,7 @@ class ContainerObjectsGUI
     {
         self::dic()->tabs()->activateTab(self::TAB_LIST_CONTAINER_OBJECTS);
 
-        $table = self::srContainerObjectMenu()->containerObjects()->factory()->newTableInstance();
+        $table = self::srContainerObjectMenu()->containerObjects()->factory()->newTableInstance($this);
 
         self::output()->output($table);
     }

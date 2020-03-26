@@ -59,11 +59,13 @@ final class Factory
 
 
     /**
-     * @return ContainerObjectsTableGUI
+     * @param ContainerObjectsGUI $parent
+     *
+     * @return ContainerObjectsTable
      */
-    public function newTableInstance() : ContainerObjectsTableGUI
+    public function newTableInstance(ContainerObjectsGUI $parent) : ContainerObjectsTable
     {
-        $table = new ContainerObjectsTableGUI();
+        $table = new ContainerObjectsTable($parent);
 
         return $table;
     }

@@ -13,8 +13,8 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
             'srag\\LibrariesNamespaceChanger\\' => 31,
             'srag\\DataTable\\' => 15,
-            'srag\\DIC\\SrContainerObjectMenu\\' => 31,
-            'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 43,
+            'srag\\DIC\\' => 9,
+            'srag\\CustomInputGUIs\\' => 21,
         ),
     );
 
@@ -35,11 +35,11 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         array (
             0 => __DIR__ . '/..' . '/srag/datatable/src',
         ),
-        'srag\\DIC\\SrContainerObjectMenu\\' => 
+        'srag\\DIC\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/dic/src',
         ),
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 
+        'srag\\CustomInputGUIs\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/custominputguis/src',
         ),
@@ -172,7 +172,9 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\AbstractFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/AbstractFormatter.php',
         'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Actions\\AbstractActionsFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Actions/AbstractActionsFormatter.php',
         'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Actions\\Factory' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Actions/Factory.php',
+        'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Actions\\SortFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Actions/SortFormatter.php',
         'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\ChainGetterFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/ChainGetterFormatter.php',
+        'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\CheckFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/CheckFormatter.php',
         'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\DateFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/DateFormatter.php',
         'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\DefaultFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/DefaultFormatter.php',
         'srag\\DataTable\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Factory' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Factory.php',
@@ -215,7 +217,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectFormGUI' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectFormGUI.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectGUI' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectGUI.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectsGUI' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectsGUI.php',
-        'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectsTableGUI' => __DIR__ . '/../..' . '/src/ContainerObject/ContainerObjectsTableGUI.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectsTable' => __DIR__ . '/../..' . '/src/ContainerObject/ContainerObjectsTable.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Factory' => __DIR__ . '/../..' . '/src/ContainerObject/Factory.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Menu' => __DIR__ . '/../..' . '/src/ContainerObject/Menu.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Repository' => __DIR__ . '/../..' . '/src/ContainerObject/Repository.php',

@@ -2,6 +2,7 @@
 
 namespace srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions;
 
+use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Actions\ActionsFormatter;
 use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Actions\Factory as FactoryInterface;
 use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
@@ -43,5 +44,14 @@ class Factory implements FactoryInterface
     private function __construct()
     {
 
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function sort(string $sort_up_action_url, string $sort_down_action_url) : ActionsFormatter
+    {
+        return new SortFormatter($sort_up_action_url, $sort_down_action_url);
     }
 }

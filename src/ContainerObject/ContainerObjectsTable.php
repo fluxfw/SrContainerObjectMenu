@@ -6,45 +6,49 @@ use ilSrContainerObjectMenuPlugin;
 use srag\DataTable\SrContainerObjectMenu\Component\Data\Data;
 use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
 use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTable\SrContainerObjectMenu\Component\Table;
 use srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions\AbstractActionsFormatter;
 use srag\DataTable\SrContainerObjectMenu\Implementation\Data\Fetcher\AbstractDataFetcher;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
- * Class ContainerObjectsTableGUI
+ * Class ContainerObjectsTable
  *
  * @package srag\Plugins\SrContainerObjectMenu\ContainerObject
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
-class ContainerObjectsTableGUI
+class ContainerObjectsTable
 {
 
     use DICTrait;
     use SrContainerObjectMenuTrait;
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
+    /**
+     * @var ContainerObjectsGUI
+     */
+    protected $parent;
 
 
     /**
-     * ContainerObjectsTableGUI constructor
+     * ContainerObjectsTable constructor
+     *
+     * @param ContainerObjectsGUI $parent
      */
-    public function __construct()
+    public function __construct(ContainerObjectsGUI $parent)
     {
-
+        $this->parent = $parent;
     }
 
 
     /**
-     * @return string
+     * @return Table
      */
-    public function render() : string
+    public function build() : Table
     {
-        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
-            ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_ADD_CONTAINER_OBJECT, "", "", false, false)));
-
         $table = self::srContainerObjectMenu()->dataTable()->table(ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_cont_objs",
-            self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectsGUI::class, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS),
+            self::dic()->ctrl()->getLinkTarget($this->parent, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS),
             self::plugin()->translate("container_objects", ContainerObjectsGUI::LANG_MODULE), [
                 self::srContainerObjectMenu()->dataTable()->column()->column("object_title",
                     self::plugin()->translate("container_object", ContainerObjectsGUI::LANG_MODULE))
@@ -93,6 +97,18 @@ class ContainerObjectsTableGUI
                 }
             })->withPlugin(self::plugin());
 
-        return self::output()->getHTML($table);
+        return $table;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function render() : string
+    {
+        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
+            ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_ADD_CONTAINER_OBJECT, "", "", false, false)));
+
+        return self::output()->getHTML($this->build());
     }
 }
