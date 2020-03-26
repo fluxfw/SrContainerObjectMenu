@@ -43,7 +43,7 @@ class ContainerObjectsTableGUI
         self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
             ->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_ADD_CONTAINER_OBJECT, "", "", false, false)));
 
-        $table = self::srContainerObjectMenu()->dataTable()->table(ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_container_objects",
+        $table = self::srContainerObjectMenu()->dataTable()->table(ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_cont_objs",
             self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectsGUI::class, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS),
             self::plugin()->translate("container_objects", ContainerObjectsGUI::LANG_MODULE), [
                 self::srContainerObjectMenu()->dataTable()->column()->column("object_title",
@@ -84,7 +84,7 @@ class ContainerObjectsTableGUI
                  */
                 public function fetchData(Settings $settings) : Data
                 {
-                    $data = self::srContainerObjectMenu()->containerObjects()->getContainerObjects();
+                    $data = self::srContainerObjectMenu()->containerObjects()->getContainerObjects($settings);
 
                     return self::srContainerObjectMenu()->dataTable()->data()->data(array_map(function (ContainerObject $container_object
                     ) : RowData {
