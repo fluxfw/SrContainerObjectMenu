@@ -1,21 +1,21 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Format;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Format;
 
 use ilUtil;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Data;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Data;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class AbstractFormat
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Format
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Format
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -23,15 +23,11 @@ abstract class AbstractFormat implements Format
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var object
      */
     protected $tpl;
-    /**
-     * @var callable
-     */
-    protected $get_template;
 
 
     /**
@@ -79,10 +75,8 @@ abstract class AbstractFormat implements Format
     /**
      * @inheritDoc
      */
-    public function render(callable $get_template, Table $component, /*?Data*/ $data, Settings $settings) : string
+    public function render(Table $component, /*?Data*/ $data, Settings $settings) : string
     {
-        $this->get_template = $get_template;
-
         $this->initTemplate($component, $data, $settings);
 
         $columns = $this->getColumns($component, $settings);
@@ -176,10 +170,8 @@ abstract class AbstractFormat implements Format
      * @param Table    $component
      * @param Column   $column
      * @param Settings $settings
-     *
-     * @return mixed
      */
-    protected abstract function handleColumn(string $formatted_column, Table $component, Column $column, Settings $settings);
+    protected abstract function handleColumn(string $formatted_column, Table $component, Column $column, Settings $settings)/* : void*/;
 
 
     /**

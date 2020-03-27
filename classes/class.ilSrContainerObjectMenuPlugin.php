@@ -3,6 +3,7 @@
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 use srag\RemovePluginDataConfirm\SrContainerObjectMenu\PluginUninstallTrait;
 
@@ -16,6 +17,7 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
 
     use PluginUninstallTrait;
     use SrContainerObjectMenuTrait;
+    use DataTableUITrait;
     const PLUGIN_ID = "srcontobjmenu";
     const PLUGIN_NAME = "SrContainerObjectMenu";
     const PLUGIN_CLASS_NAME = self::class;
@@ -74,7 +76,7 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
 
         $this->installRemovePluginDataConfirmLanguages();
 
-        self::srContainerObjectMenu()->dataTable()->installLanguages(self::plugin());
+        self::dataTableUI()->installLanguages(self::plugin());
     }
 
 

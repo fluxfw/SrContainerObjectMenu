@@ -1,18 +1,18 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Format;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Format;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Browser\Factory as BrowserFactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Factory as FactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
-use srag\DataTable\SrContainerObjectMenu\Implementation\Format\Browser\Factory as BrowserFactory;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Browser\Factory as BrowserFactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Factory as FactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Format\Browser\Factory as BrowserFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Format
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Format
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -20,7 +20,7 @@ class Factory implements FactoryInterface
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var self|null
      */

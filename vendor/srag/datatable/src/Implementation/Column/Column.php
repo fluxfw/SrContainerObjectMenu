@@ -1,18 +1,18 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Column;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Column;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column as ColumnInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Actions\ActionsFormatter;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Formatter;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Sort\SortField;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column as ColumnInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Actions\ActionsFormatter;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Formatter;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Sort\SortField;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class Column
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Column
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Column
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -20,7 +20,7 @@ class Column implements ColumnInterface
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var string
      */
@@ -120,7 +120,7 @@ class Column implements ColumnInterface
     public function getFormatter() : Formatter
     {
         if ($this->formatter === null) {
-            $this->formatter = self::dataTable()->column()->formatter()->default();
+            $this->formatter = self::dataTableUI()->column()->formatter()->default();
         }
 
         return $this->formatter;

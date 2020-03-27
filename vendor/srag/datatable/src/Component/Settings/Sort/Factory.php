@@ -1,11 +1,11 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Settings\Sort;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Sort;
 
 /**
  * Interface Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Settings\Sort
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Sort
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

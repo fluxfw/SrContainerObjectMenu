@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Data\Fetcher;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Data\Fetcher;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Fetcher\Factory as FactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Fetcher\Factory as FactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Data\Fetcher
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Data\Fetcher
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -18,7 +18,7 @@ class Factory implements FactoryInterface
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var self|null
      */

@@ -1,15 +1,15 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Format;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Format;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Data;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Data;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
 
 /**
  * Interface Format
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Format
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Format
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -73,14 +73,13 @@ interface Format
 
 
     /**
-     * @param callable  $get_template
      * @param Table     $component
      * @param Data|null $data
      * @param Settings  $settings
      *
      * @return string
      */
-    public function render(callable $get_template, Table $component, /*?Data*/ $data, Settings $settings) : string;
+    public function render(Table $component, /*?Data*/ $data, Settings $settings) : string;
 
 
     /**

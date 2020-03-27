@@ -1,15 +1,15 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
 
 /**
  * Interface Formatter
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

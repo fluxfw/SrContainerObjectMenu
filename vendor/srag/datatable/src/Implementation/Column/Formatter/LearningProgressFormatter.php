@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter;
 
 use ilLearningProgressBaseGUI;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
 
 /**
  * Class LearningProgressFormatter
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

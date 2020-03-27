@@ -1,11 +1,11 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Data\Row;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row;
 
 /**
  * Interface Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Data\Row
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Data;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Data;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
 
 /**
  * Interface Data
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Data
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Data
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

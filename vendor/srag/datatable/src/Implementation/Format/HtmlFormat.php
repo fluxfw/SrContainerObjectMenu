@@ -1,18 +1,18 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Format;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Format;
 
-use ILIAS\UI\Implementation\Render\Template;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Data;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
+use srag\CustomInputGUIs\SrContainerObjectMenu\Template\Template;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Data;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
 
 /**
  * Class HtmlFormat
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Format
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Format
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -48,11 +48,11 @@ class HtmlFormat extends AbstractFormat
      */
     protected function initTemplate(Table $component, /*?Data*/ $data, Settings $settings)/* : void*/
     {
-        $this->tpl = ($this->get_template)("tpl.datatable.html");
+        $this->tpl = new Template(__DIR__ . "/../../../templates/tpl.datatableui.html");
 
-        $this->tpl->setVariable("ID", htmlspecialchars($component->getTableId()));
+        $this->tpl->setVariableEscaped("ID", $component->getTableId());
 
-        $this->tpl->setVariable("TITLE", htmlspecialchars($component->getTitle()));
+        $this->tpl->setVariableEscaped("TITLE", $component->getTitle());
 
         $this->handleNoDataText($data, $component);
     }
@@ -98,7 +98,7 @@ class HtmlFormat extends AbstractFormat
     {
         $tpl = $this->tpl;
 
-        $this->tpl = ($this->get_template)("tpl.datatablerow.html");
+        $this->tpl = new Template(__DIR__ . "/../../../templates/tpl.datatableui_row.html");
 
         $this->handleRowTemplate($component, $row);
 
@@ -152,7 +152,7 @@ class HtmlFormat extends AbstractFormat
         if ($data === null || $data->getDataCount() === 0) {
             $this->tpl->setCurrentBlock("no_data");
 
-            $this->tpl->setVariable("NO_DATA_TEXT", htmlspecialchars($component->getDataFetcher()->getNoDataText($component)));
+            $this->tpl->setVariableEscaped("NO_DATA_TEXT", $component->getDataFetcher()->getNoDataText($component));
 
             $this->tpl->parseCurrentBlock();
         }

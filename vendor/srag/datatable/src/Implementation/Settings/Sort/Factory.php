@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Settings\Sort;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Settings\Sort;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Sort\Factory as FactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Sort\SortField as SortFieldInterface;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Sort\Factory as FactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Sort\SortField as SortFieldInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Settings\Sort
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Settings\Sort
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -18,7 +18,7 @@ class Factory implements FactoryInterface
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var self|null
      */

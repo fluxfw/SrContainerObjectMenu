@@ -1,19 +1,19 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Factory as ColumnFactory;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Factory as DataFactory;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Factory as FormatFactory;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Factory as SettingsFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Factory as ColumnFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Factory as DataFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Factory as FormatFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Factory as SettingsFactory;
 use srag\DIC\SrContainerObjectMenu\Plugin\PluginInterface;
 
 /**
  * Interface Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -27,19 +27,19 @@ interface Factory
 
 
     /**
-     * @return ColumnFactory
+     * @return DataFactory
      */
     public function data() : DataFactory;
 
 
     /**
-     * @return ColumnFactory
+     * @return FormatFactory
      */
     public function format() : FormatFactory;
 
 
     /**
-     * @return ColumnFactory
+     * @return SettingsFactory
      */
     public function settings() : SettingsFactory;
 

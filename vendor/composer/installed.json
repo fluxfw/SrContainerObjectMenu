@@ -1,24 +1,24 @@
 [
     {
         "name": "srag/custominputguis",
-        "version": "v0.33.5",
-        "version_normalized": "0.33.5.0",
+        "version": "v0.33.6",
+        "version_normalized": "0.33.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/CustomInputGUIs.git",
-            "reference": "15394fcff5c3955fb6c48ef6a5e151a8232b2377"
+            "reference": "4fd95e79df5166005d1bababdf3cef84eac686f2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/CustomInputGUIs/zipball/15394fcff5c3955fb6c48ef6a5e151a8232b2377",
-            "reference": "15394fcff5c3955fb6c48ef6a5e151a8232b2377",
+            "url": "https://api.github.com/repos/studer-raimann/CustomInputGUIs/zipball/4fd95e79df5166005d1bababdf3cef84eac686f2",
+            "reference": "4fd95e79df5166005d1bababdf3cef84eac686f2",
             "shasum": ""
         },
         "require": {
             "php": ">=7.0",
             "srag/dic": ">=0.1.0"
         },
-        "time": "2020-03-26T12:40:02+00:00",
+        "time": "2020-03-27T09:44:33+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -50,17 +50,17 @@
     },
     {
         "name": "srag/datatable",
-        "version": "v0.26.0",
-        "version_normalized": "0.26.0.0",
+        "version": "v0.27.0",
+        "version_normalized": "0.27.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/DataTableUI.git",
-            "reference": "8ed27d72e4541406abfa4844a9eb5b0aab92e46b"
+            "reference": "c5057e8a2a6d89e5305b0aa78861e136f2bdea12"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/DataTableUI/zipball/8ed27d72e4541406abfa4844a9eb5b0aab92e46b",
-            "reference": "8ed27d72e4541406abfa4844a9eb5b0aab92e46b",
+            "url": "https://api.github.com/repos/studer-raimann/DataTableUI/zipball/c5057e8a2a6d89e5305b0aa78861e136f2bdea12",
+            "reference": "c5057e8a2a6d89e5305b0aa78861e136f2bdea12",
             "shasum": ""
         },
         "require": {
@@ -68,12 +68,12 @@
             "srag/custominputguis": ">=0.1.0",
             "srag/dic": ">=0.1.0"
         },
-        "time": "2020-03-26T12:42:16+00:00",
+        "time": "2020-03-27T10:01:27+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "srag\\DataTable\\SrContainerObjectMenu\\": "src/"
+                "srag\\DataTableUI\\SrContainerObjectMenu\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -88,7 +88,7 @@
                 "role": "Developer"
             }
         ],
-        "description": "ILIAS 6.0 Data Table UI",
+        "description": "ILIAS Data Table UI Component",
         "homepage": "https://github.com/studer-raimann/DataTableUI",
         "keywords": [
             "ILIAS",

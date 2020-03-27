@@ -1,15 +1,15 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Format\Browser;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Format\Browser;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
 
 /**
  * Interface BrowserFormat
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Format\Browser
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Format\Browser
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

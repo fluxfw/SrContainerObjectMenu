@@ -1,19 +1,19 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Settings;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Settings;
 
 use ILIAS\UI\Component\ViewControl\Pagination;
 use ILIAS\UI\Implementation\Component\ComponentHelper;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Data;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings as SettingsInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Sort\SortField;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Data;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Settings as SettingsInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Sort\SortField;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class Settings
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Settings
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Settings
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -22,7 +22,7 @@ class Settings implements SettingsInterface
 
     use ComponentHelper;
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var Pagination
      */

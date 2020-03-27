@@ -1,17 +1,17 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Data;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Data;
 
 use ILIAS\UI\Implementation\Component\ComponentHelper;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Data as DataInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Data as DataInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class Data
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Data
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Data
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -20,7 +20,7 @@ class Data implements DataInterface
 
     use ComponentHelper;
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var RowData[]
      */

@@ -1,19 +1,19 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Factory as ColumnFactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Factory as DataFactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
-use srag\DataTable\SrContainerObjectMenu\Component\Factory as FactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Factory as FormatFactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Factory as SettingsFactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Table as TableInterface;
-use srag\DataTable\SrContainerObjectMenu\Implementation\Column\Factory as ColumnFactory;
-use srag\DataTable\SrContainerObjectMenu\Implementation\Data\Factory as DataFactory;
-use srag\DataTable\SrContainerObjectMenu\Implementation\Format\Factory as FormatFactory;
-use srag\DataTable\SrContainerObjectMenu\Implementation\Settings\Factory as SettingsFactory;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Factory as ColumnFactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Factory as DataFactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Factory as FactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Factory as FormatFactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Factory as SettingsFactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table as TableInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Factory as ColumnFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Data\Factory as DataFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Format\Factory as FormatFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Settings\Factory as SettingsFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\DIC\SrContainerObjectMenu\Plugin\PluginInterface;
 use srag\DIC\SrContainerObjectMenu\Util\LibraryLanguageInstaller;
@@ -21,7 +21,7 @@ use srag\DIC\SrContainerObjectMenu\Util\LibraryLanguageInstaller;
 /**
  * Class Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -29,7 +29,7 @@ class Factory implements FactoryInterface
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var self|null
      */

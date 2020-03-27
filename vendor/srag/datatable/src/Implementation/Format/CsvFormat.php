@@ -1,18 +1,18 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Format;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Format;
 
 use ilCSVWriter;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Data;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Data;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
 
 /**
  * Class CsvFormat
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Format
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Format
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

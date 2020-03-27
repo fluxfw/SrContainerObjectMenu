@@ -1,14 +1,14 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Format;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Format;
 
 use ilHtmlToPdfTransformerFactory;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
 
 /**
  * Class PdfFormat
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Format
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Format
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

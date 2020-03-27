@@ -1,15 +1,15 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Data\Row;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Data\Row;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class AbstractRowData
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Data\Row
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Data\Row
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -17,7 +17,7 @@ abstract class AbstractRowData implements RowData
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var string
      */

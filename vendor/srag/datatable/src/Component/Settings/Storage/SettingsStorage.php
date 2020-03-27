@@ -1,14 +1,14 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Settings\Storage;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Storage;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
 
 /**
  * Interface SettingsStorage
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Settings\Storage
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Storage
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

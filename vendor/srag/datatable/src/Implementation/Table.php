@@ -1,24 +1,24 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation;
 
 use ILIAS\UI\Component\Input\Field\FilterInput;
 use ILIAS\UI\Component\Input\Field\Input as FilterInput54;
 use ILIAS\UI\Implementation\Component\ComponentHelper;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Browser\BrowserFormat;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Storage\SettingsStorage;
-use srag\DataTable\SrContainerObjectMenu\Component\Table as TableInterface;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Browser\BrowserFormat;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Storage\SettingsStorage;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table as TableInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\DIC\SrContainerObjectMenu\Plugin\PluginInterface;
 
 /**
  * Class Table
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -27,7 +27,7 @@ class Table implements TableInterface
 
     use ComponentHelper;
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var PluginInterface
      */
@@ -270,7 +270,7 @@ class Table implements TableInterface
     public function getBrowserFormat() : BrowserFormat
     {
         if ($this->browser_format === null) {
-            $this->browser_format = self::dataTable()->format()->browser()->default();
+            $this->browser_format = self::dataTableUI()->format()->browser()->default();
         }
 
         return $this->browser_format;
@@ -343,7 +343,7 @@ class Table implements TableInterface
     public function getSettingsStorage() : SettingsStorage
     {
         if ($this->settings_storage === null) {
-            $this->settings_storage = self::dataTable()->settings()->storage()->default();
+            $this->settings_storage = self::dataTableUI()->settings()->storage()->default();
         }
 
         return $this->settings_storage;

@@ -4,6 +4,7 @@ namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\Table\TableBuilder;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -61,11 +62,11 @@ final class Factory
     /**
      * @param ContainerObjectsGUI $parent
      *
-     * @return ContainerObjectsTable
+     * @return TableBuilder
      */
-    public function newTableInstance(ContainerObjectsGUI $parent) : ContainerObjectsTable
+    public function newTableBuilderInstance(ContainerObjectsGUI $parent) : TableBuilder
     {
-        $table = new ContainerObjectsTable($parent);
+        $table = new TableBuilder($parent);
 
         return $table;
     }

@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Format;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Format;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Browser\Factory as BrowserFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Browser\Factory as BrowserFactory;
 
 /**
  * Interface Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Format
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Format
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

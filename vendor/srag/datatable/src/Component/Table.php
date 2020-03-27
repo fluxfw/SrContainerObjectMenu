@@ -1,22 +1,22 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component;
 
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Component\Input\Field\FilterInput;
 use ILIAS\UI\Component\Input\Field\Input as FilterInput54;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Browser\BrowserFormat;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Storage\SettingsStorage;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Fetcher\DataFetcher;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Browser\BrowserFormat;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Storage\SettingsStorage;
 use srag\DIC\SrContainerObjectMenu\Plugin\Pluginable;
 use srag\DIC\SrContainerObjectMenu\Plugin\PluginInterface;
 
 /**
  * Interface Table
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -34,7 +34,7 @@ interface Table extends Component, Pluginable
     /**
      * @var string
      */
-    const LANG_MODULE = "datatable";
+    const LANG_MODULE = "datatableui";
 
 
     /**

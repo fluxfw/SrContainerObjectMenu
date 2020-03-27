@@ -1,17 +1,17 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Actions;
 
 use srag\CustomInputGUIs\SrContainerObjectMenu\Waiter\Waiter;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
 
 /**
  * Class SortFormatter
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Actions
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -48,8 +48,14 @@ class SortFormatter extends AbstractActionsFormatter
      */
     public function formatRowCell(Format $format, $value, Column $column, RowData $row, string $table_id) : string
     {
+        if (self::version()->is60()) {
+            $glyph_factory = self::dic()->ui()->factory()->symbol()->glyph();
+        } else {
+            $glyph_factory = self::dic()->ui()->factory()->glyph();
+        }
+
         return self::output()->getHTML([
-            self::dic()->ui()->factory()->glyph()->sortAscending()->withAdditionalOnLoadCode(function (string $id) use ($format, $row, $table_id): string {
+            $glyph_factory->sortAscending()->withAdditionalOnLoadCode(function (string $id) use ($format, $row, $table_id): string {
                 Waiter::init(Waiter::TYPE_WAITER);
 
                 return '
@@ -66,7 +72,7 @@ class SortFormatter extends AbstractActionsFormatter
                 });
             });';
             }),
-            self::dic()->ui()->factory()->glyph()->sortDescending()->withAdditionalOnLoadCode(function (string $id) use ($format, $row, $table_id) : string {
+            $glyph_factory->sortDescending()->withAdditionalOnLoadCode(function (string $id) use ($format, $row, $table_id) : string {
                 return '
             $("#' . $id . '").click(function () {
                 il.waiter.show();

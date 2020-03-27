@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Actions;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Actions\ActionsFormatter;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Actions\Factory as FactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Actions\ActionsFormatter;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Actions\Factory as FactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Actions
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -18,7 +18,7 @@ class Factory implements FactoryInterface
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var self|null
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Actions;
 
 use Closure;
 use ILIAS\UI\Component\Button\Shy;
@@ -8,18 +8,18 @@ use ILIAS\UI\Component\Component;
 use ILIAS\UI\Component\Link\Standard as StandardInterface;
 use ILIAS\UI\Implementation\Component\Button\Button;
 use ILIAS\UI\Implementation\Component\Link\Standard;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Column;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Actions\ActionsFormatter;
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Row\RowData;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Browser\BrowserFormat;
-use srag\DataTable\SrContainerObjectMenu\Component\Format\Format;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
-use srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\DefaultFormatter;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Actions\ActionsFormatter;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Browser\BrowserFormat;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\DefaultFormatter;
 
 /**
  * Class AbstractActionsFormatter
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Actions
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

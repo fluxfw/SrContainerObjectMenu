@@ -1,15 +1,15 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Component\Data\Fetcher;
+namespace srag\DataTableUI\SrContainerObjectMenu\Component\Data\Fetcher;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Data\Data;
-use srag\DataTable\SrContainerObjectMenu\Component\Settings\Settings;
-use srag\DataTable\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Data;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Settings\Settings;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
 
 /**
  * Interface DataFetcher
  *
- * @package srag\DataTable\SrContainerObjectMenu\Component\Data\Fetcher
+ * @package srag\DataTableUI\SrContainerObjectMenu\Component\Data\Fetcher
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

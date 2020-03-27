@@ -1,18 +1,18 @@
 <?php
 
-namespace srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter;
+namespace srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter;
 
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Actions\Factory as ActionsFactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Factory as FactoryInterface;
-use srag\DataTable\SrContainerObjectMenu\Component\Column\Formatter\Formatter;
-use srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter\Actions\Factory as ActionsFactory;
-use srag\DataTable\SrContainerObjectMenu\Utils\DataTableTrait;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Actions\Factory as ActionsFactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Factory as FactoryInterface;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Formatter;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Actions\Factory as ActionsFactory;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 
 /**
  * Class Factory
  *
- * @package srag\DataTable\SrContainerObjectMenu\Implementation\Column\Formatter
+ * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -20,7 +20,7 @@ class Factory implements FactoryInterface
 {
 
     use DICTrait;
-    use DataTableTrait;
+    use DataTableUITrait;
     /**
      * @var self|null
      */
