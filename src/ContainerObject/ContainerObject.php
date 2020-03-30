@@ -5,6 +5,7 @@ namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 use ActiveRecord;
 use arConnector;
 use ilContainer;
+use ILIAS\UI\Component\Component;
 use ilMMItemFacadeInterface;
 use ilObjectFactory;
 use ilSrContainerObjectMenuPlugin;
@@ -143,6 +144,22 @@ class ContainerObject extends ActiveRecord
         }
 
         return $this->object;
+    }
+
+
+    /**
+     * @return Component[]
+     */
+    public function getActions() : array
+    {
+        self::dic()->ctrl()->setParameterByClass(ContainerObjectGUI::class, ContainerObjectGUI::GET_PARAM_CONTAINER_OBJECT_ID, $this->container_object_id);
+
+        return [
+            self::dic()->ui()->factory()->link()->standard(self::plugin()->translate("edit_container_object", ContainerObjectsGUI::LANG_MODULE),
+                self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_EDIT_CONTAINER_OBJECT, "", false, false)),
+            self::dic()->ui()->factory()->link()->standard(self::plugin()->translate("remove_container_object", ContainerObjectsGUI::LANG_MODULE),
+                self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_REMOVE_CONTAINER_OBJECT_CONFIRM, "", false, false))
+        ];
     }
 
 

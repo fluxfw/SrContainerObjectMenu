@@ -48,7 +48,7 @@ class TableBuilder extends AbstractTableBuilder
                     ->formatter()
                     ->chainGetter(["object", "title"])),
                 self::dataTableUI()->column()->column("actions",
-                    self::plugin()->translate("actions", ContainerObjectsGUI::LANG_MODULE))->withFormatter(new ActionsFormatter())
+                    self::plugin()->translate("actions", ContainerObjectsGUI::LANG_MODULE))->withFormatter(self::dataTableUI()->column()->formatter()->actions()->actionsDropdown())
             ], new DataFetcher())->withPlugin(self::plugin());
 
         return $table;

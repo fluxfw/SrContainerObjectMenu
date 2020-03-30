@@ -12,9 +12,9 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
             'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\' => 51,
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
             'srag\\LibrariesNamespaceChanger\\' => 31,
-            'srag\\DataTableUI\\SrContainerObjectMenu\\' => 39,
+            'srag\\DataTableUI\\' => 17,
             'srag\\DIC\\SrContainerObjectMenu\\' => 31,
-            'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 43,
+            'srag\\CustomInputGUIs\\' => 21,
         ),
     );
 
@@ -31,7 +31,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         array (
             0 => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src',
         ),
-        'srag\\DataTableUI\\SrContainerObjectMenu\\' => 
+        'srag\\DataTableUI\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/datatable/src',
         ),
@@ -39,7 +39,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         array (
             0 => __DIR__ . '/..' . '/srag/dic/src',
         ),
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 
+        'srag\\CustomInputGUIs\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/custominputguis/src',
         ),
@@ -171,7 +171,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Column' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Column.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Factory' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Factory.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\AbstractFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/AbstractFormatter.php',
-        'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Actions\\AbstractActionsFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Actions/AbstractActionsFormatter.php',
+        'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Actions\\ActionsDropdownFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Actions/ActionsDropdownFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Actions\\Factory' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Actions/Factory.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Actions\\SortFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Actions/SortFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\ChainGetterFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/ChainGetterFormatter.php',
@@ -222,7 +222,6 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Factory' => __DIR__ . '/../..' . '/src/ContainerObject/Factory.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Menu' => __DIR__ . '/../..' . '/src/ContainerObject/Menu.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Repository' => __DIR__ . '/../..' . '/src/ContainerObject/Repository.php',
-        'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Table\\ActionsFormatter' => __DIR__ . '/../..' . '/src/ContainerObject/Table/ActionsFormatter.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Table\\DataFetcher' => __DIR__ . '/../..' . '/src/ContainerObject/Table/DataFetcher.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Table\\TableBuilder' => __DIR__ . '/../..' . '/src/ContainerObject/Table/TableBuilder.php',
         'srag\\Plugins\\SrContainerObjectMenu\\Repository' => __DIR__ . '/../..' . '/src/Repository.php',

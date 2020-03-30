@@ -122,9 +122,13 @@ final class Repository
 
         $types = ilContainerSorting::_getInstance($object->getId())->getBlockPositions();
         if (empty($types)) {
-            $types = array_keys(self::dic()
+            $types = array_reduce(self::dic()
                 ->objDefinition()
-                ->getGroupedRepositoryObjectTypes($object->getType()));
+                ->getGroupedRepositoryObjectTypes($object->getType()), function (array $types, array $type) : array {
+                $types = array_merge($types, $type["objs"]);
+
+                return $types;
+            }, []);
         }
 
         $sub_items = $object->getSubItems();
