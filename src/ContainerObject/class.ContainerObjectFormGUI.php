@@ -15,11 +15,11 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 /**
  * Class ContainerObjectFormGUI
  *
- * @package           srag\Plugins\SrContainerObjectMenu\ContainerObject
+ * @package      srag\Plugins\SrContainerObjectMenu\ContainerObject
  *
- * @author            studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
+ * @author       studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  *
- * @ilCtrl_Calls      srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectFormGUI: ilFormPropertyDispatchGUI
+ * @ilCtrl_Calls srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectFormGUI: ilFormPropertyDispatchGUI
  */
 class ContainerObjectFormGUI extends PropertyFormGUI
 {
