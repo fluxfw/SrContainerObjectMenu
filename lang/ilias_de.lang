@@ -7,6 +7,7 @@ container_objects_container_object#:#Container-Objekt
 container_objects_container_objects#:#Container-Objekte
 container_objects_edit_container_object#:#Container-Objekt bearbeiten
 container_objects_info#:#Weitere Einstellungen (z. Bsp. Position, Custom-Titel, ...) können direkt im %s vorgenommen werden
+container_objects_menu_title#:#Menü-Titel
 container_objects_remove#:#Entfernen
 container_objects_remove_container_object#:#Container-Objekt entfernen
 container_objects_remove_container_object_confirm#:#Möchten Sie das Container-Objekt wirklich entfernen: %s ?

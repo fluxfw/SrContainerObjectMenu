@@ -135,6 +135,15 @@ class ContainerObject extends ActiveRecord
 
 
     /**
+     * @return string
+     */
+    public function getMenuTitle() : string
+    {
+        return (($menu_item = $this->getMenuItem()) !== null ? $menu_item->getDefaultTitle() : "");
+    }
+
+
+    /**
      * @return ilContainer
      */
     public function getObject() : ilContainer
