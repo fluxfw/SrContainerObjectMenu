@@ -7,6 +7,7 @@ container_objects_container_object#:#Container object
 container_objects_container_objects#:#Container objects
 container_objects_edit_container_object#:#Edit container object
 container_objects_info#:#More stettings (for example position, custom title, ...) can be changed directly in %s
+container_objects_menu_title#:#Menu title
 container_objects_remove#:#Remove
 container_objects_remove_container_object#:#Remove container object
 container_objects_remove_container_object_confirm#:#Are you really want to remove the container object: %s ?
