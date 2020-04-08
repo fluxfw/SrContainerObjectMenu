@@ -6,6 +6,7 @@ use ilConfirmationGUI;
 use ilSrContainerObjectMenuPlugin;
 use ilUtil;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -16,7 +17,7 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
  * @author            studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  *
  * @ilCtrl_isCalledBy srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectGUI: srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsGUI
- * @ilCtrl_Calls      srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectGUI: srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectFormGUI
+ * @ilCtrl_Calls      srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectGUI: srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder
  */
 class ContainerObjectGUI
 {
@@ -62,8 +63,8 @@ class ContainerObjectGUI
         $next_class = self::dic()->ctrl()->getNextClass($this);
 
         switch (strtolower($next_class)) {
-            case strtolower(ContainerObjectFormGUI::class):
-                self::dic()->ctrl()->forwardCommand(self::srContainerObjectMenu()->containerObjects()->factory()->newFormInstance($this, $this->container_object));
+            case strtolower(FormBuilder::class):
+                self::dic()->ctrl()->forwardCommand(self::srContainerObjectMenu()->containerObjects()->factory()->newFormBuilderInstance($this, $this->container_object));
                 break;
 
             default:
@@ -131,7 +132,7 @@ class ContainerObjectGUI
      */
     protected function addContainerObject()/*: void*/
     {
-        $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormInstance($this, $this->container_object);
+        $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormBuilderInstance($this, $this->container_object);
 
         self::output()->output($form);
     }
@@ -142,7 +143,7 @@ class ContainerObjectGUI
      */
     protected function createContainerObject()/*: void*/
     {
-        $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormInstance($this, $this->container_object);
+        $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormBuilderInstance($this, $this->container_object);
 
         if (!$form->storeForm()) {
             self::output()->output($form);
@@ -198,7 +199,7 @@ class ContainerObjectGUI
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_CONTAINER_OBJECT);
 
-        $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormInstance($this, $this->container_object);
+        $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormBuilderInstance($this, $this->container_object);
 
         self::output()->output($form);
     }
@@ -211,7 +212,7 @@ class ContainerObjectGUI
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_CONTAINER_OBJECT);
 
-        $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormInstance($this, $this->container_object);
+        $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormBuilderInstance($this, $this->container_object);
 
         if (!$form->storeForm()) {
             self::output()->output($form);

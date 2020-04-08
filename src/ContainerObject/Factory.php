@@ -4,6 +4,7 @@ namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\Table\TableBuilder;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
@@ -76,11 +77,11 @@ final class Factory
      * @param ContainerObjectGUI $parent
      * @param ContainerObject    $container_object
      *
-     * @return ContainerObjectFormGUI
+     * @return FormBuilder
      */
-    public function newFormInstance(ContainerObjectGUI $parent, ContainerObject $container_object) : ContainerObjectFormGUI
+    public function newFormBuilderInstance(ContainerObjectGUI $parent, ContainerObject $container_object) : FormBuilder
     {
-        $form = new ContainerObjectFormGUI($parent, $container_object);
+        $form = new FormBuilder($parent, $container_object);
 
         return $form;
     }
