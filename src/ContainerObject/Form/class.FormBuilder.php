@@ -92,10 +92,10 @@ class FormBuilder extends AbstractFormBuilder
         $fields = [];
 
         if (!empty($this->container_object->getContainerObjectId())) {
-            $fields["obj_ref_id"] = (new InputGUIWrapperUIInputComponent(new ilNonEditableValueGUI()))->withLabel(self::plugin()->translate("container_object", ContainerObjectsGUI::LANG_MODULE));
+            $fields["obj_ref_id"] = new InputGUIWrapperUIInputComponent(new ilNonEditableValueGUI(self::plugin()->translate("container_object", ContainerObjectsGUI::LANG_MODULE)));
         } else {
-            $fields["obj_ref_id"] = (new InputGUIWrapperUIInputComponent(new ilRepositorySelector2InputGUI("", "obj_ref_id", null, self::class)))->withLabel(self::plugin()
-                ->translate("container_object", ContainerObjectsGUI::LANG_MODULE))->withRequired(true);
+            $fields["obj_ref_id"] = (new InputGUIWrapperUIInputComponent(new ilRepositorySelector2InputGUI(self::plugin()->translate("container_object", ContainerObjectsGUI::LANG_MODULE),
+                "obj_ref_id", null, self::class)))->withRequired(true);
             $fields["obj_ref_id"]->getInput()->getExplorerGUI()->setSelectableTypes(["cat", "crs", "fold", "grp", "root"]);
         }
 
