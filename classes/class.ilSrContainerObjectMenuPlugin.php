@@ -18,6 +18,7 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     use PluginUninstallTrait;
     use SrContainerObjectMenuTrait;
     use DataTableUITrait;
+
     const PLUGIN_ID = "srcontobjmenu";
     const PLUGIN_NAME = "SrContainerObjectMenu";
     const PLUGIN_CLASS_NAME = self::class;

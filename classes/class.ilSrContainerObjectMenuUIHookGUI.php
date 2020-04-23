@@ -13,5 +13,6 @@ class ilSrContainerObjectMenuUIHookGUI extends ilUIHookPluginGUI
 
     use DICTrait;
     use SrContainerObjectMenuTrait;
+
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
 }

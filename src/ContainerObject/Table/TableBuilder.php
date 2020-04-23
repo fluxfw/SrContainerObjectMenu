@@ -20,6 +20,7 @@ class TableBuilder extends AbstractTableBuilder
 {
 
     use SrContainerObjectMenuTrait;
+
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
 
 

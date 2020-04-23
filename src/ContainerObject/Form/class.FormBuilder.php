@@ -7,7 +7,6 @@ use ilNonEditableValueGUI;
 use ilObjMainMenuGUI;
 use ilRepositorySelector2InputGUI;
 use ilSrContainerObjectMenuPlugin;
-use ilUtil;
 use srag\CustomInputGUIs\SrContainerObjectMenu\FormBuilder\AbstractFormBuilder;
 use srag\CustomInputGUIs\SrContainerObjectMenu\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObject;
@@ -28,6 +27,7 @@ class FormBuilder extends AbstractFormBuilder
 {
 
     use SrContainerObjectMenuTrait;
+
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     /**
      * @var ContainerObject
@@ -124,7 +124,7 @@ class FormBuilder extends AbstractFormBuilder
         if (!empty($this->container_object->getContainerObjectId())) {
             self::dic()->ctrl()->setParameterByClass(ilObjMainMenuGUI::class, "ref_id", 69);
 
-            ilUtil::sendInfo(self::plugin()->translate("info", ContainerObjectsGUI::LANG_MODULE, [
+            $this->messages[] = self::dic()->ui()->factory()->messageBox()->info(self::plugin()->translate("info", ContainerObjectsGUI::LANG_MODULE, [
                 self::output()->getHTML(self::dic()->ui()->factory()->link()->standard(self::dic()->language()->txt("obj_mme"), self::dic()->ctrl()->getLinkTargetByClass([
                     ilAdministrationGUI::class,
                     ilObjMainMenuGUI::class

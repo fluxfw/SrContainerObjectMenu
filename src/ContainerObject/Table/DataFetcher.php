@@ -21,6 +21,7 @@ class DataFetcher extends AbstractDataFetcher
 {
 
     use SrContainerObjectMenuTrait;
+
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
 
 

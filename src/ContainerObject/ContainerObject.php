@@ -24,6 +24,7 @@ class ContainerObject extends ActiveRecord
 
     use DICTrait;
     use SrContainerObjectMenuTrait;
+
     const TABLE_NAME = ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_obj";
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
 
