@@ -1,4 +1,4 @@
-## SrContainerObjectMenu Description
+# SrContainerObjectMenu ILIAS Plugin Description
 
 Select some repository container objects in the plugin config and the plugin provides it as main menu dropdowns with the objects children
 
