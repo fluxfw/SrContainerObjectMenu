@@ -8,7 +8,7 @@ See in [doc/DOCUMENTATION.md](./doc/DOCUMENTATION.md)
 
 ## Installation
 
-### Install SrContainerObjectMenu-Plugin
+### Install SrContainerObjectMenu Plugin
 Start at your ILIAS root directory
 ```bash
 mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
