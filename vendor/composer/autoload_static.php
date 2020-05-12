@@ -13,7 +13,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
             'srag\\LibrariesNamespaceChanger\\' => 31,
             'srag\\DataTableUI\\SrContainerObjectMenu\\' => 39,
-            'srag\\DIC\\SrContainerObjectMenu\\' => 31,
+            'srag\\DIC\\' => 9,
             'srag\\CustomInputGUIs\\' => 21,
         ),
     );
@@ -35,7 +35,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         array (
             0 => __DIR__ . '/..' . '/srag/datatable/src',
         ),
-        'srag\\DIC\\SrContainerObjectMenu\\' => 
+        'srag\\DIC\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/dic/src',
         ),

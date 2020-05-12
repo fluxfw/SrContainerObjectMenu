@@ -4,3 +4,14 @@ Select some repository container objects in the plugin config and the plugin pro
 
 Known issues:
 - Currently may some lost items will stay in the main menu administration (You can ignore it or delete it manually)
+x-special/nautilus-clipboard
+
+Config:
+
+![Config 1](./images/config_1.png)
+
+![Config 2](./images/config_2.png)
+
+Menu:
+
+![Menu](./images/menu.png)
