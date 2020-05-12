@@ -20,6 +20,7 @@ class ContainerObjectsGUI
 
     use DICTrait;
     use SrContainerObjectMenuTrait;
+
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     const CMD_LIST_CONTAINER_OBJECTS = "listContainerObjects";
     const LANG_MODULE = "container_objects";

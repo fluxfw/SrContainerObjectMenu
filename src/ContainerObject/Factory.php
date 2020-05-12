@@ -20,6 +20,7 @@ final class Factory
 
     use DICTrait;
     use SrContainerObjectMenuTrait;
+
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     /**
      * @var self|null

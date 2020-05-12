@@ -24,6 +24,7 @@ class ContainerObjectGUI
 
     use DICTrait;
     use SrContainerObjectMenuTrait;
+
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     const CMD_ADD_CONTAINER_OBJECT = "addContainerObject";
     const CMD_BACK = "back";

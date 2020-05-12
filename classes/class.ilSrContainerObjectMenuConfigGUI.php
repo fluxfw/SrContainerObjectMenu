@@ -16,6 +16,7 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
 
     use DICTrait;
     use SrContainerObjectMenuTrait;
+
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     const CMD_CONFIGURE = "configure";
 

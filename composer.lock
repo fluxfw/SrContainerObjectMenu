@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "srag/custominputguis",
-            "version": "v0.34.2",
+            "version": "v0.34.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/CustomInputGUIs.git",
-                "reference": "f5f6bf37bcb8bd6b7ebf0d0cf91d5f730e447a9d"
+                "reference": "f01c18bbfe8f697a70a4e01521833efdb6c2ec21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/CustomInputGUIs/zipball/f5f6bf37bcb8bd6b7ebf0d0cf91d5f730e447a9d",
-                "reference": "f5f6bf37bcb8bd6b7ebf0d0cf91d5f730e447a9d",
+                "url": "https://api.github.com/repos/studer-raimann/CustomInputGUIs/zipball/f01c18bbfe8f697a70a4e01521833efdb6c2ec21",
+                "reference": "f01c18bbfe8f697a70a4e01521833efdb6c2ec21",
                 "shasum": ""
             },
             "require": {
@@ -51,20 +51,20 @@
                 "input",
                 "table"
             ],
-            "time": "2020-04-08T05:43:54+00:00"
+            "time": "2020-05-06T05:16:14+00:00"
         },
         {
             "name": "srag/datatable",
-            "version": "v0.28.1",
+            "version": "v0.28.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/DataTableUI.git",
-                "reference": "35c777c3f1cdde1915b03067edc3bc3bdb8a564d"
+                "reference": "1f7aa5fa3763fd2800a3d156adeffcdf55f7d3fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/DataTableUI/zipball/35c777c3f1cdde1915b03067edc3bc3bdb8a564d",
-                "reference": "35c777c3f1cdde1915b03067edc3bc3bdb8a564d",
+                "url": "https://api.github.com/repos/studer-raimann/DataTableUI/zipball/1f7aa5fa3763fd2800a3d156adeffcdf55f7d3fb",
+                "reference": "1f7aa5fa3763fd2800a3d156adeffcdf55f7d3fb",
                 "shasum": ""
             },
             "require": {
@@ -75,7 +75,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "srag\\DataTableUI\\": "src/"
+                    "srag\\DataTableUI\\SrContainerObjectMenu\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -97,20 +97,20 @@
                 "table",
                 "ui"
             ],
-            "time": "2020-04-08T05:52:05+00:00"
+            "time": "2020-04-23T11:35:23+00:00"
         },
         {
             "name": "srag/dic",
-            "version": "v0.20.4",
+            "version": "v0.20.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/DIC.git",
-                "reference": "b5f107eddf513280f7c9ca7e05e7a42eb8d9fc95"
+                "reference": "aec9eca4d4ec4085fe39b86155f792621b97b135"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/b5f107eddf513280f7c9ca7e05e7a42eb8d9fc95",
-                "reference": "b5f107eddf513280f7c9ca7e05e7a42eb8d9fc95",
+                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/aec9eca4d4ec4085fe39b86155f792621b97b135",
+                "reference": "aec9eca4d4ec4085fe39b86155f792621b97b135",
                 "shasum": ""
             },
             "require": {
@@ -119,7 +119,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "srag\\DIC\\SrContainerObjectMenu\\": "src/"
+                    "srag\\DIC\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -142,7 +142,7 @@
                 "globals",
                 "trait"
             ],
-            "time": "2020-03-26T12:38:05+00:00"
+            "time": "2020-04-30T08:33:52+00:00"
         },
         {
             "name": "srag/librariesnamespacechanger",
