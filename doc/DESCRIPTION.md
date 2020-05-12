@@ -14,4 +14,3 @@ Menu:
 
 Known issues:
 - Currently may some lost items will stay in the main menu administration (You can ignore it because not viewed in the menu or delete it manually)
-x-special/nautilus-clipboard
