@@ -8,6 +8,8 @@ Config:
 
 ![Config 2](./images/config_2.png)
 
+![Config 3](./images/config_3.png)
+
 Menu:
 
 ![Menu](./images/menu.png)
