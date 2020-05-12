@@ -163,39 +163,6 @@ class ContainerObjectGUI
     /**
      *
      */
-    protected function removeContainerObjectConfirm()/*: void*/
-    {
-        $confirmation = new ilConfirmationGUI();
-
-        $confirmation->setFormAction(self::dic()->ctrl()->getFormAction($this));
-
-        $confirmation->setHeaderText(self::plugin()->translate("remove_container_object_confirm", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]));
-
-        $confirmation->addItem(self::GET_PARAM_CONTAINER_OBJECT_ID, $this->container_object->getContainerObjectId(), $this->container_object->getObject()->getTitle());
-
-        $confirmation->setConfirm(self::plugin()->translate("remove", ContainerObjectsGUI::LANG_MODULE), self::CMD_REMOVE_CONTAINER_OBJECT);
-        $confirmation->setCancel(self::plugin()->translate("cancel", ContainerObjectsGUI::LANG_MODULE), self::CMD_BACK);
-
-        self::output()->output($confirmation);
-    }
-
-
-    /**
-     *
-     */
-    protected function removeContainerObject()/*: void*/
-    {
-        self::srContainerObjectMenu()->containerObjects()->deleteContainerObject($this->container_object);
-
-        ilUtil::sendSuccess(self::plugin()->translate("removed_container_object", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]), true);
-
-        self::dic()->ctrl()->redirect($this, self::CMD_BACK);
-    }
-
-
-    /**
-     *
-     */
     protected function editContainerObject()/*: void*/
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_CONTAINER_OBJECT);
@@ -224,6 +191,39 @@ class ContainerObjectGUI
         ilUtil::sendSuccess(self::plugin()->translate("saved_container_object", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]), true);
 
         self::dic()->ctrl()->redirect($this, self::CMD_EDIT_CONTAINER_OBJECT);
+    }
+
+
+    /**
+     *
+     */
+    protected function removeContainerObjectConfirm()/*: void*/
+    {
+        $confirmation = new ilConfirmationGUI();
+
+        $confirmation->setFormAction(self::dic()->ctrl()->getFormAction($this));
+
+        $confirmation->setHeaderText(self::plugin()->translate("remove_container_object_confirm", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]));
+
+        $confirmation->addItem(self::GET_PARAM_CONTAINER_OBJECT_ID, $this->container_object->getContainerObjectId(), $this->container_object->getObject()->getTitle());
+
+        $confirmation->setConfirm(self::plugin()->translate("remove", ContainerObjectsGUI::LANG_MODULE), self::CMD_REMOVE_CONTAINER_OBJECT);
+        $confirmation->setCancel(self::plugin()->translate("cancel", ContainerObjectsGUI::LANG_MODULE), self::CMD_BACK);
+
+        self::output()->output($confirmation);
+    }
+
+
+    /**
+     *
+     */
+    protected function removeContainerObject()/*: void*/
+    {
+        self::srContainerObjectMenu()->containerObjects()->deleteContainerObject($this->container_object);
+
+        ilUtil::sendSuccess(self::plugin()->translate("removed_container_object", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]), true);
+
+        self::dic()->ctrl()->redirect($this, self::CMD_BACK);
     }
 
 
