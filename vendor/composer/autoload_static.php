@@ -12,7 +12,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
             'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\' => 51,
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
             'srag\\LibrariesNamespaceChanger\\' => 31,
-            'srag\\DataTableUI\\SrContainerObjectMenu\\' => 39,
+            'srag\\DataTableUI\\' => 17,
             'srag\\DIC\\' => 9,
             'srag\\CustomInputGUIs\\' => 21,
         ),
@@ -31,7 +31,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         array (
             0 => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src',
         ),
-        'srag\\DataTableUI\\SrContainerObjectMenu\\' => 
+        'srag\\DataTableUI\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/datatable/src',
         ),
@@ -127,7 +127,6 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         'srag\\DIC\\SrContainerObjectMenu\\DICTrait' => __DIR__ . '/..' . '/srag/dic/src/DICTrait.php',
         'srag\\DIC\\SrContainerObjectMenu\\DIC\\AbstractDIC' => __DIR__ . '/..' . '/srag/dic/src/DIC/AbstractDIC.php',
         'srag\\DIC\\SrContainerObjectMenu\\DIC\\DICInterface' => __DIR__ . '/..' . '/srag/dic/src/DIC/DICInterface.php',
-        'srag\\DIC\\SrContainerObjectMenu\\DIC\\Implementation\\ILIAS53DIC' => __DIR__ . '/..' . '/srag/dic/src/DIC/Implementation/ILIAS53DIC.php',
         'srag\\DIC\\SrContainerObjectMenu\\DIC\\Implementation\\ILIAS54DIC' => __DIR__ . '/..' . '/srag/dic/src/DIC/Implementation/ILIAS54DIC.php',
         'srag\\DIC\\SrContainerObjectMenu\\DIC\\Implementation\\ILIAS60DIC' => __DIR__ . '/..' . '/srag/dic/src/DIC/Implementation/ILIAS60DIC.php',
         'srag\\DIC\\SrContainerObjectMenu\\Database\\AbstractILIASDatabaseDetector' => __DIR__ . '/..' . '/srag/dic/src/Database/AbstractILIASDatabaseDetector.php',
