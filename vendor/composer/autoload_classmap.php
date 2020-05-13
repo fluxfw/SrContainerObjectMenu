@@ -18,6 +18,7 @@ return array(
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\FormBuilder\\FormBuilder' => $vendorDir . '/srag/custominputguis/src/FormBuilder/FormBuilder.php',
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\GlyphGUI\\GlyphGUI' => $vendorDir . '/srag/custominputguis/src/GlyphGUI/GlyphGUI.php',
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\HiddenInputGUI\\HiddenInputGUI' => $vendorDir . '/srag/custominputguis/src/HiddenInputGUI/HiddenInputGUI.php',
+    'srag\\CustomInputGUIs\\SrContainerObjectMenu\\InputGUIWrapperUIInputComponent\\AbstractRenderer' => $vendorDir . '/srag/custominputguis/src/InputGUIWrapperUIInputComponent/Renderer.php',
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\InputGUIWrapperUIInputComponent\\InputGUIWrapperConstraint' => $vendorDir . '/srag/custominputguis/src/InputGUIWrapperUIInputComponent/InputGUIWrapperConstraint.php',
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\InputGUIWrapperUIInputComponent\\InputGUIWrapperConstraint54' => $vendorDir . '/srag/custominputguis/src/InputGUIWrapperUIInputComponent/InputGUIWrapperConstraint54.php',
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\InputGUIWrapperUIInputComponent\\InputGUIWrapperConstraintTrait' => $vendorDir . '/srag/custominputguis/src/InputGUIWrapperUIInputComponent/InputGUIWrapperConstraintTrait.php',
