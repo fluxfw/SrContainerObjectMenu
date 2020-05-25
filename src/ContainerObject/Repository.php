@@ -6,7 +6,6 @@ use ilContainer;
 use ilContainerSorting;
 use ilDBConstants;
 use ilMMItemFacadeInterface;
-use ilMMItemRepository;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
@@ -54,15 +53,6 @@ final class Repository
 
 
     /**
-     * @return ilMMItemRepository
-     */
-    protected function coreMenu() : ilMMItemRepository
-    {
-        return new ilMMItemRepository();
-    }
-
-
-    /**
      * @param ContainerObject $container_object
      */
     public function deleteContainerObject(ContainerObject $container_object)/*: void*/
@@ -87,7 +77,7 @@ final class Repository
                     ->database()
                     ->like("identification", ilDBConstants::T_TEXT, '%' . $container_object->getMenuIdentifier() . '%'))) as $item
         ) {
-            $this->coreMenu()->deleteItem($this->coreMenu()->getItemFacadeForIdentificationString($item["identification"]));
+            self::dic()->mainMenuItem()->deleteItem(self::dic()->mainMenuItem()->getItemFacadeForIdentificationString($item["identification"]));
         };
     }
 
@@ -189,7 +179,7 @@ final class Repository
             return null;
         }
 
-        return $this->coreMenu()->getItemFacadeForIdentificationString($item["identification"]);
+        return self::dic()->mainMenuItem()->getItemFacadeForIdentificationString($item["identification"]);
     }
 
 
