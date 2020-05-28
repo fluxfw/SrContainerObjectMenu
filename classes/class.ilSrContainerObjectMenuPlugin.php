@@ -2,7 +2,9 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
+use ILIAS\DI\Container;
 use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
+use srag\CustomInputGUIs\SrContainerObjectMenu\Loader\CustomInputGUIsLoaderDetector;
 use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 use srag\RemovePluginDataConfirm\SrContainerObjectMenu\PluginUninstallTrait;
@@ -87,5 +89,14 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     protected function deleteData()/*: void*/
     {
         self::srContainerObjectMenu()->dropTables();
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function exchangeUIRendererAfterInitialization(Container $dic) : Closure
+    {
+        return CustomInputGUIsLoaderDetector::exchangeUIRendererAfterInitialization();
     }
 }
