@@ -1,24 +1,24 @@
 [
     {
         "name": "srag/custominputguis",
-        "version": "v0.35.1",
-        "version_normalized": "0.35.1.0",
+        "version": "v0.36.0",
+        "version_normalized": "0.36.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/CustomInputGUIs.git",
-            "reference": "d14b23952543e4c172f2b79526acb2e8d8882f3d"
+            "reference": "e3cd856796c04ad5b9b3ba7e5ef2375f0a8894b0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/CustomInputGUIs/zipball/d14b23952543e4c172f2b79526acb2e8d8882f3d",
-            "reference": "d14b23952543e4c172f2b79526acb2e8d8882f3d",
+            "url": "https://api.github.com/repos/studer-raimann/CustomInputGUIs/zipball/e3cd856796c04ad5b9b3ba7e5ef2375f0a8894b0",
+            "reference": "e3cd856796c04ad5b9b3ba7e5ef2375f0a8894b0",
             "shasum": ""
         },
         "require": {
             "php": ">=7.0",
             "srag/dic": ">=0.1.0"
         },
-        "time": "2020-05-28T06:50:28+00:00",
+        "time": "2020-06-08T06:27:00+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -50,17 +50,17 @@
     },
     {
         "name": "srag/datatable",
-        "version": "v0.28.4",
-        "version_normalized": "0.28.4.0",
+        "version": "v0.28.5",
+        "version_normalized": "0.28.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/DataTableUI.git",
-            "reference": "1b47239ef843696eb05f6500df96d625647fc63d"
+            "reference": "0614c4318983d6b58292241298a8a92845e96205"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/DataTableUI/zipball/1b47239ef843696eb05f6500df96d625647fc63d",
-            "reference": "1b47239ef843696eb05f6500df96d625647fc63d",
+            "url": "https://api.github.com/repos/studer-raimann/DataTableUI/zipball/0614c4318983d6b58292241298a8a92845e96205",
+            "reference": "0614c4318983d6b58292241298a8a92845e96205",
             "shasum": ""
         },
         "require": {
@@ -68,7 +68,7 @@
             "srag/custominputguis": ">=0.1.0",
             "srag/dic": ">=0.1.0"
         },
-        "time": "2020-05-25T05:58:40+00:00",
+        "time": "2020-06-08T07:42:40+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -145,23 +145,23 @@
     },
     {
         "name": "srag/librariesnamespacechanger",
-        "version": "v0.8.6",
-        "version_normalized": "0.8.6.0",
+        "version": "v0.8.7",
+        "version_normalized": "0.8.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/LibrariesNamespaceChanger.git",
-            "reference": "3cded4dd32c9ee09eeb782d84266fcf8ad01b4b1"
+            "reference": "47b6984e436ab5dfca4da42fdbe85a4ce653e7e2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/LibrariesNamespaceChanger/zipball/3cded4dd32c9ee09eeb782d84266fcf8ad01b4b1",
-            "reference": "3cded4dd32c9ee09eeb782d84266fcf8ad01b4b1",
+            "url": "https://api.github.com/repos/studer-raimann/LibrariesNamespaceChanger/zipball/47b6984e436ab5dfca4da42fdbe85a4ce653e7e2",
+            "reference": "47b6984e436ab5dfca4da42fdbe85a4ce653e7e2",
             "shasum": ""
         },
         "require": {
             "php": ">=7.0"
         },
-        "time": "2020-03-19T13:25:19+00:00",
+        "time": "2020-06-08T06:55:31+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

@@ -9,17 +9,17 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
     public static $prefixLengthsPsr4 = array (
         's' => 
         array (
-            'srag\\RemovePluginDataConfirm\\' => 29,
+            'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\' => 51,
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
             'srag\\LibrariesNamespaceChanger\\' => 31,
-            'srag\\DataTableUI\\SrContainerObjectMenu\\' => 39,
+            'srag\\DataTableUI\\' => 17,
             'srag\\DIC\\SrContainerObjectMenu\\' => 31,
-            'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 43,
+            'srag\\CustomInputGUIs\\' => 21,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'srag\\RemovePluginDataConfirm\\' => 
+        'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/removeplugindataconfirm/src',
         ),
@@ -31,7 +31,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         array (
             0 => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src',
         ),
-        'srag\\DataTableUI\\SrContainerObjectMenu\\' => 
+        'srag\\DataTableUI\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/datatable/src',
         ),
@@ -39,7 +39,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         array (
             0 => __DIR__ . '/..' . '/srag/dic/src',
         ),
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 
+        'srag\\CustomInputGUIs\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/custominputguis/src',
         ),
@@ -93,17 +93,6 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\PieChart\\Implementation\\Renderer' => __DIR__ . '/..' . '/srag/custominputguis/src/PieChart/Implementation/Renderer.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\PieChart\\Implementation\\Section' => __DIR__ . '/..' . '/srag/custominputguis/src/PieChart/Implementation/Section.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\PieChart\\Implementation\\SectionValue' => __DIR__ . '/..' . '/srag/custominputguis/src/PieChart/Implementation/SectionValue.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Component\\Factory' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Component/Factory.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Component\\FixedSize' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Component/FixedSize.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Component\\Mini' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Component/Mini.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Component\\ProgressMeter' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Component/ProgressMeter.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Component\\Standard' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Component/Standard.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Implementation\\Factory' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Implementation/Factory.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Implementation\\FixedSize' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Implementation/FixedSize.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Implementation\\Mini' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Implementation/Mini.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Implementation\\ProgressMeter' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Implementation/ProgressMeter.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Implementation\\Renderer' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Implementation/Renderer.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ProgressMeter\\Implementation\\Standard' => __DIR__ . '/..' . '/srag/custominputguis/src/ProgressMeter/Implementation/Standard.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\PropertyFormGUI\\ConfigPropertyFormGUI' => __DIR__ . '/..' . '/srag/custominputguis/src/PropertyFormGUI/ConfigPropertyFormGUI.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\PropertyFormGUI\\Exception\\PropertyFormGUIException' => __DIR__ . '/..' . '/srag/custominputguis/src/PropertyFormGUI/Exception/PropertyFormGUIException.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\PropertyFormGUI\\Items\\Items' => __DIR__ . '/..' . '/srag/custominputguis/src/PropertyFormGUI/Items/Items.php',
