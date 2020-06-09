@@ -217,6 +217,7 @@ class ComposerStaticInite59bf074d7a0c4f325ca3aaedb8a0e7f
         'srag\\LibrariesNamespaceChanger\\PHP72Backport' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/PHP72Backport.php',
         'srag\\LibrariesNamespaceChanger\\PHP7Backport' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/PHP7Backport.php',
         'srag\\LibrariesNamespaceChanger\\RemovePHP72Backport' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/RemovePHP72Backport.php',
+        'srag\\LibrariesNamespaceChanger\\UpdatePluginReadme' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/UpdatePluginReadme.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObject' => __DIR__ . '/../..' . '/src/ContainerObject/ContainerObject.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectGUI' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectGUI.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectsGUI' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectsGUI.php',

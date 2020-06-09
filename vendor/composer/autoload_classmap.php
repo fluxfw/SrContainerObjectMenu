@@ -173,6 +173,7 @@ return array(
     'srag\\LibrariesNamespaceChanger\\PHP72Backport' => $vendorDir . '/srag/librariesnamespacechanger/src/PHP72Backport.php',
     'srag\\LibrariesNamespaceChanger\\PHP7Backport' => $vendorDir . '/srag/librariesnamespacechanger/src/PHP7Backport.php',
     'srag\\LibrariesNamespaceChanger\\RemovePHP72Backport' => $vendorDir . '/srag/librariesnamespacechanger/src/RemovePHP72Backport.php',
+    'srag\\LibrariesNamespaceChanger\\UpdatePluginReadme' => $vendorDir . '/srag/librariesnamespacechanger/src/UpdatePluginReadme.php',
     'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObject' => $baseDir . '/src/ContainerObject/ContainerObject.php',
     'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectGUI' => $baseDir . '/src/ContainerObject/class.ContainerObjectGUI.php',
     'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectsGUI' => $baseDir . '/src/ContainerObject/class.ContainerObjectsGUI.php',
