@@ -52,6 +52,26 @@ class FormBuilder extends AbstractFormBuilder
     /**
      * @inheritDoc
      */
+    public function render() : string
+    {
+        if (!empty($this->container_object->getContainerObjectId())) {
+            self::dic()->ctrl()->setParameterByClass(ilObjMainMenuGUI::class, "ref_id", 69);
+
+            $this->messages[] = self::dic()->ui()->factory()->messageBox()->info(self::plugin()->translate("info", ContainerObjectsGUI::LANG_MODULE, [
+                self::output()->getHTML(self::dic()->ui()->factory()->link()->standard(self::dic()->language()->txt("obj_mme"), self::dic()->ctrl()->getLinkTargetByClass([
+                    ilAdministrationGUI::class,
+                    ilObjMainMenuGUI::class
+                ])))
+            ]));
+        }
+
+        return parent::render();
+    }
+
+
+    /**
+     * @inheritDoc
+     */
     protected function getButtons() : array
     {
         $buttons = [];
@@ -113,26 +133,6 @@ class FormBuilder extends AbstractFormBuilder
         } else {
             return self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE);
         }
-    }
-
-
-    /**
-     * @inheritDoc
-     */
-    public function render() : string
-    {
-        if (!empty($this->container_object->getContainerObjectId())) {
-            self::dic()->ctrl()->setParameterByClass(ilObjMainMenuGUI::class, "ref_id", 69);
-
-            $this->messages[] = self::dic()->ui()->factory()->messageBox()->info(self::plugin()->translate("info", ContainerObjectsGUI::LANG_MODULE, [
-                self::output()->getHTML(self::dic()->ui()->factory()->link()->standard(self::dic()->language()->txt("obj_mme"), self::dic()->ctrl()->getLinkTargetByClass([
-                    ilAdministrationGUI::class,
-                    ilObjMainMenuGUI::class
-                ])))
-            ]));
-        }
-
-        return parent::render();
     }
 
 

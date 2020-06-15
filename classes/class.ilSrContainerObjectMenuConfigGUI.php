@@ -17,8 +17,8 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
     use DICTrait;
     use SrContainerObjectMenuTrait;
 
-    const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     const CMD_CONFIGURE = "configure";
+    const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
 
 
     /**
@@ -63,19 +63,19 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
     /**
      *
      */
-    protected function setTabs()/*: void*/
+    protected function configure()/*: void*/
     {
-        ContainerObjectsGUI::addTabs();
-
-        self::dic()->locator()->addItem(ilSrContainerObjectMenuPlugin::PLUGIN_NAME, self::dic()->ctrl()->getLinkTarget($this, self::CMD_CONFIGURE));
+        self::dic()->ctrl()->redirectByClass(ContainerObjectsGUI::class, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS);
     }
 
 
     /**
      *
      */
-    protected function configure()/*: void*/
+    protected function setTabs()/*: void*/
     {
-        self::dic()->ctrl()->redirectByClass(ContainerObjectsGUI::class, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS);
+        ContainerObjectsGUI::addTabs();
+
+        self::dic()->locator()->addItem(ilSrContainerObjectMenuPlugin::PLUGIN_NAME, self::dic()->ctrl()->getLinkTarget($this, self::CMD_CONFIGURE));
     }
 }

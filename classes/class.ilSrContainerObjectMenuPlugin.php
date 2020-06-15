@@ -21,13 +21,22 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     use SrContainerObjectMenuTrait;
     use DataTableUITrait;
 
+    const PLUGIN_CLASS_NAME = self::class;
     const PLUGIN_ID = "srcontobjmenu";
     const PLUGIN_NAME = "SrContainerObjectMenu";
-    const PLUGIN_CLASS_NAME = self::class;
     /**
      * @var self|null
      */
     protected static $instance = null;
+
+
+    /**
+     * ilSrContainerObjectMenuPlugin constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
 
     /**
@@ -44,11 +53,11 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
 
 
     /**
-     * ilSrContainerObjectMenuPlugin constructor
+     * @inheritDoc
      */
-    public function __construct()
+    public function exchangeUIRendererAfterInitialization(Container $dic) : Closure
     {
-        parent::__construct();
+        return CustomInputGUIsLoaderDetector::exchangeUIRendererAfterInitialization();
     }
 
 
@@ -67,15 +76,6 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     public function promoteGlobalScreenProvider() : AbstractStaticPluginMainMenuProvider
     {
         return self::srContainerObjectMenu()->containerObjects()->factory()->newMenuInstance();
-    }
-
-
-    /**
-     * @inheritDoc
-     */
-    protected function shouldUseOneUpdateStepOnly() : bool
-    {
-        return true;
     }
 
 
@@ -104,8 +104,8 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     /**
      * @inheritDoc
      */
-    public function exchangeUIRendererAfterInitialization(Container $dic) : Closure
+    protected function shouldUseOneUpdateStepOnly() : bool
     {
-        return CustomInputGUIsLoaderDetector::exchangeUIRendererAfterInitialization();
+        return true;
     }
 }

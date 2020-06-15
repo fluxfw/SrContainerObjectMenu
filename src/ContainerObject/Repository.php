@@ -31,6 +31,15 @@ final class Repository
 
 
     /**
+     * Repository constructor
+     */
+    private function __construct()
+    {
+
+    }
+
+
+    /**
      * @return self
      */
     public static function getInstance() : self
@@ -44,15 +53,6 @@ final class Repository
 
 
     /**
-     * Repository constructor
-     */
-    private function __construct()
-    {
-
-    }
-
-
-    /**
      * @param ContainerObject $container_object
      */
     public function deleteContainerObject(ContainerObject $container_object)/*: void*/
@@ -60,25 +60,6 @@ final class Repository
         $container_object->delete();
 
         $this->deleteCoreMenuItems($container_object);
-    }
-
-
-    /**
-     * @param ContainerObject|null $container_object
-     */
-    protected function deleteCoreMenuItems(/*?*/ ContainerObject $container_object = null)/*: void*/
-    {
-        if ($container_object === null) {
-            $container_object = $this->factory()->newInstance();
-        }
-
-        foreach (
-            self::dic()->database()->fetchAll(self::dic()->database()->query('SELECT identification FROM il_mm_items WHERE ' . self::dic()
-                    ->database()
-                    ->like("identification", ilDBConstants::T_TEXT, '%' . $container_object->getMenuIdentifier() . '%'))) as $item
-        ) {
-            self::dic()->mainMenuItem()->deleteItem(self::dic()->mainMenuItem()->getItemFacadeForIdentificationString($item["identification"]));
-        };
     }
 
 
@@ -198,5 +179,24 @@ final class Repository
     public function storeContainerObject(ContainerObject $container_object)/*: void*/
     {
         $container_object->store();
+    }
+
+
+    /**
+     * @param ContainerObject|null $container_object
+     */
+    protected function deleteCoreMenuItems(/*?*/ ContainerObject $container_object = null)/*: void*/
+    {
+        if ($container_object === null) {
+            $container_object = $this->factory()->newInstance();
+        }
+
+        foreach (
+            self::dic()->database()->fetchAll(self::dic()->database()->query('SELECT identification FROM il_mm_items WHERE ' . self::dic()
+                    ->database()
+                    ->like("identification", ilDBConstants::T_TEXT, '%' . $container_object->getMenuIdentifier() . '%'))) as $item
+        ) {
+            self::dic()->mainMenuItem()->deleteItem(self::dic()->mainMenuItem()->getItemFacadeForIdentificationString($item["identification"]));
+        };
     }
 }
