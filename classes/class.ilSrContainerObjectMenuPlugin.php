@@ -6,6 +6,7 @@ use ILIAS\DI\Container;
 use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
 use srag\CustomInputGUIs\SrContainerObjectMenu\Loader\CustomInputGUIsLoaderDetector;
 use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
+use srag\DIC\SrContainerObjectMenu\DevTools\DevToolsCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 use srag\RemovePluginDataConfirm\SrContainerObjectMenu\PluginUninstallTrait;
 
@@ -89,6 +90,8 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
         $this->installRemovePluginDataConfirmLanguages();
 
         self::dataTableUI()->installLanguages(self::plugin());
+
+        DevToolsCtrl::installLanguages(self::plugin());
     }
 
 
