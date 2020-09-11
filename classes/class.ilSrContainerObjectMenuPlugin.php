@@ -6,6 +6,7 @@ use ILIAS\DI\Container;
 use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
 use srag\CustomInputGUIs\SrContainerObjectMenu\Loader\CustomInputGUIsLoaderDetector;
 use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
+use srag\DIC\SrContainerObjectMenu\DevTools\DevToolsCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 use srag\RemovePluginDataConfirm\SrContainerObjectMenu\PluginUninstallTrait;
 
@@ -21,13 +22,22 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     use SrContainerObjectMenuTrait;
     use DataTableUITrait;
 
+    const PLUGIN_CLASS_NAME = self::class;
     const PLUGIN_ID = "srcontobjmenu";
     const PLUGIN_NAME = "SrContainerObjectMenu";
-    const PLUGIN_CLASS_NAME = self::class;
     /**
      * @var self|null
      */
     protected static $instance = null;
+
+
+    /**
+     * ilSrContainerObjectMenuPlugin constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
 
     /**
@@ -44,11 +54,11 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
 
 
     /**
-     * ilSrContainerObjectMenuPlugin constructor
+     * @inheritDoc
      */
-    public function __construct()
+    public function exchangeUIRendererAfterInitialization(Container $dic) : Closure
     {
-        parent::__construct();
+        return CustomInputGUIsLoaderDetector::exchangeUIRendererAfterInitialization();
     }
 
 
@@ -80,6 +90,8 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
         $this->installRemovePluginDataConfirmLanguages();
 
         self::dataTableUI()->installLanguages(self::plugin());
+
+        DevToolsCtrl::installLanguages(self::plugin());
     }
 
 
@@ -95,8 +107,8 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     /**
      * @inheritDoc
      */
-    public function exchangeUIRendererAfterInitialization(Container $dic) : Closure
+    protected function shouldUseOneUpdateStepOnly() : bool
     {
-        return CustomInputGUIsLoaderDetector::exchangeUIRendererAfterInitialization();
+        return true;
     }
 }

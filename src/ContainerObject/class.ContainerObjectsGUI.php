@@ -21,9 +21,9 @@ class ContainerObjectsGUI
     use DICTrait;
     use SrContainerObjectMenuTrait;
 
-    const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     const CMD_LIST_CONTAINER_OBJECTS = "listContainerObjects";
     const LANG_MODULE = "container_objects";
+    const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     const TAB_LIST_CONTAINER_OBJECTS = "list_container_objects";
 
 
@@ -33,6 +33,16 @@ class ContainerObjectsGUI
     public function __construct()
     {
 
+    }
+
+
+    /**
+     *
+     */
+    public static function addTabs()/*: void*/
+    {
+        self::dic()->tabs()->addTab(self::TAB_LIST_CONTAINER_OBJECTS, self::plugin()->translate("container_objects", self::LANG_MODULE), self::dic()->ctrl()
+            ->getLinkTargetByClass(self::class, self::CMD_LIST_CONTAINER_OBJECTS));
     }
 
 
@@ -69,10 +79,13 @@ class ContainerObjectsGUI
     /**
      *
      */
-    public static function addTabs()/*: void*/
+    protected function listContainerObjects()/*: void*/
     {
-        self::dic()->tabs()->addTab(self::TAB_LIST_CONTAINER_OBJECTS, self::plugin()->translate("container_objects", self::LANG_MODULE), self::dic()->ctrl()
-            ->getLinkTargetByClass(self::class, self::CMD_LIST_CONTAINER_OBJECTS));
+        self::dic()->tabs()->activateTab(self::TAB_LIST_CONTAINER_OBJECTS);
+
+        $table = self::srContainerObjectMenu()->containerObjects()->factory()->newTableBuilderInstance($this);
+
+        self::output()->output($table);
     }
 
 
@@ -82,18 +95,5 @@ class ContainerObjectsGUI
     protected function setTabs()/*: void*/
     {
 
-    }
-
-
-    /**
-     *
-     */
-    protected function listContainerObjects()/*: void*/
-    {
-        self::dic()->tabs()->activateTab(self::TAB_LIST_CONTAINER_OBJECTS);
-
-        $table = self::srContainerObjectMenu()->containerObjects()->factory()->newTableBuilderInstance($this);
-
-        self::output()->output($table);
     }
 }

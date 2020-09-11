@@ -29,19 +29,6 @@ final class Factory
 
 
     /**
-     * @return self
-     */
-    public static function getInstance() : self
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-
-    /**
      * Factory constructor
      */
     private function __construct()
@@ -51,26 +38,15 @@ final class Factory
 
 
     /**
-     * @return ContainerObject
+     * @return self
      */
-    public function newInstance() : ContainerObject
+    public static function getInstance() : self
     {
-        $container_object = new ContainerObject();
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
 
-        return $container_object;
-    }
-
-
-    /**
-     * @param ContainerObjectsGUI $parent
-     *
-     * @return TableBuilder
-     */
-    public function newTableBuilderInstance(ContainerObjectsGUI $parent) : TableBuilder
-    {
-        $table = new TableBuilder($parent);
-
-        return $table;
+        return self::$instance;
     }
 
 
@@ -89,10 +65,34 @@ final class Factory
 
 
     /**
+     * @return ContainerObject
+     */
+    public function newInstance() : ContainerObject
+    {
+        $container_object = new ContainerObject();
+
+        return $container_object;
+    }
+
+
+    /**
      * @return Menu
      */
     public function newMenuInstance() : Menu
     {
         return Menu::getInstance();
+    }
+
+
+    /**
+     * @param ContainerObjectsGUI $parent
+     *
+     * @return TableBuilder
+     */
+    public function newTableBuilderInstance(ContainerObjectsGUI $parent) : TableBuilder
+    {
+        $table = new TableBuilder($parent);
+
+        return $table;
     }
 }

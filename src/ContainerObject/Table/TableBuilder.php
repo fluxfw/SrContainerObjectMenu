@@ -38,6 +38,18 @@ class TableBuilder extends AbstractTableBuilder
     /**
      * @inheritDoc
      */
+    public function render() : string
+    {
+        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE),
+            self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_ADD_CONTAINER_OBJECT, "", false, false)));
+
+        return parent::render();
+    }
+
+
+    /**
+     * @inheritDoc
+     */
     protected function buildTable() : Table
     {
         $table = self::dataTableUI()->table(ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_cont_objs",
@@ -55,17 +67,5 @@ class TableBuilder extends AbstractTableBuilder
             ], new DataFetcher())->withPlugin(self::plugin());
 
         return $table;
-    }
-
-
-    /**
-     * @inheritDoc
-     */
-    public function render() : string
-    {
-        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE),
-            self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_ADD_CONTAINER_OBJECT, "", false, false)));
-
-        return parent::render();
     }
 }

@@ -27,6 +27,14 @@ class Menu extends AbstractStaticPluginMainMenuProvider
      * @var self|null
      */
     protected static $instance = null;
+    /**
+     * @var array|null
+     */
+    protected $sub_items = null;
+    /**
+     * @var array|null
+     */
+    protected $top_items = null;
 
 
     /**
@@ -39,38 +47,6 @@ class Menu extends AbstractStaticPluginMainMenuProvider
         }
 
         return self::$instance;
-    }
-
-
-    /**
-     * @var array|null
-     */
-    protected $top_items = null;
-    /**
-     * @var array|null
-     */
-    protected $sub_items = null;
-
-
-    /**
-     * @inheritDoc
-     */
-    public function getStaticTopItems() : array
-    {
-        if ($this->top_items === null) {
-            $this->top_items = array_map(function (ContainerObject $container_object) : isItem {
-                return $this->mainmenu->topParentItem($this->if->identifier($container_object->getMenuIdentifier()))
-                    ->withTitle($container_object->getObject()->getTitle())
-                    ->withAvailableCallable(function () : bool {
-                        return self::plugin()->getPluginObject()->isActive();
-                    })
-                    ->withVisibilityCallable(function () : bool {
-                        return self::plugin()->getPluginObject()->isActive();
-                    });
-            }, self::srContainerObjectMenu()->containerObjects()->getContainerObjects());
-        }
-
-        return $this->top_items;
     }
 
 
@@ -107,5 +83,27 @@ class Menu extends AbstractStaticPluginMainMenuProvider
         }
 
         return $this->sub_items;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getStaticTopItems() : array
+    {
+        if ($this->top_items === null) {
+            $this->top_items = array_map(function (ContainerObject $container_object) : isItem {
+                return $this->mainmenu->topParentItem($this->if->identifier($container_object->getMenuIdentifier()))
+                    ->withTitle($container_object->getObject()->getTitle())
+                    ->withAvailableCallable(function () : bool {
+                        return self::plugin()->getPluginObject()->isActive();
+                    })
+                    ->withVisibilityCallable(function () : bool {
+                        return self::plugin()->getPluginObject()->isActive();
+                    });
+            }, self::srContainerObjectMenu()->containerObjects()->getContainerObjects());
+        }
+
+        return $this->top_items;
     }
 }
