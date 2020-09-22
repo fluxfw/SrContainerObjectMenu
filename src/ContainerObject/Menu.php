@@ -2,9 +2,12 @@
 
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
+use ILIAS\GlobalScreen\Scope\MainMenu\Factory\AbstractBaseItem;
 use ILIAS\GlobalScreen\Scope\MainMenu\Factory\isItem;
 use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
+use ILIAS\UI\Component\Symbol\Icon\Standard;
 use ilLink;
+use ilObject;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
@@ -65,7 +68,7 @@ class Menu extends AbstractStaticPluginMainMenuProvider
 
                     $position += 10;
 
-                    $sub_items[] = $this->mainmenu->link($this->if->identifier($container_object->getMenuIdentifier($child_id, $position)))
+                    $sub_items[] = $this->symbol($this->mainmenu->link($this->if->identifier($container_object->getMenuIdentifier($child_id, $position)))
                         ->withParent($parent->getProviderIdentification())
                         ->withTitle($child_title)
                         ->withAction(ilLink::_getLink($child_id))
@@ -75,7 +78,7 @@ class Menu extends AbstractStaticPluginMainMenuProvider
                         })
                         ->withVisibilityCallable(function () use ($child_id) : bool {
                             return self::dic()->access()->checkAccess("read", "", $child_id);
-                        });
+                        }), self::dic()->objDataCache()->lookupObjId($child_id));
                 }
 
                 return $sub_items;
@@ -93,17 +96,54 @@ class Menu extends AbstractStaticPluginMainMenuProvider
     {
         if ($this->top_items === null) {
             $this->top_items = array_map(function (ContainerObject $container_object) : isItem {
-                return $this->mainmenu->topParentItem($this->if->identifier($container_object->getMenuIdentifier()))
+                return $this->symbol($this->mainmenu->topParentItem($this->if->identifier($container_object->getMenuIdentifier()))
                     ->withTitle($container_object->getObject()->getTitle())
                     ->withAvailableCallable(function () : bool {
                         return self::plugin()->getPluginObject()->isActive();
                     })
                     ->withVisibilityCallable(function () : bool {
                         return self::plugin()->getPluginObject()->isActive();
-                    });
+                    }), $container_object->getObject()->getId());
             }, self::srContainerObjectMenu()->containerObjects()->getContainerObjects());
         }
 
         return $this->top_items;
+    }
+
+
+    /**
+     * @param AbstractBaseItem $entry
+     * @param int              $obj_id
+     *
+     * @return AbstractBaseItem
+     */
+    protected function symbol(AbstractBaseItem $entry, int $obj_id) : AbstractBaseItem
+    {
+        if (self::version()->is6()) {
+            $type = strtoupper(self::dic()->objDataCache()->lookupType($obj_id));
+
+            if (defined(Standard::class . "::" . $type)) {
+                // Most core objects
+                $entry = $entry->withSymbol(self::dic()
+                    ->ui()
+                    ->factory()
+                    ->symbol()
+                    ->icon()
+                    ->standard(constant(Standard::class . "::" . $type), ilSrContainerObjectMenuPlugin::PLUGIN_NAME)
+                    ->withIsOutlined(true));
+            } else {
+                // Other core objects & plugin objects
+                $icon = ilObject::_getIcon($obj_id);
+
+                $icon_outlined = str_replace("/images/icon_", "/images/outlined/icon_", $icon);
+                if ($icon !== $icon_outlined && file_exists($icon_outlined)) {
+                    $icon = $icon_outlined;
+                }
+
+                $entry = $entry->withSymbol(self::dic()->ui()->factory()->symbol()->icon()->custom($icon, ilSrContainerObjectMenuPlugin::PLUGIN_NAME));
+            }
+        }
+
+        return $entry;
     }
 }
