@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.4]
+- Event for change menu entry
+
 ## [1.1.3]
 - Main menu icon
 
