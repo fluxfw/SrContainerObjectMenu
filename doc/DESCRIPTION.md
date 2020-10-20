@@ -18,7 +18,7 @@ Known issues:
 - Currently may some lost items will stay in the main menu administration (You can ignore it because not viewed in the menu or delete it manually)
 
 ## Custom event plugins
-If you need to adapt some custom SrContainerObjectMenu changes which can not be configured to your needs, SrContainerObjectMenu will trigger some events, you can listen and react to this in a other custom plugin (plugin type is no matter)
+If you need to adapt some custom SrContainerObjectMenu changes which can not be configured to your needs, SrContainerObjectMenu will trigger some events, you can listen and react to this in an other custom plugin (plugin type is no matter)
 
 First create or extend a `plugin.xml` in your custom plugin (You need to adapt `PLUGIN_ID` with your own plugin id) to tell ILIAS, your plugins wants to listen to SrContainerObjectMenu events (You need also to increase your plugin version for take effect)
 
@@ -64,4 +64,4 @@ class ilXPlugin extends ...
 
 | Event | Parameters | Purpose |
 |-------|------------|---------|
-| `ilSrContainerObjectMenuPlugin::EVENT_CHANGE_MENU_ENTRY` | `entry` => `AbstractBaseItem`<br>`obj_id` => `int` | Change menu entry (Please note `entry` is a reference variable, if it should not works) |
+| `ilSrContainerObjectMenuPlugin::EVENT_CHANGE_MENU_ENTRY` | `entry => &AbstractBaseItem`<br>`obj_id => int` | Change menu entry (Please note `entry` is a reference variable, if it should not works) |
