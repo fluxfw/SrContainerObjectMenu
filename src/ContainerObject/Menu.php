@@ -144,6 +144,11 @@ class Menu extends AbstractStaticPluginMainMenuProvider
             }
         }
 
+        self::dic()->appEventHandler()->raise(IL_COMP_PLUGIN . "/" . ilSrContainerObjectMenuPlugin::PLUGIN_NAME, ilSrContainerObjectMenuPlugin::EVENT_CHANGE_MENU_ENTRY, [
+            "entry"  => &$entry, // Unfortunately ILIAS Raise Event System not supports return results so use a referenced variable
+            "obj_id" => $obj_id
+        ]);
+
         return $entry;
     }
 }

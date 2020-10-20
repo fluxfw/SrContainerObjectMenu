@@ -22,6 +22,7 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     use SrContainerObjectMenuTrait;
     use DataTableUITrait;
 
+    const EVENT_CHANGE_MENU_ENTRY = "change_menu_entry";
     const PLUGIN_CLASS_NAME = self::class;
     const PLUGIN_ID = "srcontobjmenu";
     const PLUGIN_NAME = "SrContainerObjectMenu";
