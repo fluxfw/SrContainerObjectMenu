@@ -17,9 +17,9 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
             'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\' => 51,
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
             'srag\\LibrariesNamespaceChanger\\' => 31,
-            'srag\\DataTableUI\\SrContainerObjectMenu\\' => 39,
-            'srag\\DIC\\SrContainerObjectMenu\\' => 31,
-            'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 43,
+            'srag\\DataTableUI\\' => 17,
+            'srag\\DIC\\' => 9,
+            'srag\\CustomInputGUIs\\' => 21,
         ),
     );
 
@@ -36,15 +36,15 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         array (
             0 => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src',
         ),
-        'srag\\DataTableUI\\SrContainerObjectMenu\\' => 
+        'srag\\DataTableUI\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/datatable/src',
         ),
-        'srag\\DIC\\SrContainerObjectMenu\\' => 
+        'srag\\DIC\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/dic/src',
         ),
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 
+        'srag\\CustomInputGUIs\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/custominputguis/src',
         ),
@@ -100,7 +100,7 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\TextInputGUI\\TextInputGUIWithModernAutoComplete' => __DIR__ . '/..' . '/srag/custominputguis/src/TextInputGUI/TextInputGUIWithModernAutoComplete.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\UIInputComponentWrapperInputGUI\\UIInputComponentWrapperInputGUI' => __DIR__ . '/..' . '/srag/custominputguis/src/UIInputComponentWrapperInputGUI/UIInputComponentWrapperInputGUI.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\UIInputComponentWrapperInputGUI\\UIInputComponentWrapperNameSource' => __DIR__ . '/..' . '/srag/custominputguis/src/UIInputComponentWrapperInputGUI/UIInputComponentWrapperNameSource.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ViewControlModeUI\\ViewControlModeUI' => __DIR__ . '/..' . '/srag/custominputguis/src/ViewControlModeGUI/ViewControlModeUI.php',
+        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ViewControlModeUI\\ViewControlModeUI' => __DIR__ . '/..' . '/srag/custominputguis/src/ViewControlModeUI/ViewControlModeUI.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\Waiter\\Waiter' => __DIR__ . '/..' . '/srag/custominputguis/src/Waiter/Waiter.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\WeekdayInputGUI\\WeekdayInputGUI' => __DIR__ . '/..' . '/srag/custominputguis/src/WeekdayInputGUI/WeekdayInputGUI.php',
         'srag\\DIC\\SrContainerObjectMenu\\DICStatic' => __DIR__ . '/..' . '/srag/dic/src/DICStatic.php',
@@ -165,6 +165,7 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\DateFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/DateFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\DefaultFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/DefaultFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Factory' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Factory.php',
+        'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\ImageFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/ImageFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LanguageVariableFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LanguageVariableFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LearningProgressFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LearningProgressFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LinkFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LinkFormatter.php',
@@ -200,6 +201,7 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Utils\\AbstractTableBuilder' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Utils/AbstractTableBuilder.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Utils\\DataTableUITrait' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Utils/DataTableUITrait.php',
         'srag\\LibrariesNamespaceChanger\\GeneratePluginPhpAndXml' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/GeneratePluginPhpAndXml.php',
+        'srag\\LibrariesNamespaceChanger\\GeneratePluginReadme' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/GeneratePluginReadme.php',
         'srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/LibrariesNamespaceChanger.php',
         'srag\\LibrariesNamespaceChanger\\PHP72Backport' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/PHP72Backport.php',
         'srag\\LibrariesNamespaceChanger\\PHP7Backport' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/PHP7Backport.php',
