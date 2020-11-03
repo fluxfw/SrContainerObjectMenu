@@ -17,9 +17,10 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
             'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\' => 51,
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
             'srag\\LibrariesNamespaceChanger\\' => 31,
-            'srag\\DataTableUI\\' => 17,
-            'srag\\DIC\\' => 9,
-            'srag\\CustomInputGUIs\\' => 21,
+            'srag\\DevTools\\' => 14,
+            'srag\\DataTableUI\\SrContainerObjectMenu\\' => 39,
+            'srag\\DIC\\SrContainerObjectMenu\\' => 31,
+            'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 43,
         ),
     );
 
@@ -36,15 +37,19 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         array (
             0 => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src',
         ),
-        'srag\\DataTableUI\\' => 
+        'srag\\DevTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/srag/devtools/src',
+        ),
+        'srag\\DataTableUI\\SrContainerObjectMenu\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/datatable/src',
         ),
-        'srag\\DIC\\' => 
+        'srag\\DIC\\SrContainerObjectMenu\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/dic/src',
         ),
-        'srag\\CustomInputGUIs\\' => 
+        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/custominputguis/src',
         ),
@@ -200,6 +205,7 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Table' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Table.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Utils\\AbstractTableBuilder' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Utils/AbstractTableBuilder.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Utils\\DataTableUITrait' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Utils/DataTableUITrait.php',
+        'srag\\DevTools\\SrContainerObjectMenu\\DevToolsCtrl' => __DIR__ . '/..' . '/srag/devtools/src/class.DevToolsCtrl.php',
         'srag\\LibrariesNamespaceChanger\\GeneratePluginPhpAndXml' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/GeneratePluginPhpAndXml.php',
         'srag\\LibrariesNamespaceChanger\\GeneratePluginReadme' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/GeneratePluginReadme.php',
         'srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/LibrariesNamespaceChanger.php',

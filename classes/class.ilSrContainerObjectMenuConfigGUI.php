@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use srag\DIC\SrContainerObjectMenu\DevTools\DevToolsCtrl;
+use srag\DevTools\SrContainerObjectMenu\DevToolsCtrl;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsGUI;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
@@ -12,7 +12,7 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
  *
  * @author            studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  *
- * @ilCtrl_isCalledBy srag\DIC\SrContainerObjectMenu\DevTools\DevToolsCtrl: ilSrContainerObjectMenuConfigGUI
+ * @ilCtrl_isCalledBy srag\DevTools\SrContainerObjectMenu\DevToolsCtrl: ilSrContainerObjectMenuConfigGUI
  */
 class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
 {
