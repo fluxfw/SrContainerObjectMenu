@@ -17,7 +17,8 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
             'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\' => 51,
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
             'srag\\LibrariesNamespaceChanger\\' => 31,
-            'srag\\DevTools\\' => 14,
+            'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\' => 53,
+            'srag\\DevTools\\SrContainerObjectMenu\\' => 36,
             'srag\\DataTableUI\\SrContainerObjectMenu\\' => 39,
             'srag\\DIC\\SrContainerObjectMenu\\' => 31,
             'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 43,
@@ -37,7 +38,11 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         array (
             0 => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src',
         ),
-        'srag\\DevTools\\' => 
+        'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/srag/generateplugininfoshelper/src',
+        ),
+        'srag\\DevTools\\SrContainerObjectMenu\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/devtools/src',
         ),
@@ -206,6 +211,9 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Utils\\AbstractTableBuilder' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Utils/AbstractTableBuilder.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Utils\\DataTableUITrait' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Utils/DataTableUITrait.php',
         'srag\\DevTools\\SrContainerObjectMenu\\DevToolsCtrl' => __DIR__ . '/..' . '/srag/devtools/src/class.DevToolsCtrl.php',
+        'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\GeneratePluginPhpAndXml' => __DIR__ . '/..' . '/srag/generateplugininfoshelper/src/GeneratePluginPhpAndXml.php',
+        'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\GeneratePluginReadme' => __DIR__ . '/..' . '/srag/generateplugininfoshelper/src/GeneratePluginReadme.php',
+        'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\UpdatePluginReadme' => __DIR__ . '/..' . '/srag/generateplugininfoshelper/src/UpdatePluginReadme.php',
         'srag\\LibrariesNamespaceChanger\\GeneratePluginPhpAndXml' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/GeneratePluginPhpAndXml.php',
         'srag\\LibrariesNamespaceChanger\\GeneratePluginReadme' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/GeneratePluginReadme.php',
         'srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/LibrariesNamespaceChanger.php',
