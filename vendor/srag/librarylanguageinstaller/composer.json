@@ -1,14 +1,15 @@
 {
-  "name": "srag/datatable",
-  "description": "ILIAS Data Table UI Component",
-  "version": "0.29.2",
+  "name": "srag/librarylanguageinstaller",
+  "description": "Install additional and external lang files for a plugin",
+  "version": "1.0.1",
   "type": "library",
   "keywords": [
     "ILIAS",
-    "Table",
-    "UI"
+    "Installer",
+    "Language",
+    "Library"
   ],
-  "homepage": "https://github.com/studer-raimann/DataTableUI",
+  "homepage": "https://github.com/studer-raimann/LibraryLanguageInstaller",
   "license": "GPL-3.0-only",
   "authors": [
     {
@@ -19,17 +20,15 @@
     }
   ],
   "support": {
-    "issues": "https://plugins.studer-raimann.ch/goto.php?target=uihk_srsu_LTABLEUI"
+    "issues": "https://plugins.studer-raimann.ch/goto.php?target=uihk_srsu_LLANGINST"
   },
   "require": {
-    "php": ">=7.2",
-    "srag/custominputguis": ">=0.1.0",
-    "srag/dic": ">=0.1.0",
-    "srag/librarylanguageinstaller": ">=0.1.0"
+    "php": ">=7.0",
+    "srag/dic": ">=0.1.0"
   },
   "autoload": {
     "psr-4": {
-      "srag\\DataTableUI\\SrContainerObjectMenu\\": "src/"
+      "srag\\LibraryLanguageInstaller\\SrContainerObjectMenu\\": "src/"
     }
   },
   "config": {

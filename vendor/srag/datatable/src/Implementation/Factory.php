@@ -16,7 +16,7 @@ use srag\DataTableUI\SrContainerObjectMenu\Implementation\Settings\Factory as Se
 use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\DIC\SrContainerObjectMenu\Plugin\PluginInterface;
-use srag\DIC\SrContainerObjectMenu\Util\LibraryLanguageInstaller;
+use srag\LibraryLanguageInstaller\SrContainerObjectMenu\LibraryLanguageInstaller;
 
 /**
  * Class Factory
