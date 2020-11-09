@@ -1,1 +1,0 @@
-# SrContainerObjectMenu ILIAS Plugin Documentation
