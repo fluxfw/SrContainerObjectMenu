@@ -13,6 +13,6 @@ return array(
     'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\' => array($vendorDir . '/srag/generateplugininfoshelper/src'),
     'srag\\DevTools\\SrContainerObjectMenu\\' => array($vendorDir . '/srag/devtools/src'),
     'srag\\DataTableUI\\SrContainerObjectMenu\\' => array($vendorDir . '/srag/datatable/src'),
-    'srag\\DIC\\' => array($vendorDir . '/srag/dic/src'),
+    'srag\\DIC\\SrContainerObjectMenu\\' => array($vendorDir . '/srag/dic/src'),
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => array($vendorDir . '/srag/custominputguis/src'),
 );
