@@ -2,15 +2,15 @@ Select some repository container objects in the plugin config and the plugin pro
 
 Config:
 
-![Config 1](./images/config_1.png)
+![Config 1](../doc/images/config_1.png)
 
-![Config 2](./images/config_2.png)
+![Config 2](../doc/images/config_2.png)
 
-![Config 3](./images/config_3.png)
+![Config 3](../doc/images/config_3.png)
 
 Menu:
 
-![Menu](./images/menu.png)
+![Menu](../doc/images/menu.png)
 
 Known issues:
 - Currently may some lost items will stay in the main menu administration (You can ignore it because not viewed in the menu or delete it manually)
