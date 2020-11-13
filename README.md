@@ -8,6 +8,11 @@ This is an OpenSource project by studer + raimann ag, CH-Burgdorf (https://stude
 
 This project is licensed under the GPL-3.0-only license
 
+## Requirements
+
+* ILIAS 5.4.0 - 6.999
+* PHP >=7.0
+
 ## Installation
 
 Start at your ILIAS root directory
@@ -87,11 +92,6 @@ class ilXPlugin extends ...
 | Event | Parameters | Purpose |
 |-------|------------|---------|
 | `ilSrContainerObjectMenuPlugin::EVENT_CHANGE_MENU_ENTRY` | `entry => &AbstractBaseItem`<br>`obj_id => int` | Change menu entry (Please note `entry` is a reference variable, if it should not works) |
-
-## Requirements
-
-* ILIAS 5.4.0 - 6.999
-* PHP >=7.0
 
 ## Adjustment suggestions
 

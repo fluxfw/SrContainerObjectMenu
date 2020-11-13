@@ -9,7 +9,7 @@ return array(
     'ilSrContainerObjectMenuConfigGUI' => $baseDir . '/classes/class.ilSrContainerObjectMenuConfigGUI.php',
     'ilSrContainerObjectMenuPlugin' => $baseDir . '/classes/class.ilSrContainerObjectMenuPlugin.php',
     'ilSrContainerObjectMenuUIHookGUI' => $baseDir . '/classes/class.ilSrContainerObjectMenuUIHookGUI.php',
-    'srag\\CustomInputGUIs\\SrContainerObjectMenu\\CheckboxInputGUI\\AjaxCheckbox' => $vendorDir . '/srag/custominputguis/src/AjaxCheckbox/AjaxCheckbox.php',
+    'srag\\CustomInputGUIs\\SrContainerObjectMenu\\AjaxCheckbox\\AjaxCheckbox' => $vendorDir . '/srag/custominputguis/src/AjaxCheckbox/AjaxCheckbox.php',
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\CheckboxInputGUI\\CheckboxInputGUI' => $vendorDir . '/srag/custominputguis/src/CheckboxInputGUI/CheckboxInputGUI.php',
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ColorPickerInputGUI\\ColorPickerInputGUI' => $vendorDir . '/srag/custominputguis/src/ColorPickerInputGUI/ColorPickerInputGUI.php',
     'srag\\CustomInputGUIs\\SrContainerObjectMenu\\CustomInputGUIs' => $vendorDir . '/srag/custominputguis/src/CustomInputGUIs.php',

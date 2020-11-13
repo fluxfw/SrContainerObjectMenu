@@ -1,5 +1,5 @@
 {
-  "name": "srag/plugins/srcontainerobjectmenu",
+  "name": "srag/srcontainerobjectmenu",
   "description": "",
   "version": "1.1.4",
   "extra": {
@@ -51,7 +51,10 @@
       "srag\\Plugins\\SrContainerObjectMenu\\": "src/"
     },
     "classmap": [
-      "classes/"
+      "classes/",
+      "src/ContainerObject/class.ContainerObjectsGUI.php",
+      "src/ContainerObject/class.ContainerObjectGUI.php",
+      "src/ContainerObject/Form/class.FormBuilder.php"
     ],
     "files": [
       "vendor/srag/dic/src/PHPVersionChecker.php",
