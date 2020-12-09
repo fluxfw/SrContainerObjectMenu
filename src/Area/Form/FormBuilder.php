@@ -3,7 +3,11 @@
 namespace srag\Plugins\SrContainerObjectMenu\Area\Form;
 
 use ilSrContainerObjectMenuPlugin;
+use ilTextInputGUI;
 use srag\CustomInputGUIs\SrContainerObjectMenu\FormBuilder\AbstractFormBuilder;
+use srag\CustomInputGUIs\SrContainerObjectMenu\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
+use srag\CustomInputGUIs\SrContainerObjectMenu\TabsInputGUI\MultilangualTabsInputGUI;
+use srag\CustomInputGUIs\SrContainerObjectMenu\TabsInputGUI\TabsInputGUI;
 use srag\Plugins\SrContainerObjectMenu\Area\Area;
 use srag\Plugins\SrContainerObjectMenu\Area\AreaCtrl;
 use srag\Plugins\SrContainerObjectMenu\Area\AreasCtrl;
@@ -66,7 +70,7 @@ class FormBuilder extends AbstractFormBuilder
     protected function getData() : array
     {
         $data = [
-            "title" => $this->area->getTitle()
+            "titles" => $this->area->getTitles()
         ];
 
         return $data;
@@ -79,8 +83,11 @@ class FormBuilder extends AbstractFormBuilder
     protected function getFields() : array
     {
         $fields = [
-            "title" => self::dic()->ui()->factory()->input()->field()->text(self::plugin()->translate("title", AreasCtrl::LANG_MODULE))->withRequired(true),
+            "titles" => (new InputGUIWrapperUIInputComponent(new TabsInputGUI(self::plugin()->translate("title", AreasCtrl::LANG_MODULE))))->withRequired(true)
         ];
+        MultilangualTabsInputGUI::generateLegacy($fields["titles"]->getInput(), [
+            new ilTextInputGUI(self::plugin()->translate("title", AreasCtrl::LANG_MODULE), "title")
+        ], true);
 
         return $fields;
     }
@@ -104,7 +111,7 @@ class FormBuilder extends AbstractFormBuilder
      */
     protected function storeData(array $data)/*:void*/
     {
-        $this->area->setTitle(strval($data["title"]));
+        $this->area->setTitles((array) ($data["titles"]));
 
         self::srContainerObjectMenu()->areas()->storeArea($this->area);
     }

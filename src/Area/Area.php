@@ -6,6 +6,7 @@ use ActiveRecord;
 use arConnector;
 use ILIAS\UI\Component\Component;
 use ilSrContainerObjectMenuPlugin;
+use srag\CustomInputGUIs\SrContainerObjectMenu\TabsInputGUI\MultilangualTabsInputGUI;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObject;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
@@ -37,13 +38,13 @@ class Area extends ActiveRecord
      */
     protected $area_id;
     /**
-     * @var string
+     * @var array
      *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_is_notnull   true
      */
-    protected $title = "";
+    protected $titles = [];
 
 
     /**
@@ -159,20 +160,32 @@ class Area extends ActiveRecord
 
 
     /**
+     * @param string|null $lang_key
+     * @param bool        $use_default_if_not_set
+     *
      * @return string
      */
-    public function getTitle() : string
+    public function getTitle(/*?*/ string $lang_key = null, bool $use_default_if_not_set = true) : string
     {
-        return $this->title;
+        return strval(MultilangualTabsInputGUI::getValueForLang($this->titles, $lang_key, "title", $use_default_if_not_set));
     }
 
 
     /**
-     * @param string $title
+     * @return array
      */
-    public function setTitle(string $title)/* : void*/
+    public function getTitles() : array
     {
-        $this->title = $title;
+        return $this->titles;
+    }
+
+
+    /**
+     * @param array $titles
+     */
+    public function setTitles(array $titles)/*:void*/
+    {
+        $this->titles = $titles;
     }
 
 
@@ -182,5 +195,47 @@ class Area extends ActiveRecord
     public function isVisible() : bool
     {
         return (!empty($this->getContainerObjects(true)));
+    }
+
+
+    /**
+     * @param string $title
+     * @param string $lang_key
+     */
+    public function setTitle(string $title, string $lang_key)/*: void*/
+    {
+        MultilangualTabsInputGUI::setValueForLang($this->titles, $title, $lang_key, "title");
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function sleep(/*string*/ $field_name)
+    {
+        $field_value = $this->{$field_name};
+
+        switch ($field_name) {
+            case "titles":
+                return json_encode($field_value);
+
+            default:
+                return parent::sleep($field_name);
+        }
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function wakeUp(/*string*/ $field_name, $field_value)
+    {
+        switch ($field_name) {
+            case "titles":
+                return (array) json_decode($field_value, true);
+
+            default:
+                return parent::wakeUp($field_name, $field_value);
+        }
     }
 }
