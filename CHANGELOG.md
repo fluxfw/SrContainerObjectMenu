@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.1.0]
+- Supports multilingual area title
+
 ## [2.0.0]
 - Areas
 - Performance

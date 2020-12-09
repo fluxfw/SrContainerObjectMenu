@@ -148,6 +148,16 @@ final class Repository
     public function installTables()/*:void*/
     {
         Area::updateDB();
+
+        if (self::dic()->database()->tableColumnExists(Area::TABLE_NAME, "title")) {
+            foreach ($this->getAreas() as $area) {
+                $area->setTitle(strval($area->title), "default");
+
+                $this->storeArea($area);
+            }
+
+            self::dic()->database()->dropTableColumn(Area::TABLE_NAME, "title");
+        }
     }
 
 
