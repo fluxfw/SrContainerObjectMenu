@@ -10,16 +10,16 @@ use srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
- * Class ContainerObjectGUI
+ * Class ContainerObjectCtrl
  *
  * @package           srag\Plugins\SrContainerObjectMenu\ContainerObject
  *
  * @author            studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  *
- * @ilCtrl_isCalledBy srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectGUI: srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsGUI
- * @ilCtrl_Calls      srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectGUI: srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder
+ * @ilCtrl_isCalledBy srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectCtrl: srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsCtrl
+ * @ilCtrl_Calls      srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectCtrl: srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder
  */
-class ContainerObjectGUI
+class ContainerObjectCtrl
 {
 
     use DICTrait;
@@ -42,7 +42,7 @@ class ContainerObjectGUI
 
 
     /**
-     * ContainerObjectGUI constructor
+     * ContainerObjectCtrl constructor
      */
     public function __construct()
     {
@@ -115,7 +115,7 @@ class ContainerObjectGUI
      */
     protected function back()/*: void*/
     {
-        self::dic()->ctrl()->redirectByClass(ContainerObjectsGUI::class, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS);
+        self::dic()->ctrl()->redirectByClass(ContainerObjectsCtrl::class, ContainerObjectsCtrl::CMD_LIST_CONTAINER_OBJECTS);
     }
 
 
@@ -134,7 +134,7 @@ class ContainerObjectGUI
 
         self::dic()->ctrl()->setParameter($this, self::GET_PARAM_CONTAINER_OBJECT_ID, $this->container_object->getContainerObjectId());
 
-        ilUtil::sendSuccess(self::plugin()->translate("added_container_object", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]), true);
+        ilUtil::sendSuccess(self::plugin()->translate("added_container_object", ContainerObjectsCtrl::LANG_MODULE, [$this->container_object->getObjectTitle()]), true);
 
         self::dic()->ctrl()->redirect($this, self::CMD_EDIT_CONTAINER_OBJECT);
     }
@@ -160,7 +160,7 @@ class ContainerObjectGUI
     {
         self::srContainerObjectMenu()->containerObjects()->deleteContainerObject($this->container_object);
 
-        ilUtil::sendSuccess(self::plugin()->translate("removed_container_object", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]), true);
+        ilUtil::sendSuccess(self::plugin()->translate("removed_container_object", ContainerObjectsCtrl::LANG_MODULE, [$this->container_object->getObjectTitle()]), true);
 
         self::dic()->ctrl()->redirect($this, self::CMD_BACK);
     }
@@ -175,12 +175,12 @@ class ContainerObjectGUI
 
         $confirmation->setFormAction(self::dic()->ctrl()->getFormAction($this));
 
-        $confirmation->setHeaderText(self::plugin()->translate("remove_container_object_confirm", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]));
+        $confirmation->setHeaderText(self::plugin()->translate("remove_container_object_confirm", ContainerObjectsCtrl::LANG_MODULE, [$this->container_object->getObjectTitle()]));
 
-        $confirmation->addItem(self::GET_PARAM_CONTAINER_OBJECT_ID, $this->container_object->getContainerObjectId(), $this->container_object->getObject()->getTitle());
+        $confirmation->addItem(self::GET_PARAM_CONTAINER_OBJECT_ID, $this->container_object->getContainerObjectId(), $this->container_object->getObjectTitle());
 
-        $confirmation->setConfirm(self::plugin()->translate("remove", ContainerObjectsGUI::LANG_MODULE), self::CMD_REMOVE_CONTAINER_OBJECT);
-        $confirmation->setCancel(self::plugin()->translate("cancel", ContainerObjectsGUI::LANG_MODULE), self::CMD_BACK);
+        $confirmation->setConfirm(self::plugin()->translate("remove", ContainerObjectsCtrl::LANG_MODULE), self::CMD_REMOVE_CONTAINER_OBJECT);
+        $confirmation->setCancel(self::plugin()->translate("cancel", ContainerObjectsCtrl::LANG_MODULE), self::CMD_BACK);
 
         self::output()->output($confirmation);
     }
@@ -193,23 +193,23 @@ class ContainerObjectGUI
     {
         self::dic()->tabs()->clearTargets();
 
-        self::dic()->tabs()->setBackTarget(self::plugin()->translate("container_objects", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
+        self::dic()->tabs()->setBackTarget(self::plugin()->translate("container_objects", ContainerObjectsCtrl::LANG_MODULE), self::dic()->ctrl()
             ->getLinkTarget($this, self::CMD_BACK));
 
         if ($this->container_object !== null) {
             if (self::dic()->ctrl()->getCmd() === self::CMD_REMOVE_CONTAINER_OBJECT_CONFIRM) {
-                self::dic()->tabs()->addTab(self::TAB_EDIT_CONTAINER_OBJECT, self::plugin()->translate("remove_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
+                self::dic()->tabs()->addTab(self::TAB_EDIT_CONTAINER_OBJECT, self::plugin()->translate("remove_container_object", ContainerObjectsCtrl::LANG_MODULE), self::dic()->ctrl()
                     ->getLinkTarget($this, self::CMD_REMOVE_CONTAINER_OBJECT_CONFIRM));
             } else {
-                self::dic()->tabs()->addTab(self::TAB_EDIT_CONTAINER_OBJECT, self::plugin()->translate("edit_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
+                self::dic()->tabs()->addTab(self::TAB_EDIT_CONTAINER_OBJECT, self::plugin()->translate("edit_container_object", ContainerObjectsCtrl::LANG_MODULE), self::dic()->ctrl()
                     ->getLinkTarget($this, self::CMD_EDIT_CONTAINER_OBJECT));
 
-                self::dic()->locator()->addItem($this->container_object->getObject()->getTitle(), self::dic()->ctrl()->getLinkTarget($this, self::CMD_EDIT_CONTAINER_OBJECT));
+                self::dic()->locator()->addItem($this->container_object->getObjectTitle(), self::dic()->ctrl()->getLinkTarget($this, self::CMD_EDIT_CONTAINER_OBJECT));
             }
         } else {
             $this->container_object = self::srContainerObjectMenu()->containerObjects()->factory()->newInstance();
 
-            self::dic()->tabs()->addTab(self::TAB_EDIT_CONTAINER_OBJECT, self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE), self::dic()->ctrl()
+            self::dic()->tabs()->addTab(self::TAB_EDIT_CONTAINER_OBJECT, self::plugin()->translate("add_container_object", ContainerObjectsCtrl::LANG_MODULE), self::dic()->ctrl()
                 ->getLinkTarget($this, self::CMD_ADD_CONTAINER_OBJECT));
         }
     }
@@ -230,7 +230,7 @@ class ContainerObjectGUI
             return;
         }
 
-        ilUtil::sendSuccess(self::plugin()->translate("saved_container_object", ContainerObjectsGUI::LANG_MODULE, [$this->container_object->getObject()->getTitle()]), true);
+        ilUtil::sendSuccess(self::plugin()->translate("saved_container_object", ContainerObjectsCtrl::LANG_MODULE, [$this->container_object->getObjectTitle()]), true);
 
         self::dic()->ctrl()->redirect($this, self::CMD_EDIT_CONTAINER_OBJECT);
     }

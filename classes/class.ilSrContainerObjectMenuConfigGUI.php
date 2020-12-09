@@ -4,7 +4,8 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 use srag\DevTools\SrContainerObjectMenu\DevToolsCtrl;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
-use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsGUI;
+use srag\Plugins\SrContainerObjectMenu\Area\AreasCtrl;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -43,8 +44,12 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
         $next_class = self::dic()->ctrl()->getNextClass($this);
 
         switch (strtolower($next_class)) {
-            case strtolower(ContainerObjectsGUI::class):
-                self::dic()->ctrl()->forwardCommand(new ContainerObjectsGUI());
+            case strtolower(AreasCtrl::class):
+                self::dic()->ctrl()->forwardCommand(new AreasCtrl());
+                break;
+
+            case strtolower(ContainerObjectsCtrl::class):
+                self::dic()->ctrl()->forwardCommand(new ContainerObjectsCtrl());
                 break;
 
             case strtolower(DevToolsCtrl::class):
@@ -72,7 +77,7 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
      */
     protected function configure()/*: void*/
     {
-        self::dic()->ctrl()->redirectByClass(ContainerObjectsGUI::class, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS);
+        self::dic()->ctrl()->redirectByClass(ContainerObjectsCtrl::class, ContainerObjectsCtrl::CMD_LIST_CONTAINER_OBJECTS);
     }
 
 
@@ -81,7 +86,9 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
      */
     protected function setTabs()/*: void*/
     {
-        ContainerObjectsGUI::addTabs();
+        ContainerObjectsCtrl::addTabs();
+
+        AreasCtrl::addTabs();
 
         DevToolsCtrl::addTabs(self::plugin());
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.0]
+- Areas
+- Performance
+- Clean up main menu entries
+- Update readme
+
 ## [1.1.4]
 - Event for change menu entry
 

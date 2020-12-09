@@ -9,9 +9,12 @@ use ilRepositorySelector2InputGUI;
 use ilSrContainerObjectMenuPlugin;
 use srag\CustomInputGUIs\SrContainerObjectMenu\FormBuilder\AbstractFormBuilder;
 use srag\CustomInputGUIs\SrContainerObjectMenu\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
+use srag\CustomInputGUIs\SrContainerObjectMenu\MultiSelectSearchNewInputGUI\MultiSelectSearchNewInputGUI;
+use srag\Plugins\SrContainerObjectMenu\Area\Area;
+use srag\Plugins\SrContainerObjectMenu\Area\AreasCtrl;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObject;
-use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectGUI;
-use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsGUI;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectCtrl;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -38,10 +41,10 @@ class FormBuilder extends AbstractFormBuilder
     /**
      * @inheritDoc
      *
-     * @param ContainerObjectGUI $parent
-     * @param ContainerObject    $container_object
+     * @param ContainerObjectCtrl $parent
+     * @param ContainerObject     $container_object
      */
-    public function __construct(ContainerObjectGUI $parent, ContainerObject $container_object)
+    public function __construct(ContainerObjectCtrl $parent, ContainerObject $container_object)
     {
         $this->container_object = $container_object;
 
@@ -57,7 +60,7 @@ class FormBuilder extends AbstractFormBuilder
         if (!empty($this->container_object->getContainerObjectId())) {
             self::dic()->ctrl()->setParameterByClass(ilObjMainMenuGUI::class, "ref_id", 69);
 
-            $this->messages[] = self::dic()->ui()->factory()->messageBox()->info(self::plugin()->translate("info", ContainerObjectsGUI::LANG_MODULE, [
+            $this->messages[] = self::dic()->ui()->factory()->messageBox()->info(self::plugin()->translate("info", ContainerObjectsCtrl::LANG_MODULE, [
                 self::output()->getHTML(self::dic()->ui()->factory()->link()->standard(self::dic()->language()->txt("obj_mme"), self::dic()->ctrl()->getLinkTargetByClass([
                     ilAdministrationGUI::class,
                     ilObjMainMenuGUI::class
@@ -77,10 +80,10 @@ class FormBuilder extends AbstractFormBuilder
         $buttons = [];
 
         if (!empty($this->container_object->getContainerObjectId())) {
-            $buttons[ContainerObjectGUI::CMD_UPDATE_CONTAINER_OBJECT] = self::plugin()->translate("save", ContainerObjectsGUI::LANG_MODULE);
+            $buttons[ContainerObjectCtrl::CMD_UPDATE_CONTAINER_OBJECT] = self::plugin()->translate("save", ContainerObjectsCtrl::LANG_MODULE);
         } else {
-            $buttons[ContainerObjectGUI::CMD_CREATE_CONTAINER_OBJECT] = self::plugin()->translate("add", ContainerObjectsGUI::LANG_MODULE);
-            $buttons[ContainerObjectGUI::CMD_BACK] = self::plugin()->translate("cancel", ContainerObjectsGUI::LANG_MODULE);
+            $buttons[ContainerObjectCtrl::CMD_CREATE_CONTAINER_OBJECT] = self::plugin()->translate("add", ContainerObjectsCtrl::LANG_MODULE);
+            $buttons[ContainerObjectCtrl::CMD_BACK] = self::plugin()->translate("cancel", ContainerObjectsCtrl::LANG_MODULE);
         }
 
         return $buttons;
@@ -95,10 +98,11 @@ class FormBuilder extends AbstractFormBuilder
         $data = [];
 
         if (!empty($this->container_object->getContainerObjectId())) {
-            $data["obj_ref_id"] = $this->container_object->getObject()->getTitle() . " (" . $this->container_object->getMenuTitle() . ")";
+            $data["obj_ref_id"] = $this->container_object->getTitle();
         } else {
             $data["obj_ref_id"] = null;
         }
+        $data["areas"] = $this->container_object->getAreaIds();
 
         return $data;
     }
@@ -112,12 +116,19 @@ class FormBuilder extends AbstractFormBuilder
         $fields = [];
 
         if (!empty($this->container_object->getContainerObjectId())) {
-            $fields["obj_ref_id"] = new InputGUIWrapperUIInputComponent(new ilNonEditableValueGUI(self::plugin()->translate("container_object", ContainerObjectsGUI::LANG_MODULE)));
+            $fields["obj_ref_id"] = new InputGUIWrapperUIInputComponent(new ilNonEditableValueGUI(self::plugin()->translate("container_object", ContainerObjectsCtrl::LANG_MODULE)));
         } else {
-            $fields["obj_ref_id"] = (new InputGUIWrapperUIInputComponent(new ilRepositorySelector2InputGUI(self::plugin()->translate("container_object", ContainerObjectsGUI::LANG_MODULE),
+            $fields["obj_ref_id"] = (new InputGUIWrapperUIInputComponent(new ilRepositorySelector2InputGUI(self::plugin()->translate("container_object", ContainerObjectsCtrl::LANG_MODULE),
                 "obj_ref_id", null, self::class)))->withRequired(true);
             $fields["obj_ref_id"]->getInput()->getExplorerGUI()->setSelectableTypes(["cat", "crs", "fold", "grp", "root"]);
         }
+
+        $fields["areas"] = (new InputGUIWrapperUIInputComponent(new MultiSelectSearchNewInputGUI(self::plugin()->translate("areas", AreasCtrl::LANG_MODULE))));
+        $fields["areas"]->getInput()->setOptions(array_reduce(self::srContainerObjectMenu()->areas()->getAreas(), function (array $areas, Area $area) : array {
+            $areas[$area->getAreaId()] = $area->getTitle();
+
+            return $areas;
+        }, []));
 
         return $fields;
     }
@@ -129,9 +140,9 @@ class FormBuilder extends AbstractFormBuilder
     protected function getTitle() : string
     {
         if (!empty($this->container_object->getContainerObjectId())) {
-            return self::plugin()->translate("edit_container_object", ContainerObjectsGUI::LANG_MODULE);
+            return self::plugin()->translate("edit_container_object", ContainerObjectsCtrl::LANG_MODULE);
         } else {
-            return self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE);
+            return self::plugin()->translate("add_container_object", ContainerObjectsCtrl::LANG_MODULE);
         }
     }
 
@@ -144,6 +155,8 @@ class FormBuilder extends AbstractFormBuilder
         if (empty($this->container_object->getContainerObjectId())) {
             $this->container_object->setObjRefId(intval($data["obj_ref_id"]));
         }
+
+        $this->container_object->setAreaIds(MultiSelectSearchNewInputGUI::cleanValues((array) $data["areas"]));
 
         self::srContainerObjectMenu()->containerObjects()->storeContainerObject($this->container_object);
     }

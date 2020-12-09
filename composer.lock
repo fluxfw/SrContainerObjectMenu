@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52883df39bca4f891372270f6e7b1b62",
+    "content-hash": "30859714ba58733101cbec2f14f4690c",
     "packages": [
         {
             "name": "srag/custominputguis",
@@ -188,16 +188,16 @@
         },
         {
             "name": "srag/dic",
-            "version": "0.31.0",
+            "version": "0.31.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/DIC.git",
-                "reference": "de8dd1ff734ba8dc42178180dcdaee20058c10aa"
+                "reference": "099f48eebc89272d9954adb0dd28a4ee362cb7fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/de8dd1ff734ba8dc42178180dcdaee20058c10aa",
-                "reference": "de8dd1ff734ba8dc42178180dcdaee20058c10aa",
+                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/099f48eebc89272d9954adb0dd28a4ee362cb7fd",
+                "reference": "099f48eebc89272d9954adb0dd28a4ee362cb7fd",
                 "shasum": ""
             },
             "require": {
@@ -216,7 +216,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "srag\\DIC\\SrContainerObjectMenu\\": "src/"
+                    "srag\\DIC\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -239,7 +239,7 @@
                 "globals",
                 "trait"
             ],
-            "time": "2020-11-25T11:02:47+00:00"
+            "time": "2020-12-02T09:10:08+00:00"
         },
         {
             "name": "srag/generateplugininfoshelper",
@@ -264,7 +264,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "srag\\GeneratePluginInfosHelper\\": "src/"
+                    "srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",

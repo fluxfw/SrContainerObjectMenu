@@ -3,10 +3,15 @@
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject\Table;
 
 use ilSrContainerObjectMenuPlugin;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Column;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Data\Row\RowData;
+use srag\DataTableUI\SrContainerObjectMenu\Component\Format\Format;
 use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
+use srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\DefaultFormatter;
 use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\AbstractTableBuilder;
-use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectGUI;
-use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsGUI;
+use srag\Plugins\SrContainerObjectMenu\Area\AreasCtrl;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectCtrl;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -27,9 +32,9 @@ class TableBuilder extends AbstractTableBuilder
     /**
      * @inheritDoc
      *
-     * @param ContainerObjectsGUI $parent
+     * @param ContainerObjectsCtrl $parent
      */
-    public function __construct(ContainerObjectsGUI $parent)
+    public function __construct(ContainerObjectsCtrl $parent)
     {
         parent::__construct($parent);
     }
@@ -40,8 +45,8 @@ class TableBuilder extends AbstractTableBuilder
      */
     public function render() : string
     {
-        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsGUI::LANG_MODULE),
-            self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_ADD_CONTAINER_OBJECT, "", false, false)));
+        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsCtrl::LANG_MODULE),
+            self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectCtrl::class, ContainerObjectCtrl::CMD_ADD_CONTAINER_OBJECT, "", false, false)));
 
         return parent::render();
     }
@@ -53,17 +58,25 @@ class TableBuilder extends AbstractTableBuilder
     protected function buildTable() : Table
     {
         $table = self::dataTableUI()->table(ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_cont_objs",
-            self::dic()->ctrl()->getLinkTarget($this->parent, ContainerObjectsGUI::CMD_LIST_CONTAINER_OBJECTS, "", false, false),
-            self::plugin()->translate("container_objects", ContainerObjectsGUI::LANG_MODULE), [
+            self::dic()->ctrl()->getLinkTarget($this->parent, ContainerObjectsCtrl::CMD_LIST_CONTAINER_OBJECTS, "", false, false),
+            self::plugin()->translate("container_objects", ContainerObjectsCtrl::LANG_MODULE), [
                 self::dataTableUI()->column()->column("object_title",
-                    self::plugin()->translate("container_object", ContainerObjectsGUI::LANG_MODULE))->withSortable(false)->withFormatter(self::dataTableUI()
-                    ->column()
-                    ->formatter()
-                    ->chainGetter(["object", "title"])),
+                    self::plugin()->translate("container_object", ContainerObjectsCtrl::LANG_MODULE))->withSortable(false),
                 self::dataTableUI()->column()->column("menu_title",
-                    self::plugin()->translate("menu_title", ContainerObjectsGUI::LANG_MODULE))->withSortable(false),
+                    self::plugin()->translate("menu_title", ContainerObjectsCtrl::LANG_MODULE))->withSortable(false),
+                self::dataTableUI()->column()->column("areas_title",
+                    self::plugin()->translate("areas", AreasCtrl::LANG_MODULE))->withSortable(false)->withFormatter(new class() extends DefaultFormatter {
+
+                    /**
+                     * @inheritDoc
+                     */
+                    public function formatRowCell(Format $format, $value, Column $column, RowData $row, string $table_id) : string
+                    {
+                        return strval($value);
+                    }
+                }),
                 self::dataTableUI()->column()->column("actions",
-                    self::plugin()->translate("actions", ContainerObjectsGUI::LANG_MODULE))->withFormatter(self::dataTableUI()->column()->formatter()->actions()->actionsDropdown())
+                    self::plugin()->translate("actions", ContainerObjectsCtrl::LANG_MODULE))->withFormatter(self::dataTableUI()->column()->formatter()->actions()->actionsDropdown())
             ], new DataFetcher())->withPlugin(self::plugin());
 
         return $table;
