@@ -51,12 +51,12 @@ final class Factory
 
 
     /**
-     * @param ContainerObjectGUI $parent
-     * @param ContainerObject    $container_object
+     * @param ContainerObjectCtrl $parent
+     * @param ContainerObject     $container_object
      *
      * @return FormBuilder
      */
-    public function newFormBuilderInstance(ContainerObjectGUI $parent, ContainerObject $container_object) : FormBuilder
+    public function newFormBuilderInstance(ContainerObjectCtrl $parent, ContainerObject $container_object) : FormBuilder
     {
         $form = new FormBuilder($parent, $container_object);
 
@@ -76,20 +76,11 @@ final class Factory
 
 
     /**
-     * @return Menu
-     */
-    public function newMenuInstance() : Menu
-    {
-        return Menu::getInstance();
-    }
-
-
-    /**
-     * @param ContainerObjectsGUI $parent
+     * @param ContainerObjectsCtrl $parent
      *
      * @return TableBuilder
      */
-    public function newTableBuilderInstance(ContainerObjectsGUI $parent) : TableBuilder
+    public function newTableBuilderInstance(ContainerObjectsCtrl $parent) : TableBuilder
     {
         $table = new TableBuilder($parent);
 

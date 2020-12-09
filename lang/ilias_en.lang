@@ -1,3 +1,17 @@
+areas_actions#:#Actions
+areas_add#:#Add
+areas_add_area#:#Add area
+areas_added_area#:#Area %s added
+areas_areas#:#Areas
+areas_cancel#:#Cancel
+areas_edit_area#:#Edit area
+areas_remove#:#Remove
+areas_remove_area#:#Remove area
+areas_remove_area_confirm#:#Are you really want to remove the area: %s ?
+areas_removed_area#:#Area %s removed
+areas_save#:#Save
+areas_saved_area#:#Area %s saved
+areas_title#:#Title
 container_objects_actions#:#Actions
 container_objects_add#:#Add
 container_objects_add_container_object#:#Add container object

@@ -1,19 +1,22 @@
 {
-  "name": "srag/plugins/srcontainerobjectmenu",
-  "description": "",
-  "version": "1.1.4",
-  "ilias_plugin": {
-    "id": "srcontobjmenu",
-    "name": "SrContainerObjectMenu",
-    "ilias_min_version": "5.4.0",
-    "ilias_max_version": "6.999",
-    "slot": "Services/UIComponent/UserInterfaceHook",
-    "events": [
-      {
-        "id": "change_menu_entry",
-        "type": "raise"
-      }
-    ]
+  "name": "srag/srcontainerobjectmenu",
+  "description": "Provide repository container objects in main menu as dropdown items",
+  "version": "2.0.0",
+  "extra": {
+    "ilias_plugin": {
+      "id": "srcontobjmenu",
+      "name": "SrContainerObjectMenu",
+      "ilias_min_version": "5.4.0",
+      "ilias_max_version": "6.999",
+      "slot": "Services/UIComponent/UserInterfaceHook",
+      "events": [
+        {
+          "id": "change_menu_entry",
+          "type": "raise"
+        }
+      ]
+    },
+    "generate_plugin_readme_template": "SRAG_ILIAS_PLUGIN"
   },
   "type": "project",
   "keywords": [
@@ -37,7 +40,9 @@
     "php": ">=7.0",
     "srag/custominputguis": ">=0.1.0",
     "srag/datatable": ">=0.1.0",
+    "srag/devtools": ">=0.1.0",
     "srag/dic": ">=0.1.0",
+    "srag/generateplugininfoshelper": ">=0.1.0",
     "srag/librariesnamespacechanger": ">=0.1.0",
     "srag/removeplugindataconfirm": ">=0.1.0"
   },
@@ -46,7 +51,13 @@
       "srag\\Plugins\\SrContainerObjectMenu\\": "src/"
     },
     "classmap": [
-      "classes/"
+      "classes/",
+      "src/Area/class.AreasCtrl.php",
+      "src/Area/class.AreaCtrl.php",
+      "src/ContainerObject/class.ContainerObjectsCtrl.php",
+      "src/ContainerObject/class.ContainerObjectCtrl.php",
+      "src/ContainerObject/Form/class.FormBuilder.php",
+      "src/SelectedArea/class.SelectAreaCtrl.php"
     ],
     "files": [
       "vendor/srag/dic/src/PHPVersionChecker.php",
@@ -62,8 +73,8 @@
     "pre-autoload-dump": [
       "srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger::rewriteLibrariesNamespaces",
       "srag\\LibrariesNamespaceChanger\\PHP72Backport::PHP72Backport",
-      "srag\\LibrariesNamespaceChanger\\GeneratePluginPhpAndXml::generatePluginPhpAndXml",
-      "srag\\LibrariesNamespaceChanger\\UpdatePluginReadme::updatePluginReadme"
+      "srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\GeneratePluginPhpAndXml::generatePluginPhpAndXml",
+      "srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\GeneratePluginReadme::generatePluginReadme"
     ]
   }
 }

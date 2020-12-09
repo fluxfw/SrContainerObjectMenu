@@ -6,7 +6,7 @@ use ILIAS\DI\Container;
 use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
 use srag\CustomInputGUIs\SrContainerObjectMenu\Loader\CustomInputGUIsLoaderDetector;
 use srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils\DataTableUITrait;
-use srag\DIC\SrContainerObjectMenu\DevTools\DevToolsCtrl;
+use srag\DevTools\SrContainerObjectMenu\DevToolsCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 use srag\RemovePluginDataConfirm\SrContainerObjectMenu\PluginUninstallTrait;
 
@@ -77,7 +77,7 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
      */
     public function promoteGlobalScreenProvider() : AbstractStaticPluginMainMenuProvider
     {
-        return self::srContainerObjectMenu()->containerObjects()->factory()->newMenuInstance();
+        return self::srContainerObjectMenu()->menu()->factory()->instance();
     }
 
 

@@ -4,7 +4,7 @@ namespace srag\RemovePluginDataConfirm\SrContainerObjectMenu;
 
 use ilUIPluginRouterGUI;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
-use srag\DIC\SrContainerObjectMenu\Util\LibraryLanguageInstaller;
+use srag\LibraryLanguageInstaller\SrContainerObjectMenu\LibraryLanguageInstaller;
 
 /**
  * Trait BasePluginUninstallTrait

@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
 {
     public static $files = array (
-        '3da9680318de90e74aa3eae6c54d54b9' => __DIR__ . '/..' . '/srag/dic/src/PHPVersionChecker.php',
-        'f93191376eee16f660d3c295fab20ef7' => __DIR__ . '/..' . '/srag/dic/src/Ilias7PreWarn.php',
+        'ae0a05d0cd0a2315dbab99a24fa131ca' => __DIR__ . '/..' . '/srag/dic/src/PHPVersionChecker.php',
+        '39fcc595bd0061d5cc7b016d46f2d315' => __DIR__ . '/..' . '/srag/dic/src/Ilias7PreWarn.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -16,7 +16,10 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         array (
             'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\' => 51,
             'srag\\Plugins\\SrContainerObjectMenu\\' => 35,
+            'srag\\LibraryLanguageInstaller\\SrContainerObjectMenu\\' => 52,
             'srag\\LibrariesNamespaceChanger\\' => 31,
+            'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\' => 53,
+            'srag\\DevTools\\SrContainerObjectMenu\\' => 36,
             'srag\\DataTableUI\\SrContainerObjectMenu\\' => 39,
             'srag\\DIC\\SrContainerObjectMenu\\' => 31,
             'srag\\CustomInputGUIs\\SrContainerObjectMenu\\' => 43,
@@ -32,9 +35,21 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'srag\\LibraryLanguageInstaller\\SrContainerObjectMenu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/srag/librarylanguageinstaller/src',
+        ),
         'srag\\LibrariesNamespaceChanger\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src',
+        ),
+        'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/srag/generateplugininfoshelper/src',
+        ),
+        'srag\\DevTools\\SrContainerObjectMenu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/srag/devtools/src',
         ),
         'srag\\DataTableUI\\SrContainerObjectMenu\\' => 
         array (
@@ -54,7 +69,7 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'ilSrContainerObjectMenuConfigGUI' => __DIR__ . '/../..' . '/classes/class.ilSrContainerObjectMenuConfigGUI.php',
         'ilSrContainerObjectMenuPlugin' => __DIR__ . '/../..' . '/classes/class.ilSrContainerObjectMenuPlugin.php',
         'ilSrContainerObjectMenuUIHookGUI' => __DIR__ . '/../..' . '/classes/class.ilSrContainerObjectMenuUIHookGUI.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\CheckboxInputGUI\\AjaxCheckbox' => __DIR__ . '/..' . '/srag/custominputguis/src/AjaxCheckbox/AjaxCheckbox.php',
+        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\AjaxCheckbox\\AjaxCheckbox' => __DIR__ . '/..' . '/srag/custominputguis/src/AjaxCheckbox/AjaxCheckbox.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\CheckboxInputGUI\\CheckboxInputGUI' => __DIR__ . '/..' . '/srag/custominputguis/src/CheckboxInputGUI/CheckboxInputGUI.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ColorPickerInputGUI\\ColorPickerInputGUI' => __DIR__ . '/..' . '/srag/custominputguis/src/ColorPickerInputGUI/ColorPickerInputGUI.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\CustomInputGUIs' => __DIR__ . '/..' . '/srag/custominputguis/src/CustomInputGUIs.php',
@@ -100,9 +115,10 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\TextInputGUI\\TextInputGUIWithModernAutoComplete' => __DIR__ . '/..' . '/srag/custominputguis/src/TextInputGUI/TextInputGUIWithModernAutoComplete.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\UIInputComponentWrapperInputGUI\\UIInputComponentWrapperInputGUI' => __DIR__ . '/..' . '/srag/custominputguis/src/UIInputComponentWrapperInputGUI/UIInputComponentWrapperInputGUI.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\UIInputComponentWrapperInputGUI\\UIInputComponentWrapperNameSource' => __DIR__ . '/..' . '/srag/custominputguis/src/UIInputComponentWrapperInputGUI/UIInputComponentWrapperNameSource.php',
-        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ViewControlModeUI\\ViewControlModeUI' => __DIR__ . '/..' . '/srag/custominputguis/src/ViewControlModeGUI/ViewControlModeUI.php',
+        'srag\\CustomInputGUIs\\SrContainerObjectMenu\\ViewControlModeUI\\ViewControlModeUI' => __DIR__ . '/..' . '/srag/custominputguis/src/ViewControlModeUI/ViewControlModeUI.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\Waiter\\Waiter' => __DIR__ . '/..' . '/srag/custominputguis/src/Waiter/Waiter.php',
         'srag\\CustomInputGUIs\\SrContainerObjectMenu\\WeekdayInputGUI\\WeekdayInputGUI' => __DIR__ . '/..' . '/srag/custominputguis/src/WeekdayInputGUI/WeekdayInputGUI.php',
+        'srag\\DIC\\SrContainerObjectMenu\\Cron\\FixUITemplateInCronContext' => __DIR__ . '/..' . '/srag/dic/src/Cron/FixUITemplateInCronContext.php',
         'srag\\DIC\\SrContainerObjectMenu\\DICStatic' => __DIR__ . '/..' . '/srag/dic/src/DICStatic.php',
         'srag\\DIC\\SrContainerObjectMenu\\DICStaticInterface' => __DIR__ . '/..' . '/srag/dic/src/DICStaticInterface.php',
         'srag\\DIC\\SrContainerObjectMenu\\DICTrait' => __DIR__ . '/..' . '/srag/dic/src/DICTrait.php',
@@ -115,7 +131,6 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DIC\\SrContainerObjectMenu\\Database\\DatabaseInterface' => __DIR__ . '/..' . '/srag/dic/src/Database/DatabaseInterface.php',
         'srag\\DIC\\SrContainerObjectMenu\\Database\\PdoContextHelper' => __DIR__ . '/..' . '/srag/dic/src/Database/PdoContextHelper.php',
         'srag\\DIC\\SrContainerObjectMenu\\Database\\PdoStatementContextHelper' => __DIR__ . '/..' . '/srag/dic/src/Database/PdoStatementContextHelper.php',
-        'srag\\DIC\\SrContainerObjectMenu\\DevTools\\DevToolsCtrl' => __DIR__ . '/..' . '/srag/dic/src/DevTools/class.DevToolsCtrl.php',
         'srag\\DIC\\SrContainerObjectMenu\\Exception\\DICException' => __DIR__ . '/..' . '/srag/dic/src/Exception/DICException.php',
         'srag\\DIC\\SrContainerObjectMenu\\Ilias7PreWarn' => __DIR__ . '/..' . '/srag/dic/src/Ilias7PreWarn.php',
         'srag\\DIC\\SrContainerObjectMenu\\Loader\\AbstractLoaderDetector' => __DIR__ . '/..' . '/srag/dic/src/Loader/AbstractLoaderDetector.php',
@@ -125,7 +140,6 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DIC\\SrContainerObjectMenu\\Plugin\\Plugin' => __DIR__ . '/..' . '/srag/dic/src/Plugin/Plugin.php',
         'srag\\DIC\\SrContainerObjectMenu\\Plugin\\PluginInterface' => __DIR__ . '/..' . '/srag/dic/src/Plugin/PluginInterface.php',
         'srag\\DIC\\SrContainerObjectMenu\\Plugin\\Pluginable' => __DIR__ . '/..' . '/srag/dic/src/Plugin/Pluginable.php',
-        'srag\\DIC\\SrContainerObjectMenu\\Util\\LibraryLanguageInstaller' => __DIR__ . '/..' . '/srag/dic/src/Util/LibraryLanguageInstaller.php',
         'srag\\DIC\\SrContainerObjectMenu\\Version\\Version' => __DIR__ . '/..' . '/srag/dic/src/Version/Version.php',
         'srag\\DIC\\SrContainerObjectMenu\\Version\\VersionInterface' => __DIR__ . '/..' . '/srag/dic/src/Version/VersionInterface.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Component\\Column\\Column' => __DIR__ . '/..' . '/srag/datatable/src/Component/Column/Column.php',
@@ -165,6 +179,7 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\DateFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/DateFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\DefaultFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/DefaultFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\Factory' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/Factory.php',
+        'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\ImageFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/ImageFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LanguageVariableFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LanguageVariableFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LearningProgressFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LearningProgressFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LinkFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LinkFormatter.php',
@@ -199,22 +214,39 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Table' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Table.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Utils\\AbstractTableBuilder' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Utils/AbstractTableBuilder.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Utils\\DataTableUITrait' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Utils/DataTableUITrait.php',
-        'srag\\LibrariesNamespaceChanger\\GeneratePluginPhpAndXml' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/GeneratePluginPhpAndXml.php',
+        'srag\\DevTools\\SrContainerObjectMenu\\DevToolsCtrl' => __DIR__ . '/..' . '/srag/devtools/src/class.DevToolsCtrl.php',
+        'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\GeneratePluginPhpAndXml' => __DIR__ . '/..' . '/srag/generateplugininfoshelper/src/GeneratePluginPhpAndXml.php',
+        'srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\GeneratePluginReadme' => __DIR__ . '/..' . '/srag/generateplugininfoshelper/src/GeneratePluginReadme.php',
         'srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/LibrariesNamespaceChanger.php',
         'srag\\LibrariesNamespaceChanger\\PHP72Backport' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/PHP72Backport.php',
         'srag\\LibrariesNamespaceChanger\\PHP7Backport' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/PHP7Backport.php',
         'srag\\LibrariesNamespaceChanger\\RemovePHP72Backport' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/RemovePHP72Backport.php',
-        'srag\\LibrariesNamespaceChanger\\UpdatePluginReadme' => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src/UpdatePluginReadme.php',
+        'srag\\LibraryLanguageInstaller\\SrContainerObjectMenu\\LibraryLanguageInstaller' => __DIR__ . '/..' . '/srag/librarylanguageinstaller/src/LibraryLanguageInstaller.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Area\\Area' => __DIR__ . '/../..' . '/src/Area/Area.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Area\\AreaCtrl' => __DIR__ . '/../..' . '/src/Area/class.AreaCtrl.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Area\\AreasCtrl' => __DIR__ . '/../..' . '/src/Area/class.AreasCtrl.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Area\\Factory' => __DIR__ . '/../..' . '/src/Area/Factory.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Area\\Form\\FormBuilder' => __DIR__ . '/../..' . '/src/Area/Form/FormBuilder.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Area\\Repository' => __DIR__ . '/../..' . '/src/Area/Repository.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Area\\Table\\DataFetcher' => __DIR__ . '/../..' . '/src/Area/Table/DataFetcher.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Area\\Table\\TableBuilder' => __DIR__ . '/../..' . '/src/Area/Table/TableBuilder.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObject' => __DIR__ . '/../..' . '/src/ContainerObject/ContainerObject.php',
-        'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectGUI' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectGUI.php',
-        'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectsGUI' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectsGUI.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectCtrl' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectCtrl.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\ContainerObjectsCtrl' => __DIR__ . '/../..' . '/src/ContainerObject/class.ContainerObjectsCtrl.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Factory' => __DIR__ . '/../..' . '/src/ContainerObject/Factory.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Form\\FormBuilder' => __DIR__ . '/../..' . '/src/ContainerObject/Form/class.FormBuilder.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Menu' => __DIR__ . '/../..' . '/src/ContainerObject/Menu.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Repository' => __DIR__ . '/../..' . '/src/ContainerObject/Repository.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Table\\DataFetcher' => __DIR__ . '/../..' . '/src/ContainerObject/Table/DataFetcher.php',
         'srag\\Plugins\\SrContainerObjectMenu\\ContainerObject\\Table\\TableBuilder' => __DIR__ . '/../..' . '/src/ContainerObject/Table/TableBuilder.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Menu\\BaseMenu' => __DIR__ . '/../..' . '/src/Menu/BaseMenu.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Menu\\Factory' => __DIR__ . '/../..' . '/src/Menu/Factory.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Menu\\Repository' => __DIR__ . '/../..' . '/src/Menu/Repository.php',
         'srag\\Plugins\\SrContainerObjectMenu\\Repository' => __DIR__ . '/../..' . '/src/Repository.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\SelectedArea\\Factory' => __DIR__ . '/../..' . '/src/SelectedArea/Factory.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\SelectedArea\\Repository' => __DIR__ . '/../..' . '/src/SelectedArea/Repository.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\SelectedArea\\SelectAreaCtrl' => __DIR__ . '/../..' . '/src/SelectedArea/class.SelectAreaCtrl.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\SelectedArea\\SelectedArea' => __DIR__ . '/../..' . '/src/SelectedArea/SelectedArea.php',
         'srag\\Plugins\\SrContainerObjectMenu\\Utils\\SrContainerObjectMenuTrait' => __DIR__ . '/../..' . '/src/Utils/SrContainerObjectMenuTrait.php',
         'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\BasePluginUninstallTrait' => __DIR__ . '/..' . '/srag/removeplugindataconfirm/src/BasePluginUninstallTrait.php',
         'srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\PluginUninstallTrait' => __DIR__ . '/..' . '/srag/removeplugindataconfirm/src/PluginUninstallTrait.php',
