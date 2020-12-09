@@ -7,15 +7,15 @@ use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
- * Class ContainerObjectsGUI
+ * Class ContainerObjectsCtrl
  *
  * @package           srag\Plugins\SrContainerObjectMenu\ContainerObject
  *
  * @author            studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  *
- * @ilCtrl_isCalledBy srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsGUI: ilSrContainerObjectMenuConfigGUI
+ * @ilCtrl_isCalledBy srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsCtrl: ilSrContainerObjectMenuConfigGUI
  */
-class ContainerObjectsGUI
+class ContainerObjectsCtrl
 {
 
     use DICTrait;
@@ -28,7 +28,7 @@ class ContainerObjectsGUI
 
 
     /**
-     * ContainerObjectsGUI constructor
+     * ContainerObjectsCtrl constructor
      */
     public function __construct()
     {
@@ -56,8 +56,8 @@ class ContainerObjectsGUI
         $next_class = self::dic()->ctrl()->getNextClass($this);
 
         switch (strtolower($next_class)) {
-            case strtolower(ContainerObjectGUI::class):
-                self::dic()->ctrl()->forwardCommand(new ContainerObjectGUI());
+            case strtolower(ContainerObjectCtrl::class):
+                self::dic()->ctrl()->forwardCommand(new ContainerObjectCtrl());
                 break;
 
             default:

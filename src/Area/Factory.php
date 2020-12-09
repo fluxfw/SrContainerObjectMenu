@@ -1,17 +1,17 @@
 <?php
 
-namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
+namespace srag\Plugins\SrContainerObjectMenu\Area;
 
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
-use srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder;
-use srag\Plugins\SrContainerObjectMenu\ContainerObject\Table\TableBuilder;
+use srag\Plugins\SrContainerObjectMenu\Area\Form\FormBuilder;
+use srag\Plugins\SrContainerObjectMenu\Area\Table\TableBuilder;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
  * Class Factory
  *
- * @package srag\Plugins\SrContainerObjectMenu\ContainerObject
+ * @package srag\Plugins\SrContainerObjectMenu\Area
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -51,36 +51,36 @@ final class Factory
 
 
     /**
-     * @param ContainerObjectCtrl $parent
-     * @param ContainerObject     $container_object
+     * @param AreaCtrl $parent
+     * @param Area     $area
      *
      * @return FormBuilder
      */
-    public function newFormBuilderInstance(ContainerObjectCtrl $parent, ContainerObject $container_object) : FormBuilder
+    public function newFormBuilderInstance(AreaCtrl $parent, Area $area) : FormBuilder
     {
-        $form = new FormBuilder($parent, $container_object);
+        $form = new FormBuilder($parent, $area);
 
         return $form;
     }
 
 
     /**
-     * @return ContainerObject
+     * @return Area
      */
-    public function newInstance() : ContainerObject
+    public function newInstance() : Area
     {
-        $container_object = new ContainerObject();
+        $area = new Area();
 
-        return $container_object;
+        return $area;
     }
 
 
     /**
-     * @param ContainerObjectsCtrl $parent
+     * @param AreasCtrl $parent
      *
      * @return TableBuilder
      */
-    public function newTableBuilderInstance(ContainerObjectsCtrl $parent) : TableBuilder
+    public function newTableBuilderInstance(AreasCtrl $parent) : TableBuilder
     {
         $table = new TableBuilder($parent);
 

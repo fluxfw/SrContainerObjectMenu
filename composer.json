@@ -1,7 +1,7 @@
 {
   "name": "srag/srcontainerobjectmenu",
-  "description": "",
-  "version": "1.1.4",
+  "description": "Provide repository container objects in main menu as dropdown items",
+  "version": "2.0.0",
   "extra": {
     "ilias_plugin": {
       "id": "srcontobjmenu",
@@ -52,9 +52,12 @@
     },
     "classmap": [
       "classes/",
-      "src/ContainerObject/class.ContainerObjectsGUI.php",
-      "src/ContainerObject/class.ContainerObjectGUI.php",
-      "src/ContainerObject/Form/class.FormBuilder.php"
+      "src/Area/class.AreasCtrl.php",
+      "src/Area/class.AreaCtrl.php",
+      "src/ContainerObject/class.ContainerObjectsCtrl.php",
+      "src/ContainerObject/class.ContainerObjectCtrl.php",
+      "src/ContainerObject/Form/class.FormBuilder.php",
+      "src/SelectedArea/class.SelectAreaCtrl.php"
     ],
     "files": [
       "vendor/srag/dic/src/PHPVersionChecker.php",

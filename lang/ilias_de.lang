@@ -1,3 +1,17 @@
+areas_actions#:#Aktionen
+areas_add#:#Hinzufügen
+areas_add_area#:#Bereich hinzufügen
+areas_added_area#:#Bereich %s hinzugefügt
+areas_areas#:#Bereiche
+areas_cancel#:#Abbrechen
+areas_edit_area#:#Bereich bearbeiten
+areas_remove#:#Entfernen
+areas_remove_area#:#Bereich entfernen
+areas_remove_area_confirm#:#Möchten Sie den Bereich wirklich entfernen: %s ?
+areas_removed_area#:#Bereich %s entfernt
+areas_save#:#Speichern
+areas_saved_area#:#Bereich %s gespeichert
+areas_title#:#Titel
 container_objects_actions#:#Aktionen
 container_objects_add#:#Hinzufügen
 container_objects_add_container_object#:#Container-Objekt hinzufügen

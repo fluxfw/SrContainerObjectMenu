@@ -10,6 +10,7 @@ use ilMMItemFacadeInterface;
 use ilObjectFactory;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
+use srag\Plugins\SrContainerObjectMenu\Area\Area;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -27,6 +28,14 @@ class ContainerObject extends ActiveRecord
 
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     const TABLE_NAME = ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_obj";
+    /**
+     * @var int[]
+     *
+     * @con_has_field    true
+     * @con_fieldtype    text
+     * @con_is_notnull   true
+     */
+    protected $area_ids = [];
     /**
      * @var int
      *
@@ -81,14 +90,54 @@ class ContainerObject extends ActiveRecord
      */
     public function getActions() : array
     {
-        self::dic()->ctrl()->setParameterByClass(ContainerObjectGUI::class, ContainerObjectGUI::GET_PARAM_CONTAINER_OBJECT_ID, $this->container_object_id);
+        self::dic()->ctrl()->setParameterByClass(ContainerObjectCtrl::class, ContainerObjectCtrl::GET_PARAM_CONTAINER_OBJECT_ID, $this->container_object_id);
 
         return [
-            self::dic()->ui()->factory()->link()->standard(self::plugin()->translate("edit_container_object", ContainerObjectsGUI::LANG_MODULE),
-                self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_EDIT_CONTAINER_OBJECT, "", false, false)),
-            self::dic()->ui()->factory()->link()->standard(self::plugin()->translate("remove_container_object", ContainerObjectsGUI::LANG_MODULE),
-                self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectGUI::class, ContainerObjectGUI::CMD_REMOVE_CONTAINER_OBJECT_CONFIRM, "", false, false))
+            self::dic()->ui()->factory()->link()->standard(self::plugin()->translate("edit_container_object", ContainerObjectsCtrl::LANG_MODULE),
+                self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectCtrl::class, ContainerObjectCtrl::CMD_EDIT_CONTAINER_OBJECT, "", false, false)),
+            self::dic()->ui()->factory()->link()->standard(self::plugin()->translate("remove_container_object", ContainerObjectsCtrl::LANG_MODULE),
+                self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectCtrl::class, ContainerObjectCtrl::CMD_REMOVE_CONTAINER_OBJECT_CONFIRM, "", false, false))
         ];
+    }
+
+
+    /**
+     * @return int[]
+     */
+    public function getAreaIds() : array
+    {
+        return $this->area_ids;
+    }
+
+
+    /**
+     * @param int[] $area_ids
+     */
+    public function setAreaIds(array $area_ids)/* : void*/
+    {
+        $this->area_ids = array_map("intval", $area_ids);
+    }
+
+
+    /**
+     * @return Area[]
+     */
+    public function getAreas() : array
+    {
+        return array_map(function (int $area_id) : Area {
+            return self::srContainerObjectMenu()->areas()->getAreaById($area_id);
+        }, $this->area_ids);
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getAreasTitle() : string
+    {
+        return nl2br(implode("\n", array_map(function (Area $area) : string {
+            return $area->getTitle();
+        }, $this->getAreas())), false);
     }
 
 
@@ -163,7 +212,7 @@ class ContainerObject extends ActiveRecord
      */
     public function getMenuItem(/*?*/ int $child_obj_ref_id = null)/* : ?ilMMItemFacadeInterface*/
     {
-        return self::srContainerObjectMenu()->containerObjects()->getMenuItem($this->getMenuIdentifier($child_obj_ref_id));
+        return self::srContainerObjectMenu()->menu()->getMenuItem($this->getMenuIdentifier($child_obj_ref_id));
     }
 
 
@@ -204,5 +253,76 @@ class ContainerObject extends ActiveRecord
         }
 
         return $this->object;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getObjectTitle() : string
+    {
+        return $this->getObject()->getTitle();
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getTitle() : string
+    {
+        $title = $this->getObjectTitle();
+
+        if (!empty($menu_title = $this->getMenuTitle()) && $menu_title !== $title) {
+            $title .= " (" . $menu_title . ")";
+        }
+
+        return $title;
+    }
+
+
+    /**
+     * @param int|null $obj_ref_id
+     * @param bool     $check_visible
+     *
+     * @return bool
+     */
+    public function isVisible(/*?*/ int $obj_ref_id = null, bool $check_visible = false) : bool
+    {
+        return (($check_visible ? self::srContainerObjectMenu()
+                ->containerObjects()
+                ->isSelectedArea($this, self::srContainerObjectMenu()->selectedArea()->getSelectedArea(self::dic()->user()->getId())->getAreaId()) : true)
+            && self::srContainerObjectMenu()->containerObjects()->hasReadAccess(!empty($obj_ref_id) ? $obj_ref_id : $this->obj_ref_id));
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function sleep(/*string*/ $field_name)
+    {
+        $field_value = $this->{$field_name};
+
+        switch ($field_name) {
+            case "area_ids":
+                return json_encode($field_value);
+
+            default:
+                return parent::sleep($field_name);
+        }
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function wakeUp(/*string*/ $field_name, $field_value)
+    {
+        switch ($field_name) {
+            case "area_ids":
+                return (array) json_decode($field_value, true);
+
+            default:
+                return parent::wakeUp($field_name, $field_value);
+        }
     }
 }

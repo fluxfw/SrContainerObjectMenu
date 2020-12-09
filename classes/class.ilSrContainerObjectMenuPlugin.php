@@ -77,7 +77,7 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
      */
     public function promoteGlobalScreenProvider() : AbstractStaticPluginMainMenuProvider
     {
-        return self::srContainerObjectMenu()->containerObjects()->factory()->newMenuInstance();
+        return self::srContainerObjectMenu()->menu()->factory()->instance();
     }
 
 

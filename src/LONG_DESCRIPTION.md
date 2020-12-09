@@ -1,21 +1,79 @@
-Select some repository container objects in the plugin config and the plugin provides it as main menu dropdowns with the objects children
+### Container objects
 
-Config:
+You can select repository container objects in the plugin config
 
-![Config 1](../doc/images/config_1.png)
+The plugin provides it as main menu dropdowns items with the objects children
 
-![Config 2](../doc/images/config_2.png)
+You can adjust the position and custom title of container objects in the main menu configuration
 
-![Config 3](../doc/images/config_3.png)
+#### Container objects table
 
-Menu:
+![Container objects table](../doc/images/container_objects_table.png)
 
-![Menu](../doc/images/menu.png)
+#### Add container object form
 
-Known issues:
-- Currently may some lost items will stay in the main menu administration (You can ignore it because not viewed in the menu or delete it manually)
+![Add container object form](../doc/images/add_container_object_form.png)
 
-## Custom event plugins
+#### Edit container object form
+
+![Edit container object form](../doc/images/edit_container_object_form.png)
+
+#### Repository object
+
+![Repository object](../doc/images/repository_object.png)
+
+#### Main menu
+
+![Main menu](../doc/images/main_menu.png)
+
+### Areas
+
+If you use much container objects, on which the user has access (For example admin users), the main menu may will confused, and the display much main menu items
+
+You can create areas and assign container objects to it
+
+An additional main menu container item will be provided, in which the user can select an area and only its container objects will be shown in main menu and makes the main menu clear
+
+The selection of area is personally and retains after relogin tooo
+
+Container objects without areas will display still for the user, independently of area selection
+
+#### Areas table
+
+![Areas table](../doc/images/areas_table.png)
+
+#### Edit area form
+
+![Edit area form](../doc/images/edit_area_form.png)
+
+#### Main menu items table
+
+![Main menu items table](../doc/images/main_menu_items_table.png)
+
+#### Main menu area 1
+
+![Main menu area 1](../doc/images/main_menu_area_1.png)
+
+#### Main menu area 2
+
+![Main menu area 2](../doc/images/main_menu_area_2.png)
+
+#### Main menu area 3
+
+![Main menu area 3](../doc/images/main_menu_area_3.png)
+
+### Known issues
+
+#### Lost main menu items
+
+May some lost items will stay in the main menu administration, if you change the position of children or delete children
+
+If you delete container objects or areas from the plugin or uninstall the plugin, the main menu items are automatic clean up
+
+Otherwise, you can ignore the lost main menu items because not viewed in the menu or delete it manually
+
+### Custom event plugins
+
 If you need to adapt some custom SrContainerObjectMenu changes which can not be configured to your needs, SrContainerObjectMenu will trigger some events, you can listen and react to this in an other custom plugin (plugin type is no matter)
 
 First create or extend a `plugin.xml` in your custom plugin (You need to adapt `PLUGIN_ID` with your own plugin id) to tell ILIAS, your plugins wants to listen to SrContainerObjectMenu events (You need also to increase your plugin version for take effect)
