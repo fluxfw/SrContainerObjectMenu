@@ -84,7 +84,7 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     /**
      * @inheritDoc
      */
-    public function updateLanguages(/*?array*/ $a_lang_keys = null)/*:void*/
+    public function updateLanguages(/*?array*/ $a_lang_keys = null)/* : void*/
     {
         parent::updateLanguages($a_lang_keys);
 
@@ -99,7 +99,7 @@ class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
     /**
      * @inheritDoc
      */
-    protected function deleteData()/*: void*/
+    protected function deleteData()/* : void*/
     {
         self::srContainerObjectMenu()->dropTables();
     }

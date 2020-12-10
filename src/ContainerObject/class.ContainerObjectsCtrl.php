@@ -39,7 +39,7 @@ class ContainerObjectsCtrl
     /**
      *
      */
-    public static function addTabs()/*: void*/
+    public static function addTabs()/* : void*/
     {
         self::dic()->tabs()->addTab(self::TAB_LIST_CONTAINER_OBJECTS, self::plugin()->translate("container_objects", self::LANG_MODULE), self::dic()->ctrl()
             ->getLinkTargetByClass(self::class, self::CMD_LIST_CONTAINER_OBJECTS));
@@ -49,7 +49,7 @@ class ContainerObjectsCtrl
     /**
      *
      */
-    public function executeCommand()/*: void*/
+    public function executeCommand()/* : void*/
     {
         $this->setTabs();
 
@@ -79,7 +79,7 @@ class ContainerObjectsCtrl
     /**
      *
      */
-    protected function listContainerObjects()/*: void*/
+    protected function listContainerObjects()/* : void*/
     {
         self::dic()->tabs()->activateTab(self::TAB_LIST_CONTAINER_OBJECTS);
 
@@ -92,7 +92,7 @@ class ContainerObjectsCtrl
     /**
      *
      */
-    protected function setTabs()/*: void*/
+    protected function setTabs()/* : void*/
     {
 
     }

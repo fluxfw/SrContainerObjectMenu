@@ -183,7 +183,7 @@ class Area extends ActiveRecord
     /**
      * @param array $titles
      */
-    public function setTitles(array $titles)/*:void*/
+    public function setTitles(array $titles)/* : void*/
     {
         $this->titles = $titles;
     }
@@ -202,7 +202,7 @@ class Area extends ActiveRecord
      * @param string $title
      * @param string $lang_key
      */
-    public function setTitle(string $title, string $lang_key)/*: void*/
+    public function setTitle(string $title, string $lang_key)/* : void*/
     {
         MultilangualTabsInputGUI::setValueForLang($this->titles, $title, $lang_key, "title");
     }

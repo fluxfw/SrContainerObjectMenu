@@ -7,6 +7,7 @@ use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Area\Repository as AreasRepository;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\Repository as ContainerObjectsRepository;
 use srag\Plugins\SrContainerObjectMenu\Menu\Repository as MenuRepository;
+use srag\Plugins\SrContainerObjectMenu\Object\Repository as ObjectsRepository;
 use srag\Plugins\SrContainerObjectMenu\SelectedArea\Repository as SelectedAreaRepository;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
@@ -73,13 +74,14 @@ final class Repository
     /**
      *
      */
-    public function dropTables()/*: void*/
+    public function dropTables()/* : void*/
     {
         $this->menu()->factory()->instance()->ensureProvideNoItems();
 
         $this->areas()->dropTables();
         $this->containerObjects()->dropTables();
         $this->menu()->dropTables();
+        $this->objects()->dropTables();
         $this->selectedArea()->dropTables();
     }
 
@@ -87,13 +89,14 @@ final class Repository
     /**
      *
      */
-    public function installTables()/*: void*/
+    public function installTables()/* : void*/
     {
         $this->menu()->factory()->instance()->ensureProvideNoItems();
 
         $this->areas()->installTables();
         $this->containerObjects()->installTables();
         $this->menu()->installTables();
+        $this->objects()->installTables();
         $this->selectedArea()->installTables();
     }
 
@@ -104,6 +107,15 @@ final class Repository
     public function menu() : MenuRepository
     {
         return MenuRepository::getInstance();
+    }
+
+
+    /**
+     * @return ObjectsRepository
+     */
+    public function objects() : ObjectsRepository
+    {
+        return ObjectsRepository::getInstance();
     }
 
 

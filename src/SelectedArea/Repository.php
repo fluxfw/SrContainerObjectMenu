@@ -59,7 +59,7 @@ final class Repository
     /**
      * @internal
      */
-    public function dropTables()/*:void*/
+    public function dropTables()/* : void*/
     {
         self::dic()->database()->dropTable(SelectedArea::TABLE_NAME, false);
     }
@@ -102,6 +102,10 @@ final class Repository
     {
         if ($this->selected_areas === null) {
             $this->selected_areas = array_values(SelectedArea::get());
+
+            foreach ($this->selected_areas as $selected_area) {
+                $this->selected_areas_by_usr_id[$selected_area->getUsrId()] = $selected_area;
+            }
         }
 
         return $this->selected_areas;
@@ -111,7 +115,7 @@ final class Repository
     /**
      * @internal
      */
-    public function installTables()/*:void*/
+    public function installTables()/* : void*/
     {
         SelectedArea::updateDB();
     }
@@ -120,7 +124,7 @@ final class Repository
     /**
      * @param SelectedArea $selected_area
      */
-    public function storeSelectedArea(SelectedArea $selected_area)/*: void*/
+    public function storeSelectedArea(SelectedArea $selected_area)/* : void*/
     {
         $selected_area->store();
 

@@ -147,6 +147,24 @@ class SelectedArea extends ActiveRecord
 
 
     /**
+     * @return int
+     */
+    public function getSelectAreaId() : int
+    {
+        return $this->select_area_id;
+    }
+
+
+    /**
+     * @param int $select_area_id
+     */
+    public function setSelectAreaId(int $select_area_id)/* : void*/
+    {
+        $this->select_area_id = $select_area_id;
+    }
+
+
+    /**
      * @return string
      */
     public function getTitle() : string

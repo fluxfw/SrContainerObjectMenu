@@ -242,6 +242,8 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\Plugins\\SrContainerObjectMenu\\Menu\\BaseMenu' => __DIR__ . '/../..' . '/src/Menu/BaseMenu.php',
         'srag\\Plugins\\SrContainerObjectMenu\\Menu\\Factory' => __DIR__ . '/../..' . '/src/Menu/Factory.php',
         'srag\\Plugins\\SrContainerObjectMenu\\Menu\\Repository' => __DIR__ . '/../..' . '/src/Menu/Repository.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Object\\Factory' => __DIR__ . '/../..' . '/src/Object/Factory.php',
+        'srag\\Plugins\\SrContainerObjectMenu\\Object\\Repository' => __DIR__ . '/../..' . '/src/Object/Repository.php',
         'srag\\Plugins\\SrContainerObjectMenu\\Repository' => __DIR__ . '/../..' . '/src/Repository.php',
         'srag\\Plugins\\SrContainerObjectMenu\\SelectedArea\\Factory' => __DIR__ . '/../..' . '/src/SelectedArea/Factory.php',
         'srag\\Plugins\\SrContainerObjectMenu\\SelectedArea\\Repository' => __DIR__ . '/../..' . '/src/SelectedArea/Repository.php',

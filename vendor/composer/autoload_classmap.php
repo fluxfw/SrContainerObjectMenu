@@ -182,6 +182,8 @@ return array(
     'srag\\Plugins\\SrContainerObjectMenu\\Menu\\BaseMenu' => $baseDir . '/src/Menu/BaseMenu.php',
     'srag\\Plugins\\SrContainerObjectMenu\\Menu\\Factory' => $baseDir . '/src/Menu/Factory.php',
     'srag\\Plugins\\SrContainerObjectMenu\\Menu\\Repository' => $baseDir . '/src/Menu/Repository.php',
+    'srag\\Plugins\\SrContainerObjectMenu\\Object\\Factory' => $baseDir . '/src/Object/Factory.php',
+    'srag\\Plugins\\SrContainerObjectMenu\\Object\\Repository' => $baseDir . '/src/Object/Repository.php',
     'srag\\Plugins\\SrContainerObjectMenu\\Repository' => $baseDir . '/src/Repository.php',
     'srag\\Plugins\\SrContainerObjectMenu\\SelectedArea\\Factory' => $baseDir . '/src/SelectedArea/Factory.php',
     'srag\\Plugins\\SrContainerObjectMenu\\SelectedArea\\Repository' => $baseDir . '/src/SelectedArea/Repository.php',

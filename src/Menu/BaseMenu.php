@@ -32,7 +32,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
 
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     /**
-     * @var array|null
+     * @var isItem[]|null
      */
     protected $sub_items = null;
     /**
@@ -40,7 +40,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
      */
     protected $top_identifiers = [];
     /**
-     * @var array|null
+     * @var isItem[]|null
      */
     protected $top_items = null;
 
@@ -134,7 +134,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
                     return self::plugin()->getPluginObject()->isActive();
                 })
                 ->withVisibilityCallable(function () : bool {
-                    return (!empty(self::srContainerObjectMenu()->areas()->getAreas(true)));
+                    return (count(self::srContainerObjectMenu()->areas()->getAreas(true)) >= 2);
                 }));
             $this->top_identifiers[$this->getAreasMenuIdentifier()] = $top_item->getProviderIdentification();
             $this->top_items[] = $top_item;

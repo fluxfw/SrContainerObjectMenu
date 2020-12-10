@@ -101,7 +101,7 @@ final class Repository
     /**
      * @internal
      */
-    public function dropTables()/*:void*/
+    public function dropTables()/* : void*/
     {
         $this->deleteMenuItems(self::srContainerObjectMenu()->containerObjects()->factory()->newInstance()->getMenuIdentifier(), false);
     }
@@ -133,18 +133,18 @@ final class Repository
             if ($identification) {
                 $this->menu_items[$menu_identifier] = self::dic()->mainMenuItem()->getItemFacadeForIdentificationString($identification);
             } else {
-                $this->menu_items[$menu_identifier] = null;
+                $this->menu_items[$menu_identifier] = false;
             }
         }
 
-        return $this->menu_items[$menu_identifier];
+        return ($this->menu_items[$menu_identifier] ?: null);
     }
 
 
     /**
      * @internal
      */
-    public function installTables()/*:void*/
+    public function installTables()/* : void*/
     {
 
     }
