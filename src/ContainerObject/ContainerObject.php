@@ -137,7 +137,7 @@ class ContainerObject extends ActiveRecord
 
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getChildren() : array
     {

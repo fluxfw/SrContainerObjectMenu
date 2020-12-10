@@ -29,7 +29,7 @@ final class Repository
      */
     protected static $instance = null;
     /**
-     * @var array[]
+     * @var string[][]
      */
     protected $children = [];
     /**
@@ -85,7 +85,7 @@ final class Repository
     /**
      * @param int $obj_ref_id
      *
-     * @return array
+     * @return string[]
      */
     public function getChildren(int $obj_ref_id) : array
     {
