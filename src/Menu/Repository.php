@@ -61,12 +61,12 @@ final class Repository
     /**
      * @param string $base_menu_identifier
      * @param bool   $strict
-     *
-     * @return int
      */
-    public function deleteMenuItems(string $base_menu_identifier, bool $strict = true) : int
+    public function deleteMenuItems(string $base_menu_identifier, bool $strict = true)/* : void*/
     {
-        $count = 0;
+        if (method_exists("flushLostItems", self::dic()->mainMenuItem())) {
+            self::dic()->mainMenuItem()->flushLostItems();
+        }
 
         /**
          * @var ActiveRecord $ar_class
@@ -88,13 +88,10 @@ final class Repository
 
             foreach ($where->get() as $menu_item) {
                 $menu_item->delete();
-                $count++;
             }
         }
 
         $this->menu_items = [];
-
-        return $count;
     }
 
 

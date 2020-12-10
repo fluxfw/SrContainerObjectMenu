@@ -187,17 +187,17 @@
     },
     {
         "name": "srag/dic",
-        "version": "0.31.1",
-        "version_normalized": "0.31.1.0",
+        "version": "0.31.2",
+        "version_normalized": "0.31.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/DIC.git",
-            "reference": "099f48eebc89272d9954adb0dd28a4ee362cb7fd"
+            "reference": "62479caedadd1ca25f6eb63da6593ccf7853493f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/099f48eebc89272d9954adb0dd28a4ee362cb7fd",
-            "reference": "099f48eebc89272d9954adb0dd28a4ee362cb7fd",
+            "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/62479caedadd1ca25f6eb63da6593ccf7853493f",
+            "reference": "62479caedadd1ca25f6eb63da6593ccf7853493f",
             "shasum": ""
         },
         "require": {
@@ -206,7 +206,7 @@
         "require-dev": {
             "srag/generateplugininfoshelper": ">=0.1.0"
         },
-        "time": "2020-12-02T09:10:08+00:00",
+        "time": "2020-12-10T07:11:12+00:00",
         "type": "library",
         "extra": {
             "ilias_plugin": {
