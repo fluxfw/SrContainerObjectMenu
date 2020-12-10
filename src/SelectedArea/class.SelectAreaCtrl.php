@@ -46,7 +46,7 @@ class SelectAreaCtrl
     /**
      *
      */
-    public function executeCommand()/*: void*/
+    public function executeCommand()/* : void*/
     {
         $this->area_id = intval(filter_input(INPUT_GET, self::GET_PARAM_AREA_ID));
 
@@ -78,7 +78,7 @@ class SelectAreaCtrl
     /**
      *
      */
-    protected function selectArea()/*: void*/
+    protected function selectArea()/* : void*/
     {
         $this->selected_area->setAreaId($this->area_id);
 
@@ -96,7 +96,7 @@ class SelectAreaCtrl
     /**
      *
      */
-    protected function setTabs()/*: void*/
+    protected function setTabs()/* : void*/
     {
 
     }

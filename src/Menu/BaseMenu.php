@@ -32,7 +32,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
 
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     /**
-     * @var array|null
+     * @var isItem[]|null
      */
     protected $sub_items = null;
     /**
@@ -40,7 +40,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
      */
     protected $top_identifiers = [];
     /**
-     * @var array|null
+     * @var isItem[]|null
      */
     protected $top_items = null;
 

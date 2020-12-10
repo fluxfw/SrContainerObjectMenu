@@ -109,7 +109,7 @@ class FormBuilder extends AbstractFormBuilder
     /**
      * @inheritDoc
      */
-    protected function storeData(array $data)/*:void*/
+    protected function storeData(array $data)/* : void*/
     {
         $this->area->setTitles((array) ($data["titles"]));
 

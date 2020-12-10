@@ -2,9 +2,6 @@
 
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
-use ilContainer;
-use ilContainerSorting;
-use ilObjectFactory;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
@@ -28,21 +25,13 @@ final class Repository
      */
     protected static $instance = null;
     /**
-     * @var array
-     */
-    protected $children = [];
-    /**
-     * @var ContainerObject[]
+     * @var ContainerObject[][]
      */
     protected $container_objects = [];
     /**
      * @var ContainerObject[]
      */
     protected $container_objects_by_id = [];
-    /**
-     * @var array
-     */
-    protected $has_read_access = [];
 
 
     /**
@@ -70,7 +59,7 @@ final class Repository
     /**
      * @param ContainerObject $container_object
      */
-    public function deleteContainerObject(ContainerObject $container_object)/*: void*/
+    public function deleteContainerObject(ContainerObject $container_object)/* : void*/
     {
         $container_object->delete();
 
@@ -84,7 +73,7 @@ final class Repository
     /**
      * @internal
      */
-    public function dropTables()/*:void*/
+    public function dropTables()/* : void*/
     {
         self::dic()->database()->dropTable(ContainerObject::TABLE_NAME, false);
     }
@@ -100,61 +89,11 @@ final class Repository
 
 
     /**
-     * @param ilContainer|int $object
-     *
-     * @return array
-     */
-    public function getChildren(/*ilContainer*/ $object) : array
-    {
-        if ($object instanceof ilContainer) {
-            $cache_key = $object->getRefId();
-        } else {
-            if (is_int($object)) {
-                $cache_key = $object;
-            } else {
-                return [];
-            }
-        }
-
-        if ($this->children[$cache_key] === null) {
-            $this->children[$cache_key] = [];
-
-            if (is_int($object)) {
-                $object = ilObjectFactory::getInstanceByRefId($object, false);
-            }
-
-            if ($object instanceof ilContainer) {
-                $types = ilContainerSorting::_getInstance($object->getId())->getBlockPositions();
-                if (empty($types)) {
-                    $types = array_reduce(self::dic()
-                        ->objDefinition()
-                        ->getGroupedRepositoryObjectTypes($object->getType()), function (array $types, array $type) : array {
-                        $types = array_merge($types, $type["objs"]);
-
-                        return $types;
-                    }, []);
-                }
-
-                $sub_items = $object->getSubItems();
-
-                foreach ($types as $type) {
-                    foreach ((array) $sub_items[$type] as $sub_item) {
-                        $this->children[$cache_key][$sub_item["child"]] = $sub_item["title"];
-                    }
-                }
-            }
-        }
-
-        return $this->children[$cache_key];
-    }
-
-
-    /**
      * @param int $container_object_id
      *
      * @return ContainerObject|null
      */
-    public function getContainerObjectById(int $container_object_id)/*: ?ContainerObject*/
+    public function getContainerObjectById(int $container_object_id)/* : ?ContainerObject*/
     {
         if ($this->container_objects_by_id[$container_object_id] === null) {
             $this->container_objects_by_id[$container_object_id] = ContainerObject::where(["container_object_id" => $container_object_id])->first();
@@ -188,6 +127,10 @@ final class Repository
                         }));
                 } else {
                     $this->container_objects[$cache_key] = array_values(ContainerObject::get());
+
+                    foreach ($this->container_objects[$cache_key] as $container_object) {
+                        $this->container_objects_by_id[$container_object->getContainerObjectId()] = $container_object;
+                    }
                 }
             }
         }
@@ -197,24 +140,9 @@ final class Repository
 
 
     /**
-     * @param int $obj_ref_id
-     *
-     * @return bool
-     */
-    public function hasReadAccess(int $obj_ref_id) : bool
-    {
-        if ($this->has_read_access[$obj_ref_id] === null) {
-            $this->has_read_access[$obj_ref_id] = self::dic()->access()->checkAccess("read", "", $obj_ref_id);
-        }
-
-        return $this->has_read_access[$obj_ref_id];
-    }
-
-
-    /**
      * @internal
      */
-    public function installTables()/*:void*/
+    public function installTables()/* : void*/
     {
         ContainerObject::updateDB();
     }
@@ -240,7 +168,7 @@ final class Repository
     /**
      * @param ContainerObject $container_object
      */
-    public function storeContainerObject(ContainerObject $container_object)/*: void*/
+    public function storeContainerObject(ContainerObject $container_object)/* : void*/
     {
         $container_object->store();
 

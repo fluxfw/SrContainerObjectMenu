@@ -25,7 +25,7 @@ final class Repository
      */
     protected static $instance = null;
     /**
-     * @var Area[]
+     * @var Area[][]
      */
     protected $areas = [];
     /**
@@ -59,7 +59,7 @@ final class Repository
     /**
      * @param Area $area
      */
-    public function deleteArea(Area $area)/*: void*/
+    public function deleteArea(Area $area)/* : void*/
     {
         $area->delete();
 
@@ -89,7 +89,7 @@ final class Repository
     /**
      * @internal
      */
-    public function dropTables()/*:void*/
+    public function dropTables()/* : void*/
     {
         self::dic()->database()->dropTable(Area::TABLE_NAME, false);
     }
@@ -109,7 +109,7 @@ final class Repository
      *
      * @return Area|null
      */
-    public function getAreaById(int $area_id)/*: ?Area*/
+    public function getAreaById(int $area_id)/* : ?Area*/
     {
         if ($this->areas_by_id[$area_id] === null) {
             $this->areas_by_id[$area_id] = Area::where(["area_id" => $area_id])->first();
@@ -126,26 +126,28 @@ final class Repository
      */
     public function getAreas(bool $check_visible = false) : array
     {
-        $cache_key = intval($check_visible);
-
-        if ($this->areas[$cache_key] === null) {
+        if ($this->areas[$check_visible] === null) {
             if ($check_visible) {
-                $this->areas[$cache_key] = array_values(array_filter($this->getAreas(), function (Area $area) : bool {
+                $this->areas[$check_visible] = array_values(array_filter($this->getAreas(), function (Area $area) : bool {
                     return $area->isVisible();
                 }));
             } else {
-                $this->areas[$cache_key] = array_values(Area::get());
+                $this->areas[$check_visible] = array_values(Area::get());
+
+                foreach ($this->areas[$check_visible] as $area) {
+                    $this->areas_by_id[$area->getAreaId()] = $area;
+                }
             }
         }
 
-        return $this->areas[$cache_key];
+        return $this->areas[$check_visible];
     }
 
 
     /**
      * @internal
      */
-    public function installTables()/*:void*/
+    public function installTables()/* : void*/
     {
         Area::updateDB();
 
@@ -164,7 +166,7 @@ final class Repository
     /**
      * @param Area $area
      */
-    public function storeArea(Area $area)/*: void*/
+    public function storeArea(Area $area)/* : void*/
     {
         $area->store();
 

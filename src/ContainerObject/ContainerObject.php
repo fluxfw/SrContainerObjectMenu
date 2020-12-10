@@ -4,10 +4,9 @@ namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
 use ActiveRecord;
 use arConnector;
-use ilContainer;
 use ILIAS\UI\Component\Component;
 use ilMMItemFacadeInterface;
-use ilObjectFactory;
+use ilObject;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Area\Area;
@@ -56,10 +55,6 @@ class ContainerObject extends ActiveRecord
      * @con_is_notnull   true
      */
     protected $obj_ref_id = 0;
-    /**
-     * @var ilContainer|null
-     */
-    protected $object = null;
 
 
     /**
@@ -146,7 +141,7 @@ class ContainerObject extends ActiveRecord
      */
     public function getChildren() : array
     {
-        return self::srContainerObjectMenu()->containerObjects()->getChildren($this->getObject());
+        return self::srContainerObjectMenu()->objects()->getChildren($this->obj_ref_id);
     }
 
 
@@ -171,7 +166,7 @@ class ContainerObject extends ActiveRecord
     /**
      * @param int $container_object_id
      */
-    public function setContainerObjectId(int $container_object_id)/*: void*/
+    public function setContainerObjectId(int $container_object_id)/* : void*/
     {
         $this->container_object_id = $container_object_id;
     }
@@ -244,15 +239,11 @@ class ContainerObject extends ActiveRecord
 
 
     /**
-     * @return ilContainer
+     * @return ilObject|null
      */
-    public function getObject() : ilContainer
+    public function getObject()/* : ?ilObject*/
     {
-        if ($this->object === null) {
-            $this->object = ilObjectFactory::getInstanceByRefId($this->obj_ref_id, false);
-        }
-
-        return $this->object;
+        return self::srContainerObjectMenu()->objects()->getObjectByRefId($this->obj_ref_id);
     }
 
 
@@ -261,7 +252,7 @@ class ContainerObject extends ActiveRecord
      */
     public function getObjectTitle() : string
     {
-        return $this->getObject()->getTitle();
+        return (($object = $this->getObject()) !== null ? $object->getTitle() : "");
     }
 
 
@@ -291,7 +282,7 @@ class ContainerObject extends ActiveRecord
         return (($check_visible ? self::srContainerObjectMenu()
                 ->containerObjects()
                 ->isSelectedArea($this, self::srContainerObjectMenu()->selectedArea()->getSelectedArea(self::dic()->user()->getId())->getAreaId()) : true)
-            && self::srContainerObjectMenu()->containerObjects()->hasReadAccess(!empty($obj_ref_id) ? $obj_ref_id : $this->obj_ref_id));
+            && self::srContainerObjectMenu()->objects()->hasReadAccess(!empty($obj_ref_id) ? $obj_ref_id : $this->obj_ref_id));
     }
 
 

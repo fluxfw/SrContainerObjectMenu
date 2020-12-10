@@ -39,7 +39,7 @@ class AreasCtrl
     /**
      *
      */
-    public static function addTabs()/*: void*/
+    public static function addTabs()/* : void*/
     {
         self::dic()->tabs()->addTab(self::TAB_LIST_AREAS, self::plugin()->translate("areas", self::LANG_MODULE), self::dic()->ctrl()
             ->getLinkTargetByClass(self::class, self::CMD_LIST_AREAS));
@@ -49,7 +49,7 @@ class AreasCtrl
     /**
      *
      */
-    public function executeCommand()/*: void*/
+    public function executeCommand()/* : void*/
     {
         $this->setTabs();
 
@@ -79,7 +79,7 @@ class AreasCtrl
     /**
      *
      */
-    protected function listAreas()/*: void*/
+    protected function listAreas()/* : void*/
     {
         self::dic()->tabs()->activateTab(self::TAB_LIST_AREAS);
 
@@ -92,7 +92,7 @@ class AreasCtrl
     /**
      *
      */
-    protected function setTabs()/*: void*/
+    protected function setTabs()/* : void*/
     {
 
     }
