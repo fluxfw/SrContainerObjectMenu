@@ -188,16 +188,16 @@
         },
         {
             "name": "srag/dic",
-            "version": "0.31.2",
+            "version": "0.31.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/DIC.git",
-                "reference": "62479caedadd1ca25f6eb63da6593ccf7853493f"
+                "reference": "05671be74b361e1cc95862323836d13af411996b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/62479caedadd1ca25f6eb63da6593ccf7853493f",
-                "reference": "62479caedadd1ca25f6eb63da6593ccf7853493f",
+                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/05671be74b361e1cc95862323836d13af411996b",
+                "reference": "05671be74b361e1cc95862323836d13af411996b",
                 "shasum": ""
             },
             "require": {
@@ -239,7 +239,7 @@
                 "globals",
                 "trait"
             ],
-            "time": "2020-12-10T07:11:12+00:00"
+            "time": "2020-12-10T12:28:26+00:00"
         },
         {
             "name": "srag/generateplugininfoshelper",
