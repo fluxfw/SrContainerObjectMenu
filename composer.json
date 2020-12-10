@@ -1,7 +1,7 @@
 {
   "name": "srag/srcontainerobjectmenu",
   "description": "Provide repository container objects in main menu as dropdown items",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "extra": {
     "ilias_plugin": {
       "id": "srcontobjmenu",

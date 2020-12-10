@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.1.1]
+- Only show areas menu if at least 2 visible items
+
 ## [2.1.0]
 - Supports multilingual area title
 
