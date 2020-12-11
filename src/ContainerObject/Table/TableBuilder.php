@@ -48,6 +48,11 @@ class TableBuilder extends AbstractTableBuilder
         self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("add_container_object", ContainerObjectsCtrl::LANG_MODULE),
             self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectCtrl::class, ContainerObjectCtrl::CMD_ADD_CONTAINER_OBJECT, "", false, false)));
 
+        self::dic()->toolbar()->addSeparator();
+
+        self::dic()->toolbar()->addComponent(self::dic()->ui()->factory()->button()->standard(self::plugin()->translate("clean_up_lost_items", ContainerObjectsCtrl::LANG_MODULE),
+            self::dic()->ctrl()->getLinkTargetByClass(ContainerObjectsCtrl::class, ContainerObjectsCtrl::CMD_CLEAN_UP_LOST_ITEMS, "", false, false)));
+
         return parent::render();
     }
 

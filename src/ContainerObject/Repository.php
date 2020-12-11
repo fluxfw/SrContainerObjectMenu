@@ -122,7 +122,7 @@ final class Repository
             } else {
                 if (!empty($area_id)) {
                     $this->container_objects[$cache_key] = array_values(array_filter($this->getContainerObjects(null, $check_visible, $allow_no_areas),
-                        function (ContainerObject $container_object) use ($area_id, $allow_no_areas): bool {
+                        function (ContainerObject $container_object) use ($area_id, $allow_no_areas) : bool {
                             return $this->isSelectedArea($container_object, $area_id, $allow_no_areas);
                         }));
                 } else {
@@ -161,7 +161,7 @@ final class Repository
             return $allow_no_areas;
         }
 
-        return in_array($area_id, $container_object->getAreaIds());
+        return $container_object->hasAreaId($area_id);
     }
 
 

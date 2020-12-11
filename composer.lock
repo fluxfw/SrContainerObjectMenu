@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30859714ba58733101cbec2f14f4690c",
+    "content-hash": "be7510444bd5506de92fb27e27f3f2e6",
     "packages": [
         {
             "name": "srag/custominputguis",
@@ -188,16 +188,16 @@
         },
         {
             "name": "srag/dic",
-            "version": "0.31.1",
+            "version": "0.31.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/DIC.git",
-                "reference": "099f48eebc89272d9954adb0dd28a4ee362cb7fd"
+                "reference": "05671be74b361e1cc95862323836d13af411996b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/099f48eebc89272d9954adb0dd28a4ee362cb7fd",
-                "reference": "099f48eebc89272d9954adb0dd28a4ee362cb7fd",
+                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/05671be74b361e1cc95862323836d13af411996b",
+                "reference": "05671be74b361e1cc95862323836d13af411996b",
                 "shasum": ""
             },
             "require": {
@@ -239,7 +239,7 @@
                 "globals",
                 "trait"
             ],
-            "time": "2020-12-02T09:10:08+00:00"
+            "time": "2020-12-10T12:28:26+00:00"
         },
         {
             "name": "srag/generateplugininfoshelper",

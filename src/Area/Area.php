@@ -125,6 +125,17 @@ class Area extends ActiveRecord
 
 
     /**
+     * @return int[]
+     */
+    public function getContainerObjectsIds() : array
+    {
+        return array_map(function (ContainerObject $container_object) : int {
+            return $container_object->getContainerObjectId();
+        }, $this->getContainerObjects());
+    }
+
+
+    /**
      * @return string
      */
     public function getContainerObjectsTitle() : string
@@ -195,6 +206,41 @@ class Area extends ActiveRecord
     public function isVisible() : bool
     {
         return (!empty($this->getContainerObjects(true)));
+    }
+
+
+    /**
+     * @param int[] $container_object_ids
+     */
+    public function setContainerObjectsIds(array $container_object_ids)/* : void*/
+    {
+        $store_container_objects = [];
+
+        foreach ($container_object_ids as $container_object_id) {
+            $container_object = self::srContainerObjectMenu()->containerObjects()->getContainerObjectById($container_object_id);
+
+            if ($container_object->hasAreaId($this->area_id)) {
+                continue;
+            }
+
+            $container_object->addAreaId($this->area_id);
+
+            $store_container_objects[$container_object->getContainerObjectId()] = $container_object;
+        }
+
+        foreach ($this->getContainerObjects() as $container_object) {
+            if (in_array($container_object->getContainerObjectId(), $container_object_ids)) {
+                continue;
+            }
+
+            $container_object->removeAreaId($this->area_id);
+
+            $store_container_objects[$container_object->getContainerObjectId()] = $container_object;
+        }
+
+        foreach ($store_container_objects as $container_object) {
+            self::srContainerObjectMenu()->containerObjects()->storeContainerObject($container_object);
+        }
     }
 
 

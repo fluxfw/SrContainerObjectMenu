@@ -6,11 +6,14 @@ use ilSrContainerObjectMenuPlugin;
 use ilTextInputGUI;
 use srag\CustomInputGUIs\SrContainerObjectMenu\FormBuilder\AbstractFormBuilder;
 use srag\CustomInputGUIs\SrContainerObjectMenu\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
+use srag\CustomInputGUIs\SrContainerObjectMenu\MultiSelectSearchNewInputGUI\MultiSelectSearchNewInputGUI;
 use srag\CustomInputGUIs\SrContainerObjectMenu\TabsInputGUI\MultilangualTabsInputGUI;
 use srag\CustomInputGUIs\SrContainerObjectMenu\TabsInputGUI\TabsInputGUI;
 use srag\Plugins\SrContainerObjectMenu\Area\Area;
 use srag\Plugins\SrContainerObjectMenu\Area\AreaCtrl;
 use srag\Plugins\SrContainerObjectMenu\Area\AreasCtrl;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObject;
+use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -70,7 +73,8 @@ class FormBuilder extends AbstractFormBuilder
     protected function getData() : array
     {
         $data = [
-            "titles" => $this->area->getTitles()
+            "titles"            => $this->area->getTitles(),
+            "container_objects" => $this->area->getContainerObjectsIds()
         ];
 
         return $data;
@@ -88,6 +92,14 @@ class FormBuilder extends AbstractFormBuilder
         MultilangualTabsInputGUI::generateLegacy($fields["titles"]->getInput(), [
             new ilTextInputGUI(self::plugin()->translate("title", AreasCtrl::LANG_MODULE), "title")
         ], true);
+
+        $fields["container_objects"] = (new InputGUIWrapperUIInputComponent(new MultiSelectSearchNewInputGUI(self::plugin()->translate("container_objects", ContainerObjectsCtrl::LANG_MODULE))));
+        $fields["container_objects"]->getInput()->setOptions(array_reduce(self::srContainerObjectMenu()->containerObjects()->getContainerObjects(),
+            function (array $container_objects, ContainerObject $container_object) : array {
+                $container_objects[$container_object->getContainerObjectId()] = $container_object->getTitle();
+
+                return $container_objects;
+            }, []));
 
         return $fields;
     }
@@ -112,6 +124,7 @@ class FormBuilder extends AbstractFormBuilder
     protected function storeData(array $data)/* : void*/
     {
         $this->area->setTitles((array) ($data["titles"]));
+        $this->area->setContainerObjectsIds(MultiSelectSearchNewInputGUI::cleanValues((array) $data["container_objects"]));
 
         self::srContainerObjectMenu()->areas()->storeArea($this->area);
     }

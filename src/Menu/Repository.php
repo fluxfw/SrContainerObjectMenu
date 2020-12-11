@@ -5,6 +5,7 @@ namespace srag\Plugins\SrContainerObjectMenu\Menu;
 use ActiveRecord;
 use ilDBConstants;
 use ilGSIdentificationStorage;
+use ILIAS\GlobalScreen\Scope\MainMenu\Factory\Item\Lost;
 use ilMMItemFacadeInterface;
 use ilMMItemStorage;
 use ilMMItemTranslationStorage;
@@ -30,6 +31,10 @@ final class Repository
      * @var self|null
      */
     protected static $instance = null;
+    /**
+     * @var ilMMItemFacadeInterface[]
+     */
+    protected $base_menu_items = [];
     /**
      * @var ilMMItemFacadeInterface[]
      */
@@ -59,12 +64,22 @@ final class Repository
 
 
     /**
+     * @return int
+     */
+    public function cleanUpLostItems() : int
+    {
+        return $this->deleteMenuItems(self::srContainerObjectMenu()->containerObjects()->factory()->newInstance()->getMenuIdentifier(), true, true);
+    }
+
+
+    /**
      * @param string $base_menu_identifier
      * @param bool   $strict
+     * @param bool   $only_lost_items
      *
      * @return int
      */
-    public function deleteMenuItems(string $base_menu_identifier, bool $strict = true) : int
+    public function deleteMenuItems(string $base_menu_identifier, bool $strict = true, bool $only_lost_items = false) : int
     {
         $count = 0;
 
@@ -86,12 +101,20 @@ final class Repository
                 ], "LIKE");
             }
 
-            foreach ($where->get() as $menu_item) {
-                $menu_item->delete();
+            foreach ($where->get() as $item) {
+                if ($only_lost_items) {
+                    if (!$this->isLostMenuItem($this->getMenuItem($item->getIdentification()))) {
+                        continue;
+                    }
+                }
+
+                $item->delete();
+
                 $count++;
             }
         }
 
+        $this->base_menu_items = [];
         $this->menu_items = [];
 
         return $count;
@@ -117,27 +140,42 @@ final class Repository
 
 
     /**
-     * @param string $menu_identifier
+     * @param string $base_menu_identifier
      *
      * @return ilMMItemFacadeInterface|null
      */
-    public function getMenuItem(string $menu_identifier)/* : ?ilMMItemFacadeInterface*/
+    public function getBaseMenuItem(string $base_menu_identifier)/* : ?ilMMItemFacadeInterface*/
     {
-        if ($this->menu_items[$menu_identifier] === null) {
+        if ($this->base_menu_items[$base_menu_identifier] === null) {
             $identifications = ilMMItemStorage::where([
-                "identification" => '%' . $menu_identifier
+                "identification" => '%' . $base_menu_identifier
             ], "LIKE")->getArray(null, "identification");
 
             $identification = end($identifications);
 
             if ($identification) {
-                $this->menu_items[$menu_identifier] = self::dic()->mainMenuItem()->getItemFacadeForIdentificationString($identification);
+                $this->base_menu_items[$base_menu_identifier] = $this->getMenuItem($identification);
             } else {
-                $this->menu_items[$menu_identifier] = false;
+                $this->base_menu_items[$base_menu_identifier] = false;
             }
         }
 
-        return ($this->menu_items[$menu_identifier] ?: null);
+        return ($this->base_menu_items[$base_menu_identifier] ?: null);
+    }
+
+
+    /**
+     * @param string $menu_identifier
+     *
+     * @return ilMMItemFacadeInterface
+     */
+    public function getMenuItem(string $menu_identifier) : ilMMItemFacadeInterface
+    {
+        if ($this->menu_items[$menu_identifier] === null) {
+            $this->menu_items[$menu_identifier] = self::dic()->mainMenuItem()->getItemFacadeForIdentificationString($menu_identifier);
+        }
+
+        return $this->menu_items[$menu_identifier];
     }
 
 
@@ -147,5 +185,16 @@ final class Repository
     public function installTables()/* : void*/
     {
 
+    }
+
+
+    /**
+     * @param ilMMItemFacadeInterface $menu_item
+     *
+     * @return bool
+     */
+    public function isLostMenuItem(ilMMItemFacadeInterface $menu_item) : bool
+    {
+        return $menu_item->item() instanceof Lost;
     }
 }

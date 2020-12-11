@@ -81,6 +81,17 @@ class ContainerObject extends ActiveRecord
 
 
     /**
+     * @param int $area_id
+     */
+    public function addAreaId(int $area_id)/* : void*/
+    {
+        if (!$this->hasAreaId($area_id)) {
+            $this->area_ids[] = $area_id;
+        }
+    }
+
+
+    /**
      * @return Component[]
      */
     public function getActions() : array
@@ -110,7 +121,7 @@ class ContainerObject extends ActiveRecord
      */
     public function setAreaIds(array $area_ids)/* : void*/
     {
-        $this->area_ids = array_map("intval", $area_ids);
+        $this->area_ids = array_map("intval", array_values($area_ids));
     }
 
 
@@ -207,7 +218,7 @@ class ContainerObject extends ActiveRecord
      */
     public function getMenuItem(/*?*/ int $child_obj_ref_id = null)/* : ?ilMMItemFacadeInterface*/
     {
-        return self::srContainerObjectMenu()->menu()->getMenuItem($this->getMenuIdentifier($child_obj_ref_id));
+        return self::srContainerObjectMenu()->menu()->getBaseMenuItem($this->getMenuIdentifier($child_obj_ref_id));
     }
 
 
@@ -272,6 +283,17 @@ class ContainerObject extends ActiveRecord
 
 
     /**
+     * @param int $area_id
+     *
+     * @return bool
+     */
+    public function hasAreaId(int $area_id) : bool
+    {
+        return in_array($area_id, $this->area_ids);
+    }
+
+
+    /**
      * @param int|null $obj_ref_id
      * @param bool     $check_visible
      *
@@ -283,6 +305,19 @@ class ContainerObject extends ActiveRecord
                 ->containerObjects()
                 ->isSelectedArea($this, self::srContainerObjectMenu()->selectedArea()->getSelectedArea(self::dic()->user()->getId())->getAreaId()) : true)
             && self::srContainerObjectMenu()->objects()->hasReadAccess(!empty($obj_ref_id) ? $obj_ref_id : $this->obj_ref_id));
+    }
+
+
+    /**
+     * @param int $area_id
+     */
+    public function removeAreaId(int $area_id)/* : void*/
+    {
+        if ($this->hasAreaId($area_id)) {
+            $this->setAreaIds(array_filter($this->area_ids, function (int $area_id_) use ($area_id) : bool {
+                return ($area_id_ !== $area_id);
+            }));
+        }
     }
 
 
