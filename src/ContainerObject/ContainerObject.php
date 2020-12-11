@@ -207,7 +207,7 @@ class ContainerObject extends ActiveRecord
      */
     public function getMenuItem(/*?*/ int $child_obj_ref_id = null)/* : ?ilMMItemFacadeInterface*/
     {
-        return self::srContainerObjectMenu()->menu()->getMenuItem($this->getMenuIdentifier($child_obj_ref_id));
+        return self::srContainerObjectMenu()->menu()->getBaseMenuItem($this->getMenuIdentifier($child_obj_ref_id));
     }
 
 

@@ -17,6 +17,7 @@ container_objects_add#:#Add
 container_objects_add_container_object#:#Add container object
 container_objects_added_container_object#:#Container object %s added
 container_objects_cancel#:#Cancel
+container_objects_clean_up_lost_items#:#Clean up main menu lost items
 container_objects_container_object#:#Container object
 container_objects_container_objects#:#Container objects
 container_objects_edit_container_object#:#Edit container object

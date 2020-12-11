@@ -3,6 +3,7 @@
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
 use ilSrContainerObjectMenuPlugin;
+use ilUtil;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
@@ -21,6 +22,7 @@ class ContainerObjectsCtrl
     use DICTrait;
     use SrContainerObjectMenuTrait;
 
+    const CMD_CLEAN_UP_LOST_ITEMS = "cleanUpLostItems";
     const CMD_LIST_CONTAINER_OBJECTS = "listContainerObjects";
     const LANG_MODULE = "container_objects";
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
@@ -64,6 +66,7 @@ class ContainerObjectsCtrl
                 $cmd = self::dic()->ctrl()->getCmd();
 
                 switch ($cmd) {
+                    case self::CMD_CLEAN_UP_LOST_ITEMS:
                     case self::CMD_LIST_CONTAINER_OBJECTS:
                         $this->{$cmd}();
                         break;
@@ -73,6 +76,19 @@ class ContainerObjectsCtrl
                 }
                 break;
         }
+    }
+
+
+    /**
+     *
+     */
+    protected function cleanUpLostItems()/* : void*/
+    {
+        $count = self::srContainerObjectMenu()->menu()->cleanUpLostItems();
+
+        ilUtil::sendInfo(strval($count), true);
+
+        self::dic()->ctrl()->redirect($this, self::CMD_LIST_CONTAINER_OBJECTS);
     }
 
 

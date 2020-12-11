@@ -1,5 +1,8 @@
 # Changelog
 
+## [x]
+- Clean up lost menu entries
+
 ## [2.1.1]
 - Only show areas menu if at least 2 visible items
 
