@@ -86,9 +86,7 @@ class ContainerObject extends ActiveRecord
     public function addAreaId(int $area_id)/* : void*/
     {
         if (!$this->hasAreaId($area_id)) {
-            $area_ids = $this->area_ids;
-            $area_ids[] = $area_id;
-            $this->setAreaIds(array_unique($area_ids));
+            $this->area_ids[] = $area_id;
         }
     }
 
