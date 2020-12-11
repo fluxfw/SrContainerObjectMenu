@@ -1,6 +1,6 @@
 # Changelog
 
-## [x]
+## [2.2.0]
 - Clean up lost menu entries
 - Select container objects from area
 
