@@ -64,9 +64,7 @@ final class Repository
         $area->delete();
 
         foreach (self::srContainerObjectMenu()->containerObjects()->getContainerObjects($area->getAreaId()) as $container_object) {
-            $container_object->setAreaIds(array_values(array_filter($container_object->getAreaIds(), function (int $area_id) use ($area) : bool {
-                return ($area_id !== $area->getAreaId());
-            })));
+            $container_object->removeAreaId($area->getAreaId());
 
             self::srContainerObjectMenu()->containerObjects()->storeContainerObject($container_object);
         }

@@ -2,6 +2,7 @@
 
 ## [x]
 - Clean up lost menu entries
+- Select container objects from area
 
 ## [2.1.1]
 - Only show areas menu if at least 2 visible items

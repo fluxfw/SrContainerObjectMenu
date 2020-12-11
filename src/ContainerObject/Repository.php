@@ -161,7 +161,7 @@ final class Repository
             return $allow_no_areas;
         }
 
-        return in_array($area_id, $container_object->getAreaIds());
+        return $container_object->hasAreaId($area_id);
     }
 
 
