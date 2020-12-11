@@ -103,7 +103,7 @@ final class Repository
 
             foreach ($where->get() as $item) {
                 if ($only_lost_items) {
-                    if (!$this->isLostItem($item->getIdentification())) {
+                    if (!$this->isLostMenuItem($this->getMenuItem($item->getIdentification()))) {
                         continue;
                     }
                 }
@@ -193,7 +193,7 @@ final class Repository
      *
      * @return bool
      */
-    public function isLostItem(ilMMItemFacadeInterface $menu_item) : bool
+    public function isLostMenuItem(ilMMItemFacadeInterface $menu_item) : bool
     {
         return $menu_item->item() instanceof Lost;
     }

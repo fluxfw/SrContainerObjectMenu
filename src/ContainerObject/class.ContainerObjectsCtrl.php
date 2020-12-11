@@ -86,7 +86,9 @@ class ContainerObjectsCtrl
     {
         $count = self::srContainerObjectMenu()->menu()->cleanUpLostItems();
 
-        ilUtil::sendInfo(strval($count), true);
+        ilUtil::sendInfo(self::plugin()->translate("cleaned_up_lost_items",self::LANG_MODULE,[
+            $count
+        ]), true);
 
         self::dic()->ctrl()->redirect($this, self::CMD_LIST_CONTAINER_OBJECTS);
     }
