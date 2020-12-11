@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.2.1]
+- Fix add new areas
+
 ## [2.2.0]
 - Clean up lost menu entries
 - Select container objects from area

@@ -120,6 +120,10 @@ class Area extends ActiveRecord
      */
     public function getContainerObjects(bool $check_visible = false) : array
     {
+        if (empty($this->area_id)) {
+            return [];
+        }
+
         return self::srContainerObjectMenu()->containerObjects()->getContainerObjects($this->area_id, $check_visible, false);
     }
 
@@ -214,6 +218,10 @@ class Area extends ActiveRecord
      */
     public function setContainerObjectsIds(array $container_object_ids)/* : void*/
     {
+        if (empty($this->area_id)) {
+            return;
+        }
+
         $store_container_objects = [];
 
         foreach ($container_object_ids as $container_object_id) {

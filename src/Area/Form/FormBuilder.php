@@ -123,6 +123,10 @@ class FormBuilder extends AbstractFormBuilder
      */
     protected function storeData(array $data)/* : void*/
     {
+        if (empty($this->area->getAreaId())) {
+            self::srContainerObjectMenu()->areas()->storeArea($this->area);
+        }
+
         $this->area->setTitles((array) ($data["titles"]));
         $this->area->setContainerObjectsIds(MultiSelectSearchNewInputGUI::cleanValues((array) $data["container_objects"]));
 
