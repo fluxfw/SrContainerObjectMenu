@@ -191,23 +191,7 @@ class ContainerObject extends ActiveRecord
      */
     public function getMenuIdentifier(/*?*/ int $child_obj_ref_id = null,/*?*/ int $position = null) : string
     {
-        $parts = [
-            ilSrContainerObjectMenuPlugin::PLUGIN_ID
-        ];
-
-        if (!empty($this->container_object_id)) {
-            $parts[] = $this->container_object_id;
-
-            if (!empty($child_obj_ref_id)) {
-                $parts[] = $child_obj_ref_id;
-
-                if (!empty($position)) {
-                    $parts[] = $position;
-                }
-            }
-        }
-
-        return implode("_", $parts);
+        return self::srContainerObjectMenu()->containerObjects()->getMenuIdentifier($this->container_object_id, $child_obj_ref_id, $position);
     }
 
 
@@ -346,6 +330,10 @@ class ContainerObject extends ActiveRecord
         switch ($field_name) {
             case "area_ids":
                 return (array) json_decode($field_value, true);
+
+            case "container_object_id":
+            case "obj_ref_id":
+                return intval($field_value);
 
             default:
                 return parent::wakeUp($field_name, $field_value);

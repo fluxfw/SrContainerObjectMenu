@@ -157,20 +157,7 @@ class Area extends ActiveRecord
      */
     public function getMenuIdentifier(/*?*/ int $position = null) : string
     {
-        $parts = [
-            ilSrContainerObjectMenuPlugin::PLUGIN_ID,
-            "areas"
-        ];
-
-        if (!empty($this->area_id)) {
-            $parts[] = $this->area_id;
-
-            if (!empty($position)) {
-                $parts[] = $position;
-            }
-        }
-
-        return implode("_", $parts);
+        return self::srContainerObjectMenu()->areas()->getMenuIdentifier($this->area_id, $position);
     }
 
 
@@ -285,6 +272,9 @@ class Area extends ActiveRecord
     public function wakeUp(/*string*/ $field_name, $field_value)
     {
         switch ($field_name) {
+            case "area_id":
+                return intval($field_value);
+
             case "titles":
                 return (array) json_decode($field_value, true);
 

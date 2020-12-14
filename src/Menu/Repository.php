@@ -68,7 +68,7 @@ final class Repository
      */
     public function cleanUpLostItems() : int
     {
-        return $this->deleteMenuItems(self::srContainerObjectMenu()->containerObjects()->factory()->newInstance()->getMenuIdentifier(), true, true);
+        return $this->deleteMenuItems(self::srContainerObjectMenu()->containerObjects()->getMenuIdentifier(), true, true);
     }
 
 
@@ -126,7 +126,7 @@ final class Repository
      */
     public function dropTables()/* : void*/
     {
-        $this->deleteMenuItems(self::srContainerObjectMenu()->containerObjects()->factory()->newInstance()->getMenuIdentifier(), false);
+        $this->deleteMenuItems(self::srContainerObjectMenu()->containerObjects()->getMenuIdentifier(), false);
     }
 
 

@@ -85,22 +85,15 @@ class SelectedArea extends ActiveRecord
      */
     public function getArea()/* : ?Area*/
     {
-        $area_id = intval($this->area_id);
-
         $areas = self::srContainerObjectMenu()->areas()->getAreas(true);
 
         foreach ($areas as $area) {
-            if ($area->getAreaId() === $area_id) {
+            if ($area->getAreaId() === $this->area_id) {
                 return $area;
             }
         }
 
-        $area = reset($areas);
-        if ($area) {
-            return $area;
-        } else {
-            return null;
-        }
+        return (reset($areas) ?: null);
     }
 
 
@@ -194,5 +187,36 @@ class SelectedArea extends ActiveRecord
     public function setUsrId(int $usr_id)/* : void*/
     {
         $this->usr_id = $usr_id;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function sleep(/*string*/ $field_name)
+    {
+        $field_value = $this->{$field_name};
+
+        switch ($field_name) {
+            default:
+                return parent::sleep($field_name);
+        }
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function wakeUp(/*string*/ $field_name, $field_value)
+    {
+        switch ($field_name) {
+            case "area_id":
+            case "select_area_id":
+            case "usr_id":
+                return intval($field_value);
+
+            default:
+                return parent::wakeUp($field_name, $field_value);
+        }
     }
 }

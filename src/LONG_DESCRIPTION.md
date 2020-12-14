@@ -72,6 +72,8 @@ If you delete container objects or areas from the plugin or uninstall the plugin
 
 Otherwise, you can ignore the lost main menu items because not viewed in the menu or delete it manually
 
+The plugin has a manual action too for delete lost menu items of the plugin, which is more advanced than the core action is
+
 ### Custom event plugins
 
 If you need to adapt some custom SrContainerObjectMenu changes which can not be configured to your needs, SrContainerObjectMenu will trigger some events, you can listen and react to this in an other custom plugin (plugin type is no matter)
@@ -102,7 +104,7 @@ class ilXPlugin extends ...
 		switch ($a_component) {
 			case IL_COMP_PLUGIN . "/" . ilSrContainerObjectMenuPlugin::PLUGIN_NAME:
 				switch ($a_event) {
-					case ilSrContainerObjectMenuPlugin::EVENT_...;
+					case ilSrContainerObjectMenuPlugin::EVENT_...:
 						...
 						break;
 
