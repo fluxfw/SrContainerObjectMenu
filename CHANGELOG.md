@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.2]
+- Update readme
+- Cache menu menu identifier
+
 ## [2.2.1]
 - Fix add new areas
 

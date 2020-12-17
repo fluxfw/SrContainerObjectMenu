@@ -32,6 +32,10 @@ final class Repository
      * @var ContainerObject[]
      */
     protected $container_objects_by_id = [];
+    /**
+     * @var string[]
+     */
+    protected $menu_identifiers = [];
 
 
     /**
@@ -136,6 +140,41 @@ final class Repository
         }
 
         return $this->container_objects[$cache_key];
+    }
+
+
+    /**
+     * @param int|null $container_object_id
+     * @param int|null $child_obj_ref_id
+     * @param int|null $position
+     *
+     * @return string
+     */
+    public function getMenuIdentifier(/*?*/ int $container_object_id = null,/*?*/ int $child_obj_ref_id = null,/*?*/ int $position = null) : string
+    {
+        $cache_key = intval($container_object_id) . "_" . intval($child_obj_ref_id) . "_" . intval($position);
+
+        if ($this->menu_identifiers[$cache_key] === null) {
+            $parts = [
+                ilSrContainerObjectMenuPlugin::PLUGIN_ID
+            ];
+
+            if (!empty($container_object_id)) {
+                $parts[] = $container_object_id;
+
+                if (!empty($child_obj_ref_id)) {
+                    $parts[] = $child_obj_ref_id;
+
+                    if (!empty($position)) {
+                        $parts[] = $position;
+                    }
+                }
+            }
+
+            $this->menu_identifiers[$cache_key] = implode("_", $parts);
+        }
+
+        return $this->menu_identifiers[$cache_key];
     }
 
 

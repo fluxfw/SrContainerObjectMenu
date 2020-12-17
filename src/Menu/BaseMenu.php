@@ -90,7 +90,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
                 self::dic()->ctrl()->setParameterByClass(SelectAreaCtrl::class, SelectAreaCtrl::GET_PARAM_AREA_ID, $area->getAreaId());
 
                 return $this->symbolArea($this->mainmenu->link($this->if->identifier($area->getMenuIdentifier($position)))
-                    ->withParent($this->top_identifiers[$this->getAreasMenuIdentifier()])
+                    ->withParent($this->top_identifiers[self::srContainerObjectMenu()->areas()->getMenuIdentifier()])
                     ->withTitle($area->getTitle())
                     ->withAction(str_replace("\\", "%5C", self::dic()->ctrl()->getLinkTargetByClass([ilUIPluginRouterGUI::class, SelectAreaCtrl::class], SelectAreaCtrl::CMD_SELECT_AREA)))
                     ->withPosition($position)
@@ -128,7 +128,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
                 return $top_item;
             }, self::srContainerObjectMenu()->containerObjects()->getContainerObjects());
 
-            $top_item = $this->symbolArea($this->mainmenu->topParentItem($this->if->identifier($this->getAreasMenuIdentifier()))
+            $top_item = $this->symbolArea($this->mainmenu->topParentItem($this->if->identifier(self::srContainerObjectMenu()->areas()->getMenuIdentifier()))
                 ->withTitle(self::srContainerObjectMenu()->selectedArea()->getSelectedArea(self::dic()->user()->getId())->getTitle())
                 ->withAvailableCallable(function () : bool {
                     return self::plugin()->getPluginObject()->isActive();
@@ -136,20 +136,11 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
                 ->withVisibilityCallable(function () : bool {
                     return (count(self::srContainerObjectMenu()->areas()->getAreas(true)) >= 2);
                 }));
-            $this->top_identifiers[$this->getAreasMenuIdentifier()] = $top_item->getProviderIdentification();
+            $this->top_identifiers[self::srContainerObjectMenu()->areas()->getMenuIdentifier()] = $top_item->getProviderIdentification();
             $this->top_items[] = $top_item;
         }
 
         return $this->top_items;
-    }
-
-
-    /**
-     * @return string
-     */
-    protected function getAreasMenuIdentifier() : string
-    {
-        return self::srContainerObjectMenu()->areas()->factory()->newInstance()->getMenuIdentifier();
     }
 
 

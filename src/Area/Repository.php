@@ -32,6 +32,10 @@ final class Repository
      * @var Area[]
      */
     protected $areas_by_id = [];
+    /**
+     * @var string[]
+     */
+    protected $menu_identifiers = [];
 
 
     /**
@@ -139,6 +143,37 @@ final class Repository
         }
 
         return $this->areas[$check_visible];
+    }
+
+
+    /**
+     * @param int|null $area_id
+     * @param int|null $position
+     *
+     * @return string
+     */
+    public function getMenuIdentifier(/*?*/ int $area_id = null,/*?*/ int $position = null) : string
+    {
+        $cache_key = intval($area_id) . "_" . intval($position);
+
+        if ($this->menu_identifiers[$cache_key] === null) {
+            $parts = [
+                ilSrContainerObjectMenuPlugin::PLUGIN_ID,
+                "areas"
+            ];
+
+            if (!empty($area_id)) {
+                $parts[] = $area_id;
+
+                if (!empty($position)) {
+                    $parts[] = $position;
+                }
+            }
+
+            $this->menu_identifiers[$cache_key] = implode("_", $parts);
+        }
+
+        return $this->menu_identifiers[$cache_key];
     }
 
 
