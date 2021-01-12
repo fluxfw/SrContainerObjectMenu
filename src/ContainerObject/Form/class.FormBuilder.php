@@ -123,7 +123,7 @@ class FormBuilder extends AbstractFormBuilder
             $fields["obj_ref_id"]->getInput()->getExplorerGUI()->setSelectableTypes(["cat", "crs", "fold", "grp", "root"]);
         }
 
-        $fields["areas"] = (new InputGUIWrapperUIInputComponent(new MultiSelectSearchNewInputGUI(self::plugin()->translate("areas", AreasCtrl::LANG_MODULE))));
+        $fields["areas"] = new InputGUIWrapperUIInputComponent(new MultiSelectSearchNewInputGUI(self::plugin()->translate("areas", AreasCtrl::LANG_MODULE)));
         $fields["areas"]->getInput()->setOptions(array_reduce(self::srContainerObjectMenu()->areas()->getAreas(), function (array $areas, Area $area) : array {
             $areas[$area->getAreaId()] = $area->getTitle();
 

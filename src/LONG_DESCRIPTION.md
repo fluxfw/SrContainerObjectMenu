@@ -42,6 +42,10 @@ Container objects without areas will display still for the user, independently o
 
 ![Areas table](../doc/images/areas_table.png)
 
+#### Add area form
+
+![Add area form](../doc/images/add_area_form.png)
+
 #### Edit area form
 
 ![Edit area form](../doc/images/edit_area_form.png)
@@ -73,6 +77,24 @@ If you delete container objects or areas from the plugin or uninstall the plugin
 Otherwise, you can ignore the lost main menu items because not viewed in the menu or delete it manually
 
 The plugin has a manual action too for delete lost menu items of the plugin, which is more advanced than the core action is
+
+### Use selected area color and title in skin
+
+You can use the selected area color and title in your skin like with CSS native variables, which the plugin are delivered
+
+```
+background-color: var(--srcontainerobjectmenu_area_color, #000000);
+content: var(--srcontainerobjectmenu_area_title, Empty);
+```
+
+The second parameter is a fallback value, if the plugin is disabled in the update state
+
+Or use in JS too
+
+```js
+getComputedStyle(document.documentElement).getPropertyValue("--srcontainerobjectmenu_area_color") || "#000000";
+getComputedStyle(document.documentElement).getPropertyValue("--srcontainerobjectmenu_area_title") || "Empty";
+```
 
 ### Custom event plugins
 

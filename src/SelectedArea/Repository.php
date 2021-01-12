@@ -4,6 +4,7 @@ namespace srag\Plugins\SrContainerObjectMenu\SelectedArea;
 
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
+use srag\Plugins\SrContainerObjectMenu\Area\Area;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -24,6 +25,10 @@ final class Repository
      * @var self|null
      */
     protected static $instance = null;
+    /**
+     * @var Area[]
+     */
+    protected $areas = [];
     /**
      * @var SelectedArea[]|null
      */
@@ -71,6 +76,36 @@ final class Repository
     public function factory() : Factory
     {
         return Factory::getInstance();
+    }
+
+
+    /**
+     * @param SelectedArea $selected_area
+     *
+     * @return Area|null
+     */
+    public function getArea(SelectedArea $selected_area)/* : ?Area*/
+    {
+        if (empty($selected_area->getSelectAreaId())) {
+            return null;
+        }
+
+        if ($this->areas[$selected_area->getSelectAreaId()] === null) {
+            $areas = self::srContainerObjectMenu()->areas()->getAreas(true);
+
+            foreach ($areas as $area) {
+                if ($area->getAreaId() === $selected_area->getAreaId(true)) {
+                    $this->areas[$selected_area->getSelectAreaId()] = $area;
+                    break;
+                }
+            }
+
+            if ($this->areas[$selected_area->getSelectAreaId()] === null) {
+                $this->areas[$selected_area->getSelectAreaId()] = reset($areas);
+            }
+        }
+
+        return ($this->areas[$selected_area->getSelectAreaId()] ?: null);
     }
 
 
@@ -130,5 +165,6 @@ final class Repository
 
         $this->selected_areas_by_usr_id[$selected_area->getUsrId()] = $selected_area;
         $this->selected_areas = null;
+        unset($this->areas[$selected_area->getSelectAreaId()]);
     }
 }

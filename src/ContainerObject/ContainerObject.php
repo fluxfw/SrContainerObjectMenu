@@ -108,6 +108,24 @@ class ContainerObject extends ActiveRecord
 
 
     /**
+     * @return Area|null
+     */
+    public function getArea()/* : ?Area*/
+    {
+        return self::srContainerObjectMenu()->containerObjects()->getArea($this);
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getAreaColorHex() : string
+    {
+        return (($area = $this->getArea()) !== null ? $area->getColorHex() : "");
+    }
+
+
+    /**
      * @return int[]
      */
     public function getAreaIds() : array
@@ -122,6 +140,17 @@ class ContainerObject extends ActiveRecord
     public function setAreaIds(array $area_ids)/* : void*/
     {
         $this->area_ids = array_map("intval", array_values($area_ids));
+    }
+
+
+    /**
+     * @param int|null $position
+     *
+     * @return string
+     */
+    public function getAreaMenuIdentifier(/*?*/ int $position = null) : string
+    {
+        return (($area = $this->getArea()) !== null ? $area->getMenuIdentifier($position) : "");
     }
 
 
@@ -180,6 +209,18 @@ class ContainerObject extends ActiveRecord
     public function setContainerObjectId(int $container_object_id)/* : void*/
     {
         $this->container_object_id = $container_object_id;
+    }
+
+
+    /**
+     * @param int|null $child_obj_ref_id
+     * @param int|null $position
+     *
+     * @return string
+     */
+    public function getMenuCSSIdentifier(/*?*/ int $child_obj_ref_id = null,/*?*/ int $position = null) : string
+    {
+        return self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier($this->getMenuIdentifier($child_obj_ref_id, $position));
     }
 
 

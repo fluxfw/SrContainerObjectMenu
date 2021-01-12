@@ -73,6 +73,21 @@ class TableBuilder extends AbstractTableBuilder
                         return strval($value);
                     }
                 }),
+                self::dataTableUI()->column()->column("color_hex",
+                    self::plugin()->translate("color", AreasCtrl::LANG_MODULE))->withSortable(false)->withFormatter(new class() extends DefaultFormatter {
+
+                    /**
+                     * @inheritDoc
+                     */
+                    public function formatRowCell(Format $format, $value, Column $column, RowData $row, string $table_id) : string
+                    {
+                        if (!empty($value)) {
+                            return '<div style="background-color:' . strval($value) . ';height:25px;width:25px;"></div>';
+                        } else {
+                            return "";
+                        }
+                    }
+                }),
                 self::dataTableUI()->column()->column("actions",
                     self::plugin()->translate("actions", AreasCtrl::LANG_MODULE))->withFormatter(self::dataTableUI()->column()->formatter()->actions()->actionsDropdown())
             ], new DataFetcher())->withPlugin(self::plugin());
