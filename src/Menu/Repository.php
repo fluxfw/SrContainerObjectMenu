@@ -36,6 +36,10 @@ final class Repository
      */
     protected $base_menu_items = [];
     /**
+     * @var string[]
+     */
+    protected $menu_css_identifier = [];
+    /**
      * @var ilMMItemFacadeInterface[]
      */
     protected $menu_items = [];
@@ -161,6 +165,21 @@ final class Repository
         }
 
         return ($this->base_menu_items[$base_menu_identifier] ?: null);
+    }
+
+
+    /**
+     * @param string $menu_identifier
+     *
+     * @return string
+     */
+    public function getMenuCSSIdentifier(string $menu_identifier) : string
+    {
+        if ($this->menu_css_identifier[$menu_identifier] === null) {
+            $this->menu_css_identifier[$menu_identifier] = "#mm_" . $menu_identifier;
+        }
+
+        return $this->menu_css_identifier[$menu_identifier];
     }
 
 

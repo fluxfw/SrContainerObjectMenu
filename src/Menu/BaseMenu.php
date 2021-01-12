@@ -30,7 +30,12 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
     use DICTrait;
     use SrContainerObjectMenuTrait;
 
+    const BASE_BORDER_STYLE = "2px solid";
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
+    /**
+     * @var array
+     */
+    protected $css = [];
     /**
      * @var isItem[]|null
      */
@@ -89,6 +94,14 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
 
                 self::dic()->ctrl()->setParameterByClass(SelectAreaCtrl::class, SelectAreaCtrl::GET_PARAM_AREA_ID, $area->getAreaId());
 
+                $this->css[] = ":root{" . implode("", array_map(function (string $key, string $value) use ($area) : string {
+                        return "--" . $area->getMenuIdentifier() . "_" . $key . ":" . $value . ";"; // TODO: How to escape?
+                    }, array_keys($area->getCssVariables()), $area->getCssVariables())) . "}";
+
+                if (!empty($area->getColorHex())) {
+                    $this->css[] = $area->getMenuCSSIdentifier($position) . "{border-left:" . self::BASE_BORDER_STYLE . " var(--" . $area->getMenuIdentifier() . "_color);}";
+                }
+
                 return $this->symbolArea($this->mainmenu->link($this->if->identifier($area->getMenuIdentifier($position)))
                     ->withParent($this->top_identifiers[self::srContainerObjectMenu()->areas()->getMenuIdentifier()])
                     ->withTitle($area->getTitle())
@@ -101,6 +114,8 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
                         return $area->isVisible();
                     }));
             }, array_keys(self::srContainerObjectMenu()->areas()->getAreas()), self::srContainerObjectMenu()->areas()->getAreas()));
+
+            $this->deliverCss();
         }
 
         return $this->sub_items;
@@ -114,6 +129,10 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
     {
         if ($this->top_items === null) {
             $this->top_items = array_map(function (ContainerObject $container_object) : isItem {
+                if (!empty($container_object->getAreaColorHex())) {
+                    $this->css[] = $container_object->getMenuCSSIdentifier() . "{border-bottom:" . self::BASE_BORDER_STYLE . " var(--" . $container_object->getAreaMenuIdentifier() . "_color);}";
+                }
+
                 $top_item = $this->symbol($this->mainmenu->topParentItem($this->if->identifier($container_object->getMenuIdentifier()))
                     ->withTitle($container_object->getObjectTitle())
                     ->withAvailableCallable(function () : bool {
@@ -141,6 +160,32 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
         }
 
         return $this->top_items;
+    }
+
+
+    /**
+     *
+     */
+    protected function deliverCss()/* : void*/
+    {
+        $selected_area = self::srContainerObjectMenu()->selectedArea()->getSelectedArea(self::dic()->user()->getId());
+
+        if ($selected_area->getArea() !== null) {
+            $this->css[] = ":root{" . implode("", array_map(function (string $key) use ($selected_area) : string {
+                    return "--" . strtolower(ilSrContainerObjectMenuPlugin::PLUGIN_NAME) . "_area_" . $key . ":var(--" . $selected_area->getAreaMenuIdentifier() . "_" . $key . ");";
+                }, array_keys($selected_area->getAreaCssVariables()))) . "}";
+
+            if (!empty($selected_area->getAreaColorHex())) {
+                $this->css[] = self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier(self::srContainerObjectMenu()->areas()->getMenuIdentifier()) . "{border-bottom:" . self::BASE_BORDER_STYLE
+                    . " var(--"
+                    . $selected_area->getAreaMenuIdentifier() . "_color);}";
+            }
+        }
+
+        if (!empty($this->css)) {
+            self::dic()->ui()->mainTemplate()->addInlineCss(implode("\n", $this->css));
+            $this->css = [];
+        }
     }
 
 

@@ -85,15 +85,25 @@ class SelectedArea extends ActiveRecord
      */
     public function getArea()/* : ?Area*/
     {
-        $areas = self::srContainerObjectMenu()->areas()->getAreas(true);
+        return self::srContainerObjectMenu()->selectedArea()->getArea($this);
+    }
 
-        foreach ($areas as $area) {
-            if ($area->getAreaId() === $this->area_id) {
-                return $area;
-            }
-        }
 
-        return (reset($areas) ?: null);
+    /**
+     * @return string
+     */
+    public function getAreaColorHex() : string
+    {
+        return (($area = $this->getArea()) !== null ? $area->getColorHex() : "");
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getAreaCssVariables() : array
+    {
+        return (($area = $this->getArea()) !== null ? $area->getCssVariables() : []);
     }
 
 
@@ -118,6 +128,17 @@ class SelectedArea extends ActiveRecord
     public function setAreaId(int $area_id = self::NO_AREA_ID)/* : void*/
     {
         $this->area_id = $area_id;
+    }
+
+
+    /**
+     * @param int|null $position
+     *
+     * @return string
+     */
+    public function getAreaMenuIdentifier(/*?*/ int $position = null) : string
+    {
+        return (($area = $this->getArea()) !== null ? $area->getMenuIdentifier($position) : "");
     }
 
 

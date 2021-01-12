@@ -4,6 +4,7 @@ namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
+use srag\Plugins\SrContainerObjectMenu\Area\Area;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -24,6 +25,10 @@ final class Repository
      * @var self|null
      */
     protected static $instance = null;
+    /**
+     * @var Area[]
+     */
+    protected $areas = [];
     /**
      * @var ContainerObject[][]
      */
@@ -89,6 +94,39 @@ final class Repository
     public function factory() : Factory
     {
         return Factory::getInstance();
+    }
+
+
+    /**
+     * @param ContainerObject $container_object
+     *
+     * @return Area|null
+     */
+    public function getArea(ContainerObject $container_object)/* : ?Area*/
+    {
+        if (empty($container_object->getContainerObjectId())) {
+            return null;
+        }
+
+        if ($this->areas[$container_object->getContainerObjectId()] === null) {
+            $areas = $container_object->getAreas();
+
+            if (!empty($areas)) {
+                $selected_area = self::srContainerObjectMenu()->selectedArea()->getSelectedArea(self::dic()->user()->getId());
+
+                if ($selected_area->getArea() !== null) {
+                    $areas = array_filter($areas, function (Area $area) use ($selected_area) : bool {
+                        return ($area->getAreaId() === $selected_area->getAreaId());
+                    });
+                }
+
+                $this->areas[$container_object->getContainerObjectId()] = current($areas);
+            } else {
+                $this->areas[$container_object->getContainerObjectId()] = false;
+            }
+        }
+
+        return ($this->areas[$container_object->getContainerObjectId()] ?: null);
     }
 
 
@@ -213,5 +251,6 @@ final class Repository
 
         $this->container_objects_by_id[$container_object->getContainerObjectId()] = $container_object;
         $this->container_objects = [];
+        unset($this->areas[$container_object->getContainerObjectId()]);
     }
 }

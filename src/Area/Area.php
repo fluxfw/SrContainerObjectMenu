@@ -38,6 +38,14 @@ class Area extends ActiveRecord
      */
     protected $area_id;
     /**
+     * @var string
+     *
+     * @con_has_field    true
+     * @con_fieldtype    text
+     * @con_is_notnull   true
+     */
+    protected $color = "";
+    /**
      * @var array
      *
      * @con_has_field    true
@@ -105,6 +113,37 @@ class Area extends ActiveRecord
 
 
     /**
+     * @return string
+     */
+    public function getColor() : string
+    {
+        return $this->color;
+    }
+
+
+    /**
+     * @param string $color
+     */
+    public function setColor(string $color)/* : void*/
+    {
+        $this->color = $color;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getColorHex() : string
+    {
+        if (!empty($this->color)) {
+            return "#" . $this->color;
+        } else {
+            return "";
+        }
+    }
+
+
+    /**
      * @inheritDoc
      */
     public function getConnectorContainerName() : string
@@ -147,6 +186,35 @@ class Area extends ActiveRecord
         return nl2br(implode("\n", array_map(function (ContainerObject $container_object) : string {
             return $container_object->getTitle();
         }, $this->getContainerObjects())), false);
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getCssVariables() : array
+    {
+        $variables = [];
+
+        if (!empty($this->getColorHex())) {
+            $variables["color"] = $this->getColorHex();
+        }
+        if (!empty($this->getTitle())) {
+            $variables["title"] = $this->getTitle();
+        }
+
+        return $variables;
+    }
+
+
+    /**
+     * @param int|null $position
+     *
+     * @return string
+     */
+    public function getMenuCSSIdentifier(/*?*/ int $position = null) : string
+    {
+        return self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier($this->getMenuIdentifier($position));
     }
 
 

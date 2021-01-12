@@ -4,6 +4,7 @@ namespace srag\Plugins\SrContainerObjectMenu\Area\Form;
 
 use ilSrContainerObjectMenuPlugin;
 use ilTextInputGUI;
+use srag\CustomInputGUIs\SrContainerObjectMenu\ColorPickerInputGUI\ColorPickerInputGUI;
 use srag\CustomInputGUIs\SrContainerObjectMenu\FormBuilder\AbstractFormBuilder;
 use srag\CustomInputGUIs\SrContainerObjectMenu\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
 use srag\CustomInputGUIs\SrContainerObjectMenu\MultiSelectSearchNewInputGUI\MultiSelectSearchNewInputGUI;
@@ -74,7 +75,8 @@ class FormBuilder extends AbstractFormBuilder
     {
         $data = [
             "titles"            => $this->area->getTitles(),
-            "container_objects" => $this->area->getContainerObjectsIds()
+            "container_objects" => $this->area->getContainerObjectsIds(),
+            "color"             => $this->area->getColor()
         ];
 
         return $data;
@@ -87,19 +89,22 @@ class FormBuilder extends AbstractFormBuilder
     protected function getFields() : array
     {
         $fields = [
-            "titles" => (new InputGUIWrapperUIInputComponent(new TabsInputGUI(self::plugin()->translate("title", AreasCtrl::LANG_MODULE))))->withRequired(true)
+            "titles"            => (new InputGUIWrapperUIInputComponent(new TabsInputGUI(self::plugin()->translate("title", AreasCtrl::LANG_MODULE))))->withRequired(true),
+            "container_objects" => new InputGUIWrapperUIInputComponent(new MultiSelectSearchNewInputGUI(self::plugin()->translate("container_objects", ContainerObjectsCtrl::LANG_MODULE))),
+            "color"             => new InputGUIWrapperUIInputComponent(new ColorPickerInputGUI(self::plugin()->translate("color", AreasCtrl::LANG_MODULE)))
         ];
         MultilangualTabsInputGUI::generateLegacy($fields["titles"]->getInput(), [
             new ilTextInputGUI(self::plugin()->translate("title", AreasCtrl::LANG_MODULE), "title")
         ], true);
 
-        $fields["container_objects"] = (new InputGUIWrapperUIInputComponent(new MultiSelectSearchNewInputGUI(self::plugin()->translate("container_objects", ContainerObjectsCtrl::LANG_MODULE))));
         $fields["container_objects"]->getInput()->setOptions(array_reduce(self::srContainerObjectMenu()->containerObjects()->getContainerObjects(),
             function (array $container_objects, ContainerObject $container_object) : array {
                 $container_objects[$container_object->getContainerObjectId()] = $container_object->getTitle();
 
                 return $container_objects;
             }, []));
+
+        $fields["color"]->getInput()->setDefaultColor("");
 
         return $fields;
     }
@@ -129,6 +134,7 @@ class FormBuilder extends AbstractFormBuilder
 
         $this->area->setTitles((array) ($data["titles"]));
         $this->area->setContainerObjectsIds(MultiSelectSearchNewInputGUI::cleanValues((array) $data["container_objects"]));
+        $this->area->setColor(strval($data["color"]));
 
         self::srContainerObjectMenu()->areas()->storeArea($this->area);
     }

@@ -4,6 +4,7 @@ areas_add_area#:#Bereich hinzufügen
 areas_added_area#:#Bereich %s hinzugefügt
 areas_areas#:#Bereiche
 areas_cancel#:#Abbrechen
+areas_color#:#Farbe
 areas_edit_area#:#Bereich bearbeiten
 areas_remove#:#Entfernen
 areas_remove_area#:#Bereich entfernen

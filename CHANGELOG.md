@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.3.0]
+- Area color
+
 ## [2.2.2]
 - Update readme
 - Cache menu menu identifier
