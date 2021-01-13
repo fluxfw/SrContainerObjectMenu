@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.3.1]
+- Fix table pagination
+
 ## [2.3.0]
 - Area color
 
