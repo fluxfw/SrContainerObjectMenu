@@ -32,9 +32,13 @@ class DataFetcher extends AbstractDataFetcher
     {
         $data = self::srContainerObjectMenu()->containerObjects()->getContainerObjects();
 
+        $max_count = count($data);
+
+        $data = array_slice($data, $settings->getOffset(), $settings->getRowsCount());
+
         return self::dataTableUI()->data()->data(array_map(function (ContainerObject $container_object
         ) : RowData {
             return self::dataTableUI()->data()->row()->getter($container_object->getContainerObjectId(), $container_object);
-        }, $data), count($data));
+        }, $data), $max_count);
     }
 }
