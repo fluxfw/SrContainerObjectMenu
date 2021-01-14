@@ -86,22 +86,26 @@ final class Repository
      */
     public function getArea(SelectedArea $selected_area)/* : ?Area*/
     {
-        if (empty($selected_area->getSelectAreaId())) {
-            return null;
-        }
+        if (empty($selected_area->getSelectAreaId()) || $this->areas[$selected_area->getSelectAreaId()] === null) {
+            $area = null;
 
-        if ($this->areas[$selected_area->getSelectAreaId()] === null) {
             $areas = self::srContainerObjectMenu()->areas()->getAreas(true);
 
-            foreach ($areas as $area) {
-                if ($area->getAreaId() === $selected_area->getAreaId(true)) {
-                    $this->areas[$selected_area->getSelectAreaId()] = $area;
+            foreach ($areas as $area_) {
+                if ($area_->getAreaId() === $selected_area->getAreaId(true)) {
+                    $area = $area_;
                     break;
                 }
             }
 
-            if ($this->areas[$selected_area->getSelectAreaId()] === null) {
-                $this->areas[$selected_area->getSelectAreaId()] = reset($areas);
+            if ($area === null) {
+                $area = reset($areas);
+            }
+
+            if (!empty($selected_area->getSelectAreaId())) {
+                $this->areas[$selected_area->getSelectAreaId()] = $area;
+            } else {
+                return $area;
             }
         }
 

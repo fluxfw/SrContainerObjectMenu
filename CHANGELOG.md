@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.3.2]
+- Fix default selected area
+
 ## [2.3.1]
 - Fix table pagination
 
