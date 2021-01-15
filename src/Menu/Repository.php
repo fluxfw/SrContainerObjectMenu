@@ -170,16 +170,23 @@ final class Repository
 
     /**
      * @param string $menu_identifier
+     * @param bool   $css_selector
      *
      * @return string
      */
-    public function getMenuCSSIdentifier(string $menu_identifier) : string
+    public function getMenuCSSIdentifier(string $menu_identifier, bool $css_selector = true) : string
     {
-        if ($this->menu_css_identifier[$menu_identifier] === null) {
-            $this->menu_css_identifier[$menu_identifier] = "#mm_" . $menu_identifier;
+        $cache_key = $menu_identifier . "_" . intval($css_selector);
+
+        if ($this->menu_css_identifier[$cache_key] === null) {
+            if ($css_selector) {
+                $this->menu_css_identifier[$cache_key] = (self::version()->is6() ? "." : "#") . $this->getMenuCSSIdentifier($menu_identifier, false);
+            } else {
+                $this->menu_css_identifier[$cache_key] = "mm_" . $menu_identifier;
+            }
         }
 
-        return $this->menu_css_identifier[$menu_identifier];
+        return $this->menu_css_identifier[$cache_key];
     }
 
 

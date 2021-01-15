@@ -7,6 +7,7 @@ use ILIAS\GlobalScreen\Scope\MainMenu\Factory\AbstractBaseItem;
 use ILIAS\GlobalScreen\Scope\MainMenu\Factory\isItem;
 use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
 use ILIAS\UI\Component\Symbol\Icon\Standard;
+use ILIAS\UI\Component\Symbol\Symbol;
 use ilLink;
 use ilObject;
 use ilSrContainerObjectMenuPlugin;
@@ -99,7 +100,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
                     }, array_keys($area->getCssVariables()), $area->getCssVariables())) . "}";
 
                 if (!empty($area->getColorHex())) {
-                    $this->css[] = $area->getMenuCSSIdentifier($position) . "{border-left:" . self::BASE_BORDER_STYLE . " var(--" . $area->getMenuIdentifier() . "_color);}";
+                    $this->css[] = $area->getMenuCSSIdentifier($position) . "{border-left:" . self::BASE_BORDER_STYLE . " var(--" . $area->getMenuIdentifier() . "_color)!important;}";
                 }
 
                 return $this->symbolArea($this->mainmenu->link($this->if->identifier($area->getMenuIdentifier($position)))
@@ -130,7 +131,8 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
         if ($this->top_items === null) {
             $this->top_items = array_map(function (ContainerObject $container_object) : isItem {
                 if (!empty($container_object->getAreaColorHex())) {
-                    $this->css[] = $container_object->getMenuCSSIdentifier() . "{border-bottom:" . self::BASE_BORDER_STYLE . " var(--" . $container_object->getAreaMenuIdentifier() . "_color);}";
+                    $this->css[] = $container_object->getMenuCSSIdentifier() . "{border-bottom:" . self::BASE_BORDER_STYLE . " var(--" . $container_object->getAreaMenuIdentifier()
+                        . "_color)!important;}";
                 }
 
                 $top_item = $this->symbol($this->mainmenu->topParentItem($this->if->identifier($container_object->getMenuIdentifier()))
@@ -164,6 +166,26 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
 
 
     /**
+     * @param AbstractBaseItem $entry
+     *
+     * @return AbstractBaseItem
+     */
+    protected function cssMenuIdentifierClass(AbstractBaseItem $entry) : AbstractBaseItem
+    {
+        if (self::version()->is6()) {
+            $entry = $entry->addSymbolDecorator(function (Symbol $symbol) use ($entry) : Symbol {
+                return $symbol->withAdditionalOnLoadCode(function (string $id) use ($entry) : string {
+                    return 'document.getElementById("' . $id . '").parentElement.classList.add("' . self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier($entry->getProviderIdentification()
+                            ->getInternalIdentifier(), false) . '");';
+                });
+            });
+        }
+
+        return $entry;
+    }
+
+
+    /**
      *
      */
     protected function deliverCss()/* : void*/
@@ -178,7 +200,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
             if (!empty($selected_area->getAreaColorHex())) {
                 $this->css[] = self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier(self::srContainerObjectMenu()->areas()->getMenuIdentifier()) . "{border-bottom:" . self::BASE_BORDER_STYLE
                     . " var(--"
-                    . $selected_area->getAreaMenuIdentifier() . "_color);}";
+                    . $selected_area->getAreaMenuIdentifier() . "_color)!important;}";
             }
         }
 
@@ -220,6 +242,8 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
 
                 $entry = $entry->withSymbol(self::dic()->ui()->factory()->symbol()->icon()->custom($icon, ilSrContainerObjectMenuPlugin::PLUGIN_NAME));
             }
+
+            $entry = $this->cssMenuIdentifierClass($entry);
         }
 
         self::dic()->appEventHandler()->raise(IL_COMP_PLUGIN . "/" . ilSrContainerObjectMenuPlugin::PLUGIN_NAME, ilSrContainerObjectMenuPlugin::EVENT_CHANGE_MENU_ENTRY, [
@@ -240,6 +264,8 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
     {
         if (self::version()->is6()) {
             $entry = $entry->withSymbol(self::dic()->ui()->factory()->symbol()->icon()->standard(Standard::ITGR, ilSrContainerObjectMenuPlugin::PLUGIN_NAME)->withIsOutlined(true));
+
+            $entry = $this->cssMenuIdentifierClass($entry);
         }
 
         return $entry;
