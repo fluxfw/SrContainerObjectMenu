@@ -1,7 +1,7 @@
 {
   "name": "srag/srcontainerobjectmenu",
   "description": "Provide repository container objects in main menu as dropdown items",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "extra": {
     "ilias_plugin": {
       "id": "srcontobjmenu",
@@ -20,8 +20,15 @@
   },
   "type": "project",
   "keywords": [
-    "ILIAS",
-    "Plugin"
+    "area",
+    "container",
+    "ilias",
+    "interface",
+    "main",
+    "menu",
+    "object",
+    "plugin",
+    "user"
   ],
   "homepage": "https://github.com/studer-raimann/SrContainerObjectMenu",
   "license": "GPL-3.0-only",

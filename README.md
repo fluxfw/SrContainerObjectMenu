@@ -107,10 +107,6 @@ Otherwise, you can ignore the lost main menu items because not viewed in the men
 
 The plugin has a manual action too for delete lost menu items of the plugin, which is more advanced than the core action is
 
-#### Area colors
-
-Area colors are currently limited to ILIAS 5.4, in ILIAS 6 it will not take effect
-
 ### Use selected area color and title in skin
 
 You can use the selected area color and title in your skin like with CSS native variables, which the plugin are delivered
