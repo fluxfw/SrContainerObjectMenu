@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.3.4]
+- Fix default selected area
+
 ## [2.3.3]
 - Supports area color for ILIAS 6
 

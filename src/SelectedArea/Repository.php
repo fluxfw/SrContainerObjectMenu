@@ -105,7 +105,7 @@ final class Repository
             if (!empty($selected_area->getSelectAreaId())) {
                 $this->areas[$selected_area->getSelectAreaId()] = $area;
             } else {
-                return $area;
+                return ($area ?: null);
             }
         }
 
