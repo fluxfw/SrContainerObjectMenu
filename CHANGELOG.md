@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.3.5]
+- Make selected area title work in CSS
+
 ## [2.3.4]
 - Fix default selected area
 
