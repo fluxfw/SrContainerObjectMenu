@@ -200,7 +200,7 @@ class Area extends ActiveRecord
             $variables["color"] = $this->getColorHex();
         }
         if (!empty($this->getTitle())) {
-            $variables["title"] = "\"" . preg_replace("/[^[a-z0-9 äöüéèà]/gi", "", $this->getTitle()) . "\""; // TODO: How to escape?
+            $variables["title"] = "\"" . preg_replace("/[^[a-z0-9 äöüéèà]/i", "", $this->getTitle()) . "\""; // TODO: How to escape?
         }
 
         return $variables;
