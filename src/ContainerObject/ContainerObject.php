@@ -171,7 +171,7 @@ class ContainerObject extends ActiveRecord
     public function getAreasTitle() : string
     {
         return nl2br(implode("\n", array_map(function (Area $area) : string {
-            return $area->getTitle();
+            return $area->getTitle2();
         }, $this->getAreas())), false);
     }
 

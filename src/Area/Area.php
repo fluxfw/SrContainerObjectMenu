@@ -5,6 +5,7 @@ namespace srag\Plugins\SrContainerObjectMenu\Area;
 use ActiveRecord;
 use arConnector;
 use ILIAS\UI\Component\Component;
+use ilMMItemFacadeInterface;
 use ilSrContainerObjectMenuPlugin;
 use srag\CustomInputGUIs\SrContainerObjectMenu\TabsInputGUI\MultilangualTabsInputGUI;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
@@ -75,6 +76,17 @@ class Area extends ActiveRecord
     public static function returnDbTableName() : string
     {
         return self::TABLE_NAME;
+    }
+
+
+    /**
+     * @param int|null $position
+     *
+     * @return int
+     */
+    public function calcPosition(/*?*/ int $position = null) : int
+    {
+        return self::srContainerObjectMenu()->areas()->calcPosition($this, $position);
     }
 
 
@@ -230,6 +242,24 @@ class Area extends ActiveRecord
 
 
     /**
+     * @return ilMMItemFacadeInterface|null
+     */
+    public function getMenuItem()/* : ?ilMMItemFacadeInterface*/
+    {
+        return self::srContainerObjectMenu()->menu()->getBaseMenuItem($this->getMenuIdentifier($this->calcPosition()));
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getMenuTitle() : string
+    {
+        return (($menu_item = $this->getMenuItem()) !== null ? $menu_item->getDefaultTitle() : "");
+    }
+
+
+    /**
      * @param string|null $lang_key
      * @param bool        $use_default_if_not_set
      *
@@ -238,6 +268,21 @@ class Area extends ActiveRecord
     public function getTitle(/*?*/ string $lang_key = null, bool $use_default_if_not_set = true) : string
     {
         return strval(MultilangualTabsInputGUI::getValueForLang($this->titles, $lang_key, "title", $use_default_if_not_set));
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getTitle2() : string
+    {
+        $title = $this->getTitle();
+
+        if (!empty($menu_title = $this->getMenuTitle()) && $menu_title !== $title) {
+            $title .= " (" . $menu_title . ")";
+        }
+
+        return $title;
     }
 
 

@@ -62,6 +62,8 @@ class TableBuilder extends AbstractTableBuilder
             self::plugin()->translate("areas", AreasCtrl::LANG_MODULE), [
                 self::dataTableUI()->column()->column("title",
                     self::plugin()->translate("title", AreasCtrl::LANG_MODULE))->withSortable(false),
+                self::dataTableUI()->column()->column("menu_title",
+                    self::plugin()->translate("menu_title", ContainerObjectsCtrl::LANG_MODULE))->withSortable(false),
                 self::dataTableUI()->column()->column("container_objects_title",
                     self::plugin()->translate("container_objects", ContainerObjectsCtrl::LANG_MODULE))->withSortable(false)->withFormatter(new class() extends DefaultFormatter {
 
