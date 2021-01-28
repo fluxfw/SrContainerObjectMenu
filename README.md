@@ -113,7 +113,7 @@ You can use the selected area color and title in your skin like with CSS native 
 
 ```
 background-color: var(--srcontainerobjectmenu_area_color, #000000);
-content: var(--srcontainerobjectmenu_area_title, Empty);
+content: var(--srcontainerobjectmenu_area_title, "Empty");
 ```
 
 The second parameter is a fallback value, if the plugin is disabled in the update state
