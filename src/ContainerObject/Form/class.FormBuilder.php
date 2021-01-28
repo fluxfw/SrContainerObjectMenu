@@ -3,6 +3,8 @@
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject\Form;
 
 use ilAdministrationGUI;
+use ilDBConstants;
+use ilMMTopItemGUI;
 use ilNonEditableValueGUI;
 use ilObjMainMenuGUI;
 use ilRepositorySelector2InputGUI;
@@ -58,12 +60,17 @@ class FormBuilder extends AbstractFormBuilder
     public function render() : string
     {
         if (!empty($this->container_object->getContainerObjectId())) {
-            self::dic()->ctrl()->setParameterByClass(ilObjMainMenuGUI::class, "ref_id", 69);
+            self::dic()
+                ->ctrl()
+                ->setParameterByClass(ilObjMainMenuGUI::class, "ref_id",
+                    self::dic()->database()->queryF('SELECT ref_id FROM object_data INNER JOIN object_reference ON object_data.obj_id=object_reference.obj_id WHERE type=%s',
+                        [ilDBConstants::T_TEXT], ["mme"])->fetchAssoc()["ref_id"]);
 
             $this->messages[] = self::dic()->ui()->factory()->messageBox()->info(self::plugin()->translate("info", ContainerObjectsCtrl::LANG_MODULE, [
                 self::output()->getHTML(self::dic()->ui()->factory()->link()->standard(self::dic()->language()->txt("obj_mme"), self::dic()->ctrl()->getLinkTargetByClass([
                     ilAdministrationGUI::class,
-                    ilObjMainMenuGUI::class
+                    ilObjMainMenuGUI::class,
+                    ilMMTopItemGUI::class
                 ])))
             ]));
         }
@@ -125,7 +132,7 @@ class FormBuilder extends AbstractFormBuilder
 
         $fields["areas"] = new InputGUIWrapperUIInputComponent(new MultiSelectSearchNewInputGUI(self::plugin()->translate("areas", AreasCtrl::LANG_MODULE)));
         $fields["areas"]->getInput()->setOptions(array_reduce(self::srContainerObjectMenu()->areas()->getAreas(), function (array $areas, Area $area) : array {
-            $areas[$area->getAreaId()] = $area->getTitle();
+            $areas[$area->getAreaId()] = $area->getTitle2();
 
             return $areas;
         }, []));

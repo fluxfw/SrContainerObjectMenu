@@ -91,7 +91,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
 
                     return $sub_items;
                 }, []), array_map(function (int $position, Area $area) : isItem {
-                $position = (($position + 1) * 10);
+                $position = $area->calcPosition($position);
 
                 self::dic()->ctrl()->setParameterByClass(SelectAreaCtrl::class, SelectAreaCtrl::GET_PARAM_AREA_ID, $area->getAreaId());
 

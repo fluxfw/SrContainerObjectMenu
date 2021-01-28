@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.3.6]
+- Show menu title of area in table
+
 ## [2.3.5]
 - Make selected area title work in CSS
 

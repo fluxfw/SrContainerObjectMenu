@@ -33,6 +33,10 @@ final class Repository
      */
     protected $areas_by_id = [];
     /**
+     * @var int[]
+     */
+    protected $calc_positions = [];
+    /**
      * @var string[]
      */
     protected $menu_identifiers = [];
@@ -61,6 +65,28 @@ final class Repository
 
 
     /**
+     * @param Area     $area
+     * @param int|null $position
+     *
+     * @return int
+     */
+    public function calcPosition(Area $area,/*?*/ int $position = null) : int
+    {
+        if ($this->calc_positions[$area->getAreaId()] === null) {
+            if ($position === null) {
+                $position = intval(key(array_filter($this->getAreas(), function (Area $area_) use ($area) : bool {
+                    return ($area_->getAreaId() === $area->getAreaId());
+                })));
+            }
+
+            $this->calc_positions[$area->getAreaId()] = (($position + 1) * 10);
+        }
+
+        return $this->calc_positions[$area->getAreaId()];
+    }
+
+
+    /**
      * @param Area $area
      */
     public function deleteArea(Area $area)/* : void*/
@@ -85,6 +111,7 @@ final class Repository
 
         unset($this->areas_by_id[$area->getAreaId()]);
         $this->areas = [];
+        $this->calc_positions = [];
     }
 
 
@@ -205,5 +232,6 @@ final class Repository
 
         $this->areas_by_id[$area->getAreaId()] = $area;
         $this->areas = [];
+        $this->calc_positions = [];
     }
 }

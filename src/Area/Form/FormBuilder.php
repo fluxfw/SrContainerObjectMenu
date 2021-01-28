@@ -2,6 +2,10 @@
 
 namespace srag\Plugins\SrContainerObjectMenu\Area\Form;
 
+use ilAdministrationGUI;
+use ilDBConstants;
+use ilMMSubItemGUI;
+use ilObjMainMenuGUI;
 use ilSrContainerObjectMenuPlugin;
 use ilTextInputGUI;
 use srag\CustomInputGUIs\SrContainerObjectMenu\ColorPickerInputGUI\ColorPickerInputGUI;
@@ -47,6 +51,31 @@ class FormBuilder extends AbstractFormBuilder
         $this->area = $area;
 
         parent::__construct($parent);
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function render() : string
+    {
+        if (!empty($this->area->getAreaId())) {
+            self::dic()
+                ->ctrl()
+                ->setParameterByClass(ilObjMainMenuGUI::class, "ref_id",
+                    self::dic()->database()->queryF('SELECT ref_id FROM object_data INNER JOIN object_reference ON object_data.obj_id=object_reference.obj_id WHERE type=%s',
+                        [ilDBConstants::T_TEXT], ["mme"])->fetchAssoc()["ref_id"]);
+
+            $this->messages[] = self::dic()->ui()->factory()->messageBox()->info(self::plugin()->translate("info", ContainerObjectsCtrl::LANG_MODULE, [
+                self::output()->getHTML(self::dic()->ui()->factory()->link()->standard(self::dic()->language()->txt("obj_mme"), self::dic()->ctrl()->getLinkTargetByClass([
+                    ilAdministrationGUI::class,
+                    ilObjMainMenuGUI::class,
+                    ilMMSubItemGUI::class
+                ])))
+            ]));
+        }
+
+        return parent::render();
     }
 
 
