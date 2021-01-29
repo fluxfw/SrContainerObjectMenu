@@ -2,6 +2,8 @@
 
 namespace srag\Plugins\SrContainerObjectMenu\Area;
 
+require_once __DIR__ . "/../../vendor/autoload.php";
+
 use ilConfirmationGUI;
 use ilSrContainerObjectMenuPlugin;
 use ilUtil;

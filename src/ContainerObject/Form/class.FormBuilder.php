@@ -2,6 +2,8 @@
 
 namespace srag\Plugins\SrContainerObjectMenu\ContainerObject\Form;
 
+require_once __DIR__ . "/../../../vendor/autoload.php";
+
 use ilAdministrationGUI;
 use ilDBConstants;
 use ilMMTopItemGUI;

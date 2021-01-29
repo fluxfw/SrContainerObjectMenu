@@ -2,6 +2,8 @@
 
 namespace srag\DevTools\SrContainerObjectMenu;
 
+require_once __DIR__ . "/../../../autoload.php";
+
 use Closure;
 use ilAdministrationGUI;
 use ilDBConstants;
