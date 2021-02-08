@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.3.7]
+- Singular area in select area dropdown
+
 ## [2.3.6]
 - Show menu title of area in table
 

@@ -8,7 +8,6 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
 {
     public static $files = array (
         'ae0a05d0cd0a2315dbab99a24fa131ca' => __DIR__ . '/..' . '/srag/dic/src/PHPVersionChecker.php',
-        '39fcc595bd0061d5cc7b016d46f2d315' => __DIR__ . '/..' . '/srag/dic/src/Ilias7PreWarn.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -132,7 +131,6 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DIC\\SrContainerObjectMenu\\Database\\PdoContextHelper' => __DIR__ . '/..' . '/srag/dic/src/Database/PdoContextHelper.php',
         'srag\\DIC\\SrContainerObjectMenu\\Database\\PdoStatementContextHelper' => __DIR__ . '/..' . '/srag/dic/src/Database/PdoStatementContextHelper.php',
         'srag\\DIC\\SrContainerObjectMenu\\Exception\\DICException' => __DIR__ . '/..' . '/srag/dic/src/Exception/DICException.php',
-        'srag\\DIC\\SrContainerObjectMenu\\Ilias7PreWarn' => __DIR__ . '/..' . '/srag/dic/src/Ilias7PreWarn.php',
         'srag\\DIC\\SrContainerObjectMenu\\Loader\\AbstractLoaderDetector' => __DIR__ . '/..' . '/srag/dic/src/Loader/AbstractLoaderDetector.php',
         'srag\\DIC\\SrContainerObjectMenu\\Output\\Output' => __DIR__ . '/..' . '/srag/dic/src/Output/Output.php',
         'srag\\DIC\\SrContainerObjectMenu\\Output\\OutputInterface' => __DIR__ . '/..' . '/srag/dic/src/Output/OutputInterface.php',
@@ -183,6 +181,7 @@ class ComposerStaticInit04e5cbb5350b0f03e26d8be63056f0f1
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LanguageVariableFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LanguageVariableFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LearningProgressFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LearningProgressFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\LinkFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/LinkFormatter.php',
+        'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Column\\Formatter\\MultilineFormatter' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Column/Formatter/MultilineFormatter.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Data\\Data' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Data/Data.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Data\\Factory' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Data/Factory.php',
         'srag\\DataTableUI\\SrContainerObjectMenu\\Implementation\\Data\\Fetcher\\AbstractDataFetcher' => __DIR__ . '/..' . '/srag/datatable/src/Implementation/Data/Fetcher/AbstractDataFetcher.php',

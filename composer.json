@@ -1,7 +1,7 @@
 {
   "name": "srag/srcontainerobjectmenu",
   "description": "Provide repository container objects in main menu as dropdown items",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "extra": {
     "ilias_plugin": {
       "id": "srcontobjmenu",
@@ -9,6 +9,7 @@
       "ilias_min_version": "5.4.0",
       "ilias_max_version": "6.999",
       "slot": "Services/UIComponent/UserInterfaceHook",
+      "supports_cli_setup": true,
       "events": [
         {
           "id": "change_menu_entry",
@@ -68,8 +69,7 @@
       "src/SelectedArea/class.SelectAreaCtrl.php"
     ],
     "files": [
-      "vendor/srag/dic/src/PHPVersionChecker.php",
-      "vendor/srag/dic/src/Ilias7PreWarn.php"
+      "vendor/srag/dic/src/PHPVersionChecker.php"
     ]
   },
   "config": {

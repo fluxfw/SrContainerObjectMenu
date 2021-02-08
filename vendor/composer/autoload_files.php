@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ae0a05d0cd0a2315dbab99a24fa131ca' => $vendorDir . '/srag/dic/src/PHPVersionChecker.php',
-    '39fcc595bd0061d5cc7b016d46f2d315' => $vendorDir . '/srag/dic/src/Ilias7PreWarn.php',
 );

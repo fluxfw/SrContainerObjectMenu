@@ -2,6 +2,8 @@
 
 namespace srag\Plugins\SrContainerObjectMenu\Area;
 
+require_once __DIR__ . "/../../vendor/autoload.php";
+
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
