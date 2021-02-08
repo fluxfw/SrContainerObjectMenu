@@ -183,7 +183,7 @@ class SelectedArea extends ActiveRecord
      */
     public function getTitle() : string
     {
-        $title = self::plugin()->translate("areas", AreasCtrl::LANG_MODULE);
+        $title = self::plugin()->translate("area", AreasCtrl::LANG_MODULE);
 
         if (!empty($area_title = $this->getAreaTitle())) {
             $title .= " (" . $area_title . ")";
