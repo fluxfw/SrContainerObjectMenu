@@ -5,6 +5,7 @@ namespace srag\Plugins\SrContainerObjectMenu\Menu;
 use ActiveRecord;
 use ilDBConstants;
 use ilGSIdentificationStorage;
+use ILIAS\GlobalScreen\Identification\IdentificationInterface;
 use ILIAS\GlobalScreen\Scope\MainMenu\Factory\Item\Lost;
 use ilMMItemFacadeInterface;
 use ilMMItemStorage;
@@ -32,17 +33,25 @@ final class Repository
      */
     protected static $instance = null;
     /**
-     * @var ilMMItemFacadeInterface[]
+     * @var string[]
      */
-    protected $base_menu_items = [];
+    protected $base_menu_identifiers = [];
     /**
      * @var string[]
      */
     protected $menu_css_identifier = [];
     /**
+     * @var IdentificationInterface[]
+     */
+    protected $menu_identifications = [];
+    /**
      * @var ilMMItemFacadeInterface[]
      */
     protected $menu_items = [];
+    /**
+     * @var string[]
+     */
+    protected $menu_titles = [];
 
 
     /**
@@ -118,8 +127,10 @@ final class Repository
             }
         }
 
-        $this->base_menu_items = [];
+        $this->base_menu_identifiers = [];
+        $this->menu_identifications = [];
         $this->menu_items = [];
+        $this->menu_titles = [];
 
         return $count;
     }
@@ -146,25 +157,25 @@ final class Repository
     /**
      * @param string $base_menu_identifier
      *
-     * @return ilMMItemFacadeInterface|null
+     * @return string|null
      */
-    public function getBaseMenuItem(string $base_menu_identifier)/* : ?ilMMItemFacadeInterface*/
+    public function getBaseMenuIdentifier(string $base_menu_identifier)/* : ?string*/
     {
-        if ($this->base_menu_items[$base_menu_identifier] === null) {
+        if ($this->base_menu_identifiers[$base_menu_identifier] === null) {
             $identifications = ilMMItemStorage::where([
                 "identification" => '%' . $base_menu_identifier
             ], "LIKE")->getArray(null, "identification");
 
-            $identification = end($identifications);
+            $menu_identifier = end($identifications);
 
-            if ($identification) {
-                $this->base_menu_items[$base_menu_identifier] = $this->getMenuItem($identification);
+            if ($menu_identifier) {
+                $this->base_menu_identifiers[$base_menu_identifier] = $menu_identifier;
             } else {
-                $this->base_menu_items[$base_menu_identifier] = false;
+                $this->base_menu_identifiers[$base_menu_identifier] = false;
             }
         }
 
-        return ($this->base_menu_items[$base_menu_identifier] ?: null);
+        return ($this->base_menu_identifiers[$base_menu_identifier] ?: null);
     }
 
 
@@ -193,15 +204,51 @@ final class Repository
     /**
      * @param string $menu_identifier
      *
+     * @return IdentificationInterface
+     */
+    public function getMenuIdentification(string $menu_identifier) : IdentificationInterface
+    {
+        if ($this->menu_identifications[$menu_identifier] === null) {
+            $this->menu_identifications[$menu_identifier] = self::dic()->globalScreen()->identification()->fromSerializedIdentification($menu_identifier);
+        }
+
+        return $this->menu_identifications[$menu_identifier];
+    }
+
+
+    /**
+     * @param string $menu_identifier
+     *
      * @return ilMMItemFacadeInterface
      */
     public function getMenuItem(string $menu_identifier) : ilMMItemFacadeInterface
     {
         if ($this->menu_items[$menu_identifier] === null) {
-            $this->menu_items[$menu_identifier] = self::dic()->mainMenuItem()->getItemFacadeForIdentificationString($menu_identifier);
+            $this->menu_items[$menu_identifier] = self::dic()->mainMenuItem()->getItemFacade($this->getMenuIdentification($menu_identifier));
         }
 
         return $this->menu_items[$menu_identifier];
+    }
+
+
+    /**
+     * @param string $base_menu_identifier
+     *
+     * @return String
+     */
+    public function getMenuTitle(string $base_menu_identifier) : string
+    {
+        if ($this->menu_titles[$base_menu_identifier] === null) {
+            $menu_identifier = $this->getBaseMenuIdentifier($base_menu_identifier);
+
+            if (!empty($menu_identifier)) {
+                $this->menu_titles[$base_menu_identifier] = ilMMItemTranslationStorage::getDefaultTranslation($this->getMenuIdentification($menu_identifier));
+            } else {
+                $this->menu_titles[$base_menu_identifier] = "";
+            }
+        }
+
+        return $this->menu_titles[$base_menu_identifier];
     }
 
 
