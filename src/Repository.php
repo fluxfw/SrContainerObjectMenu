@@ -5,6 +5,7 @@ namespace srag\Plugins\SrContainerObjectMenu;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Area\Repository as AreasRepository;
+use srag\Plugins\SrContainerObjectMenu\Config\Repository as ConfigRepository;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\Repository as ContainerObjectsRepository;
 use srag\Plugins\SrContainerObjectMenu\Menu\Repository as MenuRepository;
 use srag\Plugins\SrContainerObjectMenu\Object\Repository as ObjectsRepository;
@@ -63,6 +64,15 @@ final class Repository
 
 
     /**
+     * @return ConfigRepository
+     */
+    public function config() : ConfigRepository
+    {
+        return ConfigRepository::getInstance();
+    }
+
+
+    /**
      * @return ContainerObjectsRepository
      */
     public function containerObjects() : ContainerObjectsRepository
@@ -79,6 +89,7 @@ final class Repository
         $this->menu()->factory()->instance()->ensureProvideNoItems();
 
         $this->areas()->dropTables();
+        $this->config()->dropTables();
         $this->containerObjects()->dropTables();
         $this->menu()->dropTables();
         $this->objects()->dropTables();
@@ -94,6 +105,7 @@ final class Repository
         $this->menu()->factory()->instance()->ensureProvideNoItems();
 
         $this->areas()->installTables();
+        $this->config()->installTables();
         $this->containerObjects()->installTables();
         $this->menu()->installTables();
         $this->objects()->installTables();

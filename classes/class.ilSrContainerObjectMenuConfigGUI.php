@@ -5,6 +5,7 @@ require_once __DIR__ . "/../vendor/autoload.php";
 use srag\DevTools\SrContainerObjectMenu\DevToolsCtrl;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Area\AreasCtrl;
+use srag\Plugins\SrContainerObjectMenu\Config\ConfigCtrl;
 use srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
@@ -48,6 +49,10 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
                 self::dic()->ctrl()->forwardCommand(new AreasCtrl());
                 break;
 
+            case strtolower(ConfigCtrl::class):
+                self::dic()->ctrl()->forwardCommand(new ConfigCtrl());
+                break;
+
             case strtolower(ContainerObjectsCtrl::class):
                 self::dic()->ctrl()->forwardCommand(new ContainerObjectsCtrl());
                 break;
@@ -89,6 +94,8 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
         ContainerObjectsCtrl::addTabs();
 
         AreasCtrl::addTabs();
+
+        ConfigCtrl::addTabs();
 
         DevToolsCtrl::addTabs(self::plugin());
 

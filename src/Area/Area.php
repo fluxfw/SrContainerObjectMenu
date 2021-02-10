@@ -5,7 +5,6 @@ namespace srag\Plugins\SrContainerObjectMenu\Area;
 use ActiveRecord;
 use arConnector;
 use ILIAS\UI\Component\Component;
-use ilMMItemFacadeInterface;
 use ilSrContainerObjectMenuPlugin;
 use srag\CustomInputGUIs\SrContainerObjectMenu\TabsInputGUI\MultilangualTabsInputGUI;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
@@ -242,20 +241,15 @@ class Area extends ActiveRecord
 
 
     /**
-     * @return ilMMItemFacadeInterface|null
-     */
-    public function getMenuItem()/* : ?ilMMItemFacadeInterface*/
-    {
-        return self::srContainerObjectMenu()->menu()->getBaseMenuItem($this->getMenuIdentifier($this->calcPosition()));
-    }
-
-
-    /**
      * @return string
      */
     public function getMenuTitle() : string
     {
-        return (($menu_item = $this->getMenuItem()) !== null ? $menu_item->getDefaultTitle() : "");
+        if (empty($menu_title = self::srContainerObjectMenu()->menu()->getMenuTitle($this->getMenuIdentifier($this->calcPosition())))) {
+            $menu_title = $this->getTitle();
+        }
+
+        return $menu_title;
     }
 
 

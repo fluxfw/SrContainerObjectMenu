@@ -7,7 +7,6 @@ use arConnector;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
 use srag\Plugins\SrContainerObjectMenu\Area\Area;
-use srag\Plugins\SrContainerObjectMenu\Area\AreasCtrl;
 use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 
 /**
@@ -23,6 +22,8 @@ class SelectedArea extends ActiveRecord
     use DICTrait;
     use SrContainerObjectMenuTrait;
 
+    const AREA_MENU_TITLE_PLACEHOLDER = "%area_menu_title%";
+    const AREA_TITLE_PLACEHOLDER = "%area_title%";
     const NO_AREA_ID = 0;
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     const TABLE_NAME = ilSrContainerObjectMenuPlugin::PLUGIN_ID . "_sel_area";
@@ -145,6 +146,15 @@ class SelectedArea extends ActiveRecord
     /**
      * @return string
      */
+    public function getAreaMenuTitle() : string
+    {
+        return (($area = $this->getArea()) !== null ? $area->getMenuTitle() : "");
+    }
+
+
+    /**
+     * @return string
+     */
     public function getAreaTitle() : string
     {
         return (($area = $this->getArea()) !== null ? $area->getTitle() : "");
@@ -183,13 +193,8 @@ class SelectedArea extends ActiveRecord
      */
     public function getTitle() : string
     {
-        $title = self::plugin()->translate("area", AreasCtrl::LANG_MODULE);
-
-        if (!empty($area_title = $this->getAreaTitle())) {
-            $title .= " (" . $area_title . ")";
-        }
-
-        return $title;
+        return str_replace([self::AREA_TITLE_PLACEHOLDER, self::AREA_MENU_TITLE_PLACEHOLDER], [$this->getAreaTitle(), $this->getAreaMenuTitle()],
+            self::srContainerObjectMenu()->config()->getConfig()->getSelectedAreaMenuTitle());
     }
 
 
