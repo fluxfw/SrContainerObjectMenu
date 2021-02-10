@@ -17,7 +17,7 @@ config_configuration#:#Configuration
 config_configuration_saved#:#Configuration saved
 config_save#:#Save
 config_selected_area_menu_title#:#Selected area menu title
-config_selected_area_menu_title_info#:#You can use the placeholder %s and %s
+config_selected_area_menu_title_info#:#You can use the placeholders %s and %s
 container_objects_actions#:#Actions
 container_objects_add#:#Add
 container_objects_add_container_object#:#Add container object
