@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.4.0]
+- Config for change selected area menu title
+
 ## [2.3.7]
 - Singular area in select area dropdown
 

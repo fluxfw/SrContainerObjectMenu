@@ -25,6 +25,7 @@ class SelectAreaCtrl
 
     const CMD_SELECT_AREA = "selectArea";
     const GET_PARAM_AREA_ID = "area_id";
+    const LANG_MODULE = "selected_area";
     const PLUGIN_CLASS_NAME = ilSrContainerObjectMenuPlugin::class;
     /**
      * @var int

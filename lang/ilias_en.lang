@@ -3,7 +3,6 @@ areas_add#:#Add
 areas_add_area#:#Add area
 areas_added_area#:#Area %s added
 areas_areas#:#Areas
-areas_area#:#Area
 areas_cancel#:#Cancel
 areas_color#:#Color
 areas_edit_area#:#Edit area
@@ -14,6 +13,11 @@ areas_removed_area#:#Area %s removed
 areas_save#:#Save
 areas_saved_area#:#Area %s saved
 areas_title#:#Title
+config_configuration#:#Configuration
+config_configuration_saved#:#Configuration saved
+config_save#:#Save
+config_selected_area_menu_title#:#Selected area menu title
+config_selected_area_menu_title_info#:#You can use the placeholder %s and %s
 container_objects_actions#:#Actions
 container_objects_add#:#Add
 container_objects_add_container_object#:#Add container object
@@ -32,3 +36,4 @@ container_objects_remove_container_object_confirm#:#Are you really want to remov
 container_objects_removed_container_object#:#Container object %s removed
 container_objects_save#:#Save
 container_objects_saved_container_object#:#Container object %s saved
+selected_area_menu_title_template#:#Area (%s)

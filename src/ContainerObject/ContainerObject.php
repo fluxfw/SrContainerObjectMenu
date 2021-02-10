@@ -5,7 +5,6 @@ namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 use ActiveRecord;
 use arConnector;
 use ILIAS\UI\Component\Component;
-use ilMMItemFacadeInterface;
 use ilObject;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
@@ -237,22 +236,15 @@ class ContainerObject extends ActiveRecord
 
 
     /**
-     * @param int|null $child_obj_ref_id
-     *
-     * @return ilMMItemFacadeInterface|null
-     */
-    public function getMenuItem(/*?*/ int $child_obj_ref_id = null)/* : ?ilMMItemFacadeInterface*/
-    {
-        return self::srContainerObjectMenu()->menu()->getBaseMenuItem($this->getMenuIdentifier($child_obj_ref_id));
-    }
-
-
-    /**
      * @return string
      */
     public function getMenuTitle() : string
     {
-        return (($menu_item = $this->getMenuItem()) !== null ? $menu_item->getDefaultTitle() : "");
+        if (empty($menu_title = self::srContainerObjectMenu()->menu()->getMenuTitle($this->getMenuIdentifier()))) {
+            $menu_title = $this->getObjectTitle();
+        }
+
+        return $menu_title;
     }
 
 

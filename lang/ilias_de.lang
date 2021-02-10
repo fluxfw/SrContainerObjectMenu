@@ -3,7 +3,6 @@ areas_add#:#Hinzufügen
 areas_add_area#:#Bereich hinzufügen
 areas_added_area#:#Bereich %s hinzugefügt
 areas_areas#:#Bereiche
-areas_area#:#Bereich
 areas_cancel#:#Abbrechen
 areas_color#:#Farbe
 areas_edit_area#:#Bereich bearbeiten
@@ -14,6 +13,11 @@ areas_removed_area#:#Bereich %s entfernt
 areas_save#:#Speichern
 areas_saved_area#:#Bereich %s gespeichert
 areas_title#:#Titel
+config_configuration#:#Konfiguration
+config_configuration_saved#:#Konfiguration gespeichert
+config_save#:#Speichern
+config_selected_area_menu_title#:#Ausgewälter Bereich Menü Titel
+config_selected_area_menu_title_info#:#Sie können die Platzhalter %s und %s verwenden
 container_objects_actions#:#Aktionen
 container_objects_add#:#Hinzufügen
 container_objects_add_container_object#:#Container-Objekt hinzufügen
@@ -32,3 +36,4 @@ container_objects_remove_container_object_confirm#:#Möchten Sie das Container-O
 container_objects_removed_container_object#:#Container-Objekt %s entfernt
 container_objects_save#:#Speichern
 container_objects_saved_container_object#:#Container-Objekt %s gespeichert
+selected_area_menu_title_template#:#Bereich (%s)

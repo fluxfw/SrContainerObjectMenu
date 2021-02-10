@@ -95,6 +95,12 @@ Container objects without areas will display still for the user, independently o
 
 ![Main menu area 3](./doc/images/main_menu_area_3.png)
 
+### Config
+
+#### Config form
+
+![Config form](./doc/images/config_form.png)
+
 ### Known issues
 
 #### Lost main menu items
