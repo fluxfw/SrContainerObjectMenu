@@ -220,7 +220,7 @@ class Area extends ActiveRecord
             $variables["color"] = $this->getColorHex();
         }
         if (!empty($this->getLinkContainerObjectLink())) {
-            $variables["link"] = $this->getLinkContainerObjectLink();
+            $variables["link"] = base64_encode($this->getLinkContainerObjectLink());
         }
         if (!empty($this->getTitle())) {
             $variables["title"] = "\"" . str_replace("\"", "", $this->getTitle()) . "\"";
