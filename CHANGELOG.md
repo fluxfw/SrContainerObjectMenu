@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.5.1]
+- Encode area container object link as base64
+
 ## [2.5.0]
 - Select a container object for a link in area
 
