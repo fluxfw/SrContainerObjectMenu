@@ -99,6 +99,7 @@ Or use in JS too
 
 ```js
 getComputedStyle(document.documentElement).getPropertyValue("--srcontainerobjectmenu_area_color") || "#000000";
+getComputedStyle(document.documentElement).getPropertyValue("--srcontainerobjectmenu_area_link") || "";
 getComputedStyle(document.documentElement).getPropertyValue("--srcontainerobjectmenu_area_title") || "Empty";
 ```
 

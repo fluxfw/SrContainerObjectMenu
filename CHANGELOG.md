@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.5.0]
+- Select a container object for a link in area
+
 ## [2.4.0]
 - Config for change selected area menu title
 

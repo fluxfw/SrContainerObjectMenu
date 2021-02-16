@@ -6,6 +6,7 @@ areas_areas#:#Areas
 areas_cancel#:#Cancel
 areas_color#:#Color
 areas_edit_area#:#Edit area
+areas_link_container_object#:#Container object for link
 areas_remove#:#Remove
 areas_remove_area#:#Remove area
 areas_remove_area_confirm#:#Are you really want to remove the area: %s ?

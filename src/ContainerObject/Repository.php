@@ -72,6 +72,14 @@ final class Repository
     {
         $container_object->delete();
 
+        foreach (self::srContainerObjectMenu()->areas()->getAreas() as $area) {
+            if ($area->getLinkContainerObjectId() === $container_object->getContainerObjectId()) {
+                $area->setLinkContainerObjectId();
+
+                self::srContainerObjectMenu()->areas()->storeArea($area);
+            }
+        }
+
         self::srContainerObjectMenu()->menu()->deleteMenuItems($container_object->getMenuIdentifier());
 
         unset($this->container_objects_by_id[$container_object->getContainerObjectId()]);
