@@ -6,6 +6,7 @@ areas_areas#:#Bereiche
 areas_cancel#:#Abbrechen
 areas_color#:#Farbe
 areas_edit_area#:#Bereich bearbeiten
+areas_link_container_object#:#Container-Objekt für Link
 areas_remove#:#Entfernen
 areas_remove_area#:#Bereich entfernen
 areas_remove_area_confirm#:#Möchten Sie den Bereich wirklich entfernen: %s ?

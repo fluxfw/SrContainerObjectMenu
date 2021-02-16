@@ -5,6 +5,7 @@ namespace srag\Plugins\SrContainerObjectMenu\ContainerObject;
 use ActiveRecord;
 use arConnector;
 use ILIAS\UI\Component\Component;
+use ilLink;
 use ilObject;
 use ilSrContainerObjectMenuPlugin;
 use srag\DIC\SrContainerObjectMenu\DICTrait;
@@ -208,6 +209,17 @@ class ContainerObject extends ActiveRecord
     public function setContainerObjectId(int $container_object_id)/* : void*/
     {
         $this->container_object_id = $container_object_id;
+    }
+
+
+    /**
+     * @param int|null $child_obj_ref_id
+     *
+     * @return string
+     */
+    public function getLink(/*?*/ int $child_obj_ref_id = null) : string
+    {
+        return ilLink::_getStaticLink(!empty($child_obj_ref_id) ? $child_obj_ref_id : $this->obj_ref_id);
     }
 
 

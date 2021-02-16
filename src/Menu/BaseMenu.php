@@ -8,7 +8,6 @@ use ILIAS\GlobalScreen\Scope\MainMenu\Factory\isItem;
 use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
 use ILIAS\UI\Component\Symbol\Icon\Standard;
 use ILIAS\UI\Component\Symbol\Symbol;
-use ilLink;
 use ilObject;
 use ilSrContainerObjectMenuPlugin;
 use ilUIPluginRouterGUI;
@@ -79,7 +78,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
                         $sub_items[] = $this->symbol($this->mainmenu->link($this->if->identifier($container_object->getMenuIdentifier($child_id, $position)))
                             ->withParent($this->top_identifiers[$container_object->getMenuIdentifier()])
                             ->withTitle($child_title)
-                            ->withAction(ilLink::_getLink($child_id))
+                            ->withAction($container_object->getLink($child_id))
                             ->withPosition($position)
                             ->withAvailableCallable(function () : bool {
                                 return self::plugin()->getPluginObject()->isActive();
@@ -96,7 +95,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
                 self::dic()->ctrl()->setParameterByClass(SelectAreaCtrl::class, SelectAreaCtrl::GET_PARAM_AREA_ID, $area->getAreaId());
 
                 $this->css[] = ":root{" . implode("", array_map(function (string $key, string $value) use ($area) : string {
-                        return "--" . $area->getMenuIdentifier() . "_" . $key . ":" . $value . ";"; // TODO: How to escape?
+                        return "--" . $area->getMenuIdentifier() . "_" . $key . ":" . $this->escapeCSSValue($value) . ";";
                     }, array_keys($area->getCssVariables()), $area->getCssVariables())) . "}";
 
                 if (!empty($area->getColorHex())) {
@@ -208,6 +207,17 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
             self::dic()->ui()->mainTemplate()->addInlineCss(implode("\n", $this->css));
             $this->css = [];
         }
+    }
+
+
+    /**
+     * @param string $text
+     *
+     * @return string
+     */
+    protected function escapeCSSValue(string $text) : string
+    {
+        return str_replace(["\n", "\r", ";", "<", ">"], "", $text); // TODO: How to escape css variable value?
     }
 
 

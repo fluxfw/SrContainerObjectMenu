@@ -46,6 +46,15 @@ class Area extends ActiveRecord
      */
     protected $color = "";
     /**
+     * @var int|null
+     *
+     * @con_has_field    true
+     * @con_fieldtype    integer
+     * @con_length       8
+     * @con_is_notnull   false
+     */
+    protected $link_container_object_id = null;
+    /**
      * @var array
      *
      * @con_has_field    true
@@ -210,11 +219,71 @@ class Area extends ActiveRecord
         if (!empty($this->getColorHex())) {
             $variables["color"] = $this->getColorHex();
         }
+        if (!empty($this->getLinkContainerObjectLink())) {
+            $variables["link"] = $this->getLinkContainerObjectLink();
+        }
         if (!empty($this->getTitle())) {
-            $variables["title"] = "\"" . preg_replace("/[^[a-z0-9 äöüéèà]/i", "", $this->getTitle()) . "\""; // TODO: How to escape?
+            $variables["title"] = "\"" . str_replace("\"", "", $this->getTitle()) . "\"";
         }
 
         return $variables;
+    }
+
+
+    /**
+     * @return ContainerObject|null
+     */
+    public function getLinkContainerObject()/* : ?ContainerObject*/
+    {
+        if (!empty($this->link_container_object_id)) {
+            return self::srContainerObjectMenu()->containerObjects()->getContainerObjectById($this->link_container_object_id);
+        } else {
+            return null;
+        }
+    }
+
+
+    /**
+     * @return int|null
+     */
+    public function getLinkContainerObjectId()/* : ?int*/
+    {
+        return $this->link_container_object_id;
+    }
+
+
+    /**
+     * @param int|null $link_container_object_id
+     */
+    public function setLinkContainerObjectId(/*?*/ int $link_container_object_id = null)/* : void*/
+    {
+        $this->link_container_object_id = $link_container_object_id;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getLinkContainerObjectLink() : string
+    {
+        if ($this->getLinkContainerObject() !== null) {
+            return $this->getLinkContainerObject()->getLink();
+        } else {
+            return "";
+        }
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getLinkContainerObjectTitle() : string
+    {
+        if ($this->getLinkContainerObject() !== null) {
+            return $this->getLinkContainerObject()->getTitle();
+        } else {
+            return "";
+        }
     }
 
 

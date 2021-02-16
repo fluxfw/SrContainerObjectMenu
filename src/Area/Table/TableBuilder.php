@@ -90,6 +90,8 @@ class TableBuilder extends AbstractTableBuilder
                         }
                     }
                 }),
+                self::dataTableUI()->column()->column("link_container_object_title",
+                    self::plugin()->translate("link_container_object", AreasCtrl::LANG_MODULE))->withSortable(false),
                 self::dataTableUI()->column()->column("actions",
                     self::plugin()->translate("actions", AreasCtrl::LANG_MODULE))->withFormatter(self::dataTableUI()->column()->formatter()->actions()->actionsDropdown())
             ], new DataFetcher())->withPlugin(self::plugin());
