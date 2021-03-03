@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.5.2]
+- Update project url
+
 ## [2.5.1]
 - Encode area container object link as base64
 
