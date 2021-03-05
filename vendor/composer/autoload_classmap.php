@@ -79,6 +79,7 @@ return array(
     'srag\\DIC\\SrContainerObjectMenu\\Plugin\\Plugin' => $vendorDir . '/srag/dic/src/Plugin/Plugin.php',
     'srag\\DIC\\SrContainerObjectMenu\\Plugin\\PluginInterface' => $vendorDir . '/srag/dic/src/Plugin/PluginInterface.php',
     'srag\\DIC\\SrContainerObjectMenu\\Plugin\\Pluginable' => $vendorDir . '/srag/dic/src/Plugin/Pluginable.php',
+    'srag\\DIC\\SrContainerObjectMenu\\Version\\PluginVersionParameter' => $vendorDir . '/srag/dic/src/Version/PluginVersionParameter.php',
     'srag\\DIC\\SrContainerObjectMenu\\Version\\Version' => $vendorDir . '/srag/dic/src/Version/Version.php',
     'srag\\DIC\\SrContainerObjectMenu\\Version\\VersionInterface' => $vendorDir . '/srag/dic/src/Version/VersionInterface.php',
     'srag\\DataTableUI\\SrContainerObjectMenu\\Component\\Column\\Column' => $vendorDir . '/srag/datatable/src/Component/Column/Column.php',
