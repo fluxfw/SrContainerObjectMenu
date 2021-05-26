@@ -13,8 +13,6 @@ use srag\DataTableUI\SrContainerObjectMenu\Component\Table;
  * Class ExcelFormat
  *
  * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Format
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class ExcelFormat extends AbstractFormat
 {

@@ -12,8 +12,6 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
 /**
  * Class ilSrContainerObjectMenuConfigGUI
  *
- * @author            studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
- *
  * @ilCtrl_isCalledBy srag\DevTools\SrContainerObjectMenu\DevToolsCtrl: ilSrContainerObjectMenuConfigGUI
  */
 class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI

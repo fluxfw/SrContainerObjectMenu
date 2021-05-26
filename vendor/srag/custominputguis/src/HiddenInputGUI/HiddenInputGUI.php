@@ -10,8 +10,6 @@ use srag\DIC\SrContainerObjectMenu\DICTrait;
  * Class HiddenInputGUI
  *
  * @package srag\CustomInputGUIs\SrContainerObjectMenu\HiddenInputGUI
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class HiddenInputGUI extends ilHiddenInputGUI
 {

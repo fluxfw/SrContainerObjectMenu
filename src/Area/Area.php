@@ -15,8 +15,6 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
  * Class Area
  *
  * @package srag\Plugins\SrContainerObjectMenu\Area
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class Area extends ActiveRecord
 {

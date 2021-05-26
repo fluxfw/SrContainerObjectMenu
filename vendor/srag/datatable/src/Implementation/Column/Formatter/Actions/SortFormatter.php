@@ -14,8 +14,6 @@ use srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Defau
  * Class SortFormatter
  *
  * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Column\Formatter\Actions
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class SortFormatter extends DefaultFormatter implements ActionsFormatter
 {
