@@ -1,7 +1,7 @@
 {
   "name": "srag/srcontainerobjectmenu",
   "description": "Provide repository container objects in main menu as dropdown items",
-  "version": "2.5.4",
+  "version": "2.5.5",
   "extra": {
     "ilias_plugin": {
       "id": "srcontobjmenu",
@@ -32,13 +32,13 @@
     "plugin",
     "user"
   ],
-  "homepage": "https://github.com/fluxfw/SrContainerObjectMenu",
+  "homepage": "https://github.com/fluxapps/SrContainerObjectMenu",
   "license": "GPL-3.0-only",
   "authors": [
     {
-      "name": "studer + raimann ag - Team Custom 1",
-      "email": "support-custom1@studer-raimann.ch",
-      "homepage": "https://studer-raimann.ch",
+      "name": "fluxlabs",
+      "email": "support@fluxlabs.ch",
+      "homepage": "https://fluxlabs.ch",
       "role": "Developer"
     }
   ],

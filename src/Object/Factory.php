@@ -10,8 +10,6 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
  * Class Factory
  *
  * @package srag\Plugins\SrContainerObjectMenu\Object
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 final class Factory
 {

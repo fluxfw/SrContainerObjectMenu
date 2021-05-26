@@ -12,8 +12,6 @@ use srag\DIC\SrContainerObjectMenu\Exception\DICException;
  *
  * @package srag\DIC\SrContainerObjectMenu\Database
  *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
- *
  * @internal
  */
 final class PdoStatementContextHelper extends ilPDOStatement

@@ -18,8 +18,6 @@ use srag\DIC\SrContainerObjectMenu\DICTrait;
  * Class InputGUIWrapperUIInputComponent
  *
  * @package srag\CustomInputGUIs\SrContainerObjectMenu\InputGUIWrapperUIInputComponent
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class InputGUIWrapperUIInputComponent extends Input
 {

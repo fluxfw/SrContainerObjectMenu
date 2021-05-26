@@ -10,8 +10,6 @@ use srag\DIC\SrContainerObjectMenu\DICTrait;
  * Class MultilangualTabsInputGUI
  *
  * @package srag\CustomInputGUIs\SrContainerObjectMenu\TabsInputGUI
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class MultilangualTabsInputGUI
 {

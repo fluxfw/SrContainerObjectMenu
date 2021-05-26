@@ -16,8 +16,6 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
  *
  * @package           srag\Plugins\SrContainerObjectMenu\ContainerObject
  *
- * @author            studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
- *
  * @ilCtrl_isCalledBy srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectCtrl: srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectsCtrl
  * @ilCtrl_Calls      srag\Plugins\SrContainerObjectMenu\ContainerObject\ContainerObjectCtrl: srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder
  */
