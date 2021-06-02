@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ab96642cf63cf06d56396f6fad50cdb",
+    "content-hash": "8caea8545b8ff2cccb33b50df12917e9",
     "packages": [
         {
             "name": "srag/custominputguis",
@@ -38,7 +38,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "srag\\CustomInputGUIs\\": "src/"
+                    "srag\\CustomInputGUIs\\SrContainerObjectMenu\\": "src/"
                 },
                 "classmap": [
                     "src/MultiSelectSearchNewInputGUI/class.ObjectChildrenAjaxAutoCompleteCtrl.php",
@@ -104,7 +104,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "srag\\DataTableUI\\": "src/"
+                    "srag\\DataTableUI\\SrContainerObjectMenu\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -161,7 +161,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "srag\\DevTools\\": "src/"
+                    "srag\\DevTools\\SrContainerObjectMenu\\": "src/"
                 },
                 "classmap": [
                     "src/class.DevToolsCtrl.php"
@@ -220,7 +220,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "srag\\DIC\\": "src/"
+                    "srag\\DIC\\SrContainerObjectMenu\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -244,55 +244,6 @@
                 "trait"
             ],
             "time": "2021-05-26T09:04:38+00:00"
-        },
-        {
-            "name": "srag/generateplugininfoshelper",
-            "version": "2.10.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fluxapps/GeneratePluginInfosHelper.git",
-                "reference": "ada645adb5b9afd7728b08273a47c4048fecb711"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fluxapps/GeneratePluginInfosHelper/zipball/ada645adb5b9afd7728b08273a47c4048fecb711",
-                "reference": "ada645adb5b9afd7728b08273a47c4048fecb711",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "extra": {
-                "generate_plugin_readme_template": "LIBRARY",
-                "long_description_template": "src/LONG_DESCRIPTION.md"
-            },
-            "autoload": {
-                "psr-4": {
-                    "srag\\GeneratePluginInfosHelper\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "fluxlabs",
-                    "email": "support@fluxlabs.ch",
-                    "homepage": "https://fluxlabs.ch",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Automatic generate plugin infos such README.md, plugin.php, plugin.xml, ... from composer.json",
-            "homepage": "https://github.com/fluxapps/GeneratePluginInfosHelper",
-            "keywords": [
-                "Infos",
-                "generate",
-                "helper",
-                "plugin"
-            ],
-            "time": "2021-05-26T09:04:16+00:00"
         },
         {
             "name": "srag/librariesnamespacechanger",
@@ -377,7 +328,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "srag\\LibraryLanguageInstaller\\": "src/"
+                    "srag\\LibraryLanguageInstaller\\SrContainerObjectMenu\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -435,7 +386,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "srag\\RemovePluginDataConfirm\\": "src/"
+                    "srag\\RemovePluginDataConfirm\\SrContainerObjectMenu\\": "src/"
                 },
                 "classmap": [
                     "src/class.RemovePluginDataConfirmCtrl.php"
