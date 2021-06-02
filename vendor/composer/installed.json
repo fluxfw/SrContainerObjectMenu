@@ -247,57 +247,6 @@
         ]
     },
     {
-        "name": "srag/generateplugininfoshelper",
-        "version": "2.10.3",
-        "version_normalized": "2.10.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fluxapps/GeneratePluginInfosHelper.git",
-            "reference": "ada645adb5b9afd7728b08273a47c4048fecb711"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fluxapps/GeneratePluginInfosHelper/zipball/ada645adb5b9afd7728b08273a47c4048fecb711",
-            "reference": "ada645adb5b9afd7728b08273a47c4048fecb711",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=7.0"
-        },
-        "time": "2021-05-26T09:04:16+00:00",
-        "type": "library",
-        "extra": {
-            "generate_plugin_readme_template": "LIBRARY",
-            "long_description_template": "src/LONG_DESCRIPTION.md"
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0-only"
-        ],
-        "authors": [
-            {
-                "name": "fluxlabs",
-                "email": "support@fluxlabs.ch",
-                "homepage": "https://fluxlabs.ch",
-                "role": "Developer"
-            }
-        ],
-        "description": "Automatic generate plugin infos such README.md, plugin.php, plugin.xml, ... from composer.json",
-        "homepage": "https://github.com/fluxapps/GeneratePluginInfosHelper",
-        "keywords": [
-            "Infos",
-            "generate",
-            "helper",
-            "plugin"
-        ]
-    },
-    {
         "name": "srag/librariesnamespacechanger",
         "version": "0.15.3",
         "version_normalized": "0.15.3.0",
