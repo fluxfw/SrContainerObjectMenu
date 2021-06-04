@@ -6,8 +6,6 @@ namespace srag\DIC\SrContainerObjectMenu\Version;
  * Class Version
  *
  * @package srag\DIC\SrContainerObjectMenu\Version
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 final class Version implements VersionInterface
 {

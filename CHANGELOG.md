@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.6]
+- Remove generate readme and auto_version_tag_ci and revert ignore not supported languages
+
+## [2.5.5]
+- Update urls
+
 ## [2.5.4]
 - Ignore not supported languages
 

@@ -8,8 +8,6 @@ use srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter\Actions\Fa
  * Interface Factory
  *
  * @package srag\DataTableUI\SrContainerObjectMenu\Component\Column\Formatter
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 interface Factory
 {

@@ -26,8 +26,6 @@ use srag\Plugins\SrContainerObjectMenu\Utils\SrContainerObjectMenuTrait;
  *
  * @package      srag\Plugins\SrContainerObjectMenu\ContainerObject\Form
  *
- * @author       studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
- *
  * @ilCtrl_Calls srag\Plugins\SrContainerObjectMenu\ContainerObject\Form\FormBuilder: ilFormPropertyDispatchGUI
  */
 class FormBuilder extends AbstractFormBuilder

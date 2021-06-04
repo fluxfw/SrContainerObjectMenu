@@ -12,8 +12,6 @@ use srag\RemovePluginDataConfirm\SrContainerObjectMenu\PluginUninstallTrait;
 
 /**
  * Class ilSrContainerObjectMenuPlugin
- *
- * @author studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class ilSrContainerObjectMenuPlugin extends ilUserInterfaceHookPlugin
 {

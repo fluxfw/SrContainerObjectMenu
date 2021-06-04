@@ -9,8 +9,6 @@ use srag\CustomInputGUIs\SrContainerObjectMenu\PropertyFormGUI\Exception\Propert
  *
  * @package    srag\CustomInputGUIs\SrContainerObjectMenu\PropertyFormGUI
  *
- * @author     studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
- *
  * @deprecated Please use PropertyFormGUI instead
  */
 abstract class ConfigPropertyFormGUI extends PropertyFormGUI

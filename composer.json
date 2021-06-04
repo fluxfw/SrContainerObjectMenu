@@ -1,25 +1,6 @@
 {
   "name": "srag/srcontainerobjectmenu",
   "description": "Provide repository container objects in main menu as dropdown items",
-  "version": "2.5.4",
-  "extra": {
-    "ilias_plugin": {
-      "id": "srcontobjmenu",
-      "name": "SrContainerObjectMenu",
-      "ilias_min_version": "5.4.0",
-      "ilias_max_version": "6.999",
-      "slot": "Services/UIComponent/UserInterfaceHook",
-      "supports_cli_setup": true,
-      "events": [
-        {
-          "id": "change_menu_entry",
-          "type": "raise"
-        }
-      ]
-    },
-    "generate_plugin_readme_template": "ILIAS_PLUGIN",
-    "long_description_template": "src/LONG_DESCRIPTION.md"
-  },
   "type": "project",
   "keywords": [
     "area",
@@ -32,13 +13,13 @@
     "plugin",
     "user"
   ],
-  "homepage": "https://github.com/fluxfw/SrContainerObjectMenu",
+  "homepage": "https://github.com/fluxapps/SrContainerObjectMenu",
   "license": "GPL-3.0-only",
   "authors": [
     {
-      "name": "studer + raimann ag - Team Custom 1",
-      "email": "support-custom1@studer-raimann.ch",
-      "homepage": "https://studer-raimann.ch",
+      "name": "fluxlabs",
+      "email": "support@fluxlabs.ch",
+      "homepage": "https://fluxlabs.ch",
       "role": "Developer"
     }
   ],
@@ -48,7 +29,6 @@
     "srag/datatable": ">=0.1.0",
     "srag/devtools": ">=0.1.0",
     "srag/dic": ">=0.1.0",
-    "srag/generateplugininfoshelper": ">=0.1.0",
     "srag/librariesnamespacechanger": ">=0.1.0",
     "srag/removeplugindataconfirm": ">=0.1.0"
   },
@@ -78,12 +58,7 @@
   "scripts": {
     "pre-autoload-dump": [
       "srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger::rewriteLibrariesNamespaces",
-      "srag\\LibrariesNamespaceChanger\\PHP72Backport::PHP72Backport",
-      "srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\GeneratePluginPhpAndXml::generatePluginPhpAndXml",
-      "srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\GeneratePluginReadme::generatePluginReadme"
-    ],
-    "update-version": [
-      "srag\\GeneratePluginInfosHelper\\SrContainerObjectMenu\\UpdateVersion::updateVersion"
+      "srag\\LibrariesNamespaceChanger\\PHP72Backport::PHP72Backport"
     ]
   }
 }

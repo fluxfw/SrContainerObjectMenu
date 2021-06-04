@@ -10,8 +10,6 @@ use srag\DIC\SrContainerObjectMenu\DICTrait;
  * Class AbstractTableBuilder
  *
  * @package srag\DataTableUI\SrContainerObjectMenu\Implementation\Utils
- *
- * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 abstract class AbstractTableBuilder implements TableBuilder
 {
