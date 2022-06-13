@@ -157,7 +157,7 @@ class FormBuilder extends AbstractFormBuilder
     /**
      * @inheritDoc
      */
-    protected function storeData(array $data)/* : void*/
+    protected function storeData(array $data) : void
     {
         if (empty($this->container_object->getContainerObjectId())) {
             $this->container_object->setObjRefId(intval($data["obj_ref_id"]));
