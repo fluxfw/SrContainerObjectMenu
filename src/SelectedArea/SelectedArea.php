@@ -82,7 +82,7 @@ class SelectedArea extends ActiveRecord
     /**
      * @return Area|null
      */
-    public function getArea()/* : ?Area*/
+    public function getArea() : ?Area
     {
         return self::srContainerObjectMenu()->selectedArea()->getArea($this);
     }
@@ -124,7 +124,7 @@ class SelectedArea extends ActiveRecord
     /**
      * @param int $area_id
      */
-    public function setAreaId(int $area_id = self::NO_AREA_ID)/* : void*/
+    public function setAreaId(int $area_id = self::NO_AREA_ID) : void
     {
         $this->area_id = $area_id;
     }
@@ -135,7 +135,7 @@ class SelectedArea extends ActiveRecord
      *
      * @return string
      */
-    public function getAreaMenuIdentifier(/*?*/ int $position = null) : string
+    public function getAreaMenuIdentifier(?int $position = null) : string
     {
         return (($area = $this->getArea()) !== null ? $area->getMenuIdentifier($position) : "");
     }
@@ -180,7 +180,7 @@ class SelectedArea extends ActiveRecord
     /**
      * @param int $select_area_id
      */
-    public function setSelectAreaId(int $select_area_id)/* : void*/
+    public function setSelectAreaId(int $select_area_id) : void
     {
         $this->select_area_id = $select_area_id;
     }
@@ -208,7 +208,7 @@ class SelectedArea extends ActiveRecord
     /**
      * @param int $usr_id
      */
-    public function setUsrId(int $usr_id)/* : void*/
+    public function setUsrId(int $usr_id) : void
     {
         $this->usr_id = $usr_id;
     }

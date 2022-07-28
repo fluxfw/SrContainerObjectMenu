@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.6.0]
+- ILIAS 7 support
+- Remove ILIAS 5.4 support
+- Min PHP 7.2
+
 ## [2.5.6]
 - Remove generate readme and auto_version_tag_ci and revert ignore not supported languages
 

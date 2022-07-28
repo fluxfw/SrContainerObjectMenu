@@ -1,6 +1,7 @@
 {
   "name": "srag/srcontainerobjectmenu",
   "description": "Provide repository container objects in main menu as dropdown items",
+  "version": "2.6.0",
   "type": "project",
   "keywords": [
     "area",
@@ -13,18 +14,9 @@
     "plugin",
     "user"
   ],
-  "homepage": "https://github.com/fluxapps/SrContainerObjectMenu",
   "license": "GPL-3.0-only",
-  "authors": [
-    {
-      "name": "fluxlabs",
-      "email": "support@fluxlabs.ch",
-      "homepage": "https://fluxlabs.ch",
-      "role": "Developer"
-    }
-  ],
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.2",
     "srag/custominputguis": ">=0.1.0",
     "srag/datatable": ">=0.1.0",
     "srag/devtools": ">=0.1.0",
@@ -57,8 +49,7 @@
   },
   "scripts": {
     "pre-autoload-dump": [
-      "srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger::rewriteLibrariesNamespaces",
-      "srag\\LibrariesNamespaceChanger\\PHP72Backport::PHP72Backport"
+      "srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger::rewriteLibrariesNamespaces"
     ]
   }
 }

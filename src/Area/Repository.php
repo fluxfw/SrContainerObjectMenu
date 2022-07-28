@@ -68,7 +68,7 @@ final class Repository
      *
      * @return int
      */
-    public function calcPosition(Area $area,/*?*/ int $position = null) : int
+    public function calcPosition(Area $area, ?int $position = null) : int
     {
         if ($this->calc_positions[$area->getAreaId()] === null) {
             if ($position === null) {
@@ -87,7 +87,7 @@ final class Repository
     /**
      * @param Area $area
      */
-    public function deleteArea(Area $area)/* : void*/
+    public function deleteArea(Area $area) : void
     {
         $area->delete();
 
@@ -116,7 +116,7 @@ final class Repository
     /**
      * @internal
      */
-    public function dropTables()/* : void*/
+    public function dropTables() : void
     {
         self::dic()->database()->dropTable(Area::TABLE_NAME, false);
     }
@@ -136,7 +136,7 @@ final class Repository
      *
      * @return Area|null
      */
-    public function getAreaById(int $area_id)/* : ?Area*/
+    public function getAreaById(int $area_id) : ?Area
     {
         if ($this->areas_by_id[$area_id] === null) {
             $this->areas_by_id[$area_id] = Area::where(["area_id" => $area_id])->first();
@@ -177,7 +177,7 @@ final class Repository
      *
      * @return string
      */
-    public function getMenuIdentifier(/*?*/ int $area_id = null,/*?*/ int $position = null) : string
+    public function getMenuIdentifier(?int $area_id = null, ?int $position = null) : string
     {
         $cache_key = intval($area_id) . "_" . intval($position);
 
@@ -205,7 +205,7 @@ final class Repository
     /**
      * @internal
      */
-    public function installTables()/* : void*/
+    public function installTables() : void
     {
         Area::updateDB();
 
@@ -224,7 +224,7 @@ final class Repository
     /**
      * @param Area $area
      */
-    public function storeArea(Area $area)/* : void*/
+    public function storeArea(Area $area) : void
     {
         $area->store();
 

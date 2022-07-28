@@ -90,7 +90,7 @@ class Area extends ActiveRecord
      *
      * @return int
      */
-    public function calcPosition(/*?*/ int $position = null) : int
+    public function calcPosition(?int $position = null) : int
     {
         return self::srContainerObjectMenu()->areas()->calcPosition($this, $position);
     }
@@ -124,7 +124,7 @@ class Area extends ActiveRecord
     /**
      * @param int $area_id
      */
-    public function setAreaId(int $area_id)/* : void*/
+    public function setAreaId(int $area_id) : void
     {
         $this->area_id = $area_id;
     }
@@ -142,7 +142,7 @@ class Area extends ActiveRecord
     /**
      * @param string $color
      */
-    public function setColor(string $color)/* : void*/
+    public function setColor(string $color) : void
     {
         $this->color = $color;
     }
@@ -231,7 +231,7 @@ class Area extends ActiveRecord
     /**
      * @return ContainerObject|null
      */
-    public function getLinkContainerObject()/* : ?ContainerObject*/
+    public function getLinkContainerObject() : ?ContainerObject
     {
         if (!empty($this->link_container_object_id)) {
             return self::srContainerObjectMenu()->containerObjects()->getContainerObjectById($this->link_container_object_id);
@@ -244,7 +244,7 @@ class Area extends ActiveRecord
     /**
      * @return int|null
      */
-    public function getLinkContainerObjectId()/* : ?int*/
+    public function getLinkContainerObjectId() : ?int
     {
         return $this->link_container_object_id;
     }
@@ -253,7 +253,7 @@ class Area extends ActiveRecord
     /**
      * @param int|null $link_container_object_id
      */
-    public function setLinkContainerObjectId(/*?*/ int $link_container_object_id = null)/* : void*/
+    public function setLinkContainerObjectId(?int $link_container_object_id = null) : void
     {
         $this->link_container_object_id = $link_container_object_id;
     }
@@ -290,7 +290,7 @@ class Area extends ActiveRecord
      *
      * @return string
      */
-    public function getMenuCSSIdentifier(/*?*/ int $position = null) : string
+    public function getMenuCSSIdentifier(?int $position = null) : string
     {
         return self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier($this->getMenuIdentifier($position));
     }
@@ -301,7 +301,7 @@ class Area extends ActiveRecord
      *
      * @return string
      */
-    public function getMenuIdentifier(/*?*/ int $position = null) : string
+    public function getMenuIdentifier(?int $position = null) : string
     {
         return self::srContainerObjectMenu()->areas()->getMenuIdentifier($this->area_id, $position);
     }
@@ -326,7 +326,7 @@ class Area extends ActiveRecord
      *
      * @return string
      */
-    public function getTitle(/*?*/ string $lang_key = null, bool $use_default_if_not_set = true) : string
+    public function getTitle(?string $lang_key = null, bool $use_default_if_not_set = true) : string
     {
         return strval(MultilangualTabsInputGUI::getValueForLang($this->titles, $lang_key, "title", $use_default_if_not_set));
     }
@@ -359,7 +359,7 @@ class Area extends ActiveRecord
     /**
      * @param array $titles
      */
-    public function setTitles(array $titles)/* : void*/
+    public function setTitles(array $titles) : void
     {
         $this->titles = $titles;
     }
@@ -377,7 +377,7 @@ class Area extends ActiveRecord
     /**
      * @param int[] $container_object_ids
      */
-    public function setContainerObjectsIds(array $container_object_ids)/* : void*/
+    public function setContainerObjectsIds(array $container_object_ids) : void
     {
         if (empty($this->area_id)) {
             return;
@@ -417,7 +417,7 @@ class Area extends ActiveRecord
      * @param string $title
      * @param string $lang_key
      */
-    public function setTitle(string $title, string $lang_key)/* : void*/
+    public function setTitle(string $title, string $lang_key) : void
     {
         MultilangualTabsInputGUI::setValueForLang($this->titles, $title, $lang_key, "title");
     }

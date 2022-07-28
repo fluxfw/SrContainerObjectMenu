@@ -51,7 +51,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
     /**
      *
      */
-    public function ensureProvideNoItems()/* : void*/
+    public function ensureProvideNoItems() : void
     {
         $this->top_items = [];
         $this->top_identifiers = [];
@@ -169,14 +169,12 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
      */
     protected function cssMenuIdentifierClass(AbstractBaseItem $entry) : AbstractBaseItem
     {
-        if (self::version()->is6()) {
-            $entry = $entry->addSymbolDecorator(function (Symbol $symbol) use ($entry) : Symbol {
-                return $symbol->withAdditionalOnLoadCode(function (string $id) use ($entry) : string {
-                    return 'document.getElementById("' . $id . '").parentElement.classList.add("' . self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier($entry->getProviderIdentification()
-                            ->getInternalIdentifier(), false) . '");';
-                });
+        $entry = $entry->addSymbolDecorator(function (Symbol $symbol) use ($entry) : Symbol {
+            return $symbol->withAdditionalOnLoadCode(function (string $id) use ($entry) : string {
+                return 'document.getElementById("' . $id . '").parentElement.classList.add("' . self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier($entry->getProviderIdentification()
+                        ->getInternalIdentifier(), false) . '");';
             });
-        }
+        });
 
         return $entry;
     }
@@ -185,7 +183,7 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
     /**
      *
      */
-    protected function deliverCss()/* : void*/
+    protected function deliverCss() : void
     {
         $selected_area = self::srContainerObjectMenu()->selectedArea()->getSelectedArea(self::dic()->user()->getId());
 
@@ -227,32 +225,30 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
      */
     protected function symbol(AbstractBaseItem $entry, int $obj_id) : AbstractBaseItem
     {
-        if (self::version()->is6()) {
-            $type = strtoupper(self::dic()->objDataCache()->lookupType($obj_id));
+        $type = strtoupper(self::dic()->objDataCache()->lookupType($obj_id));
 
-            if (defined(Standard::class . "::" . $type)) {
-                // Most core objects
-                $entry = $entry->withSymbol(self::dic()
-                    ->ui()
-                    ->factory()
-                    ->symbol()
-                    ->icon()
-                    ->standard(constant(Standard::class . "::" . $type), ilSrContainerObjectMenuPlugin::PLUGIN_NAME)
-                    ->withIsOutlined(true));
-            } else {
-                // Other core objects & plugin objects
-                $icon = ilObject::_getIcon($obj_id);
+        if (defined(Standard::class . "::" . $type)) {
+            // Most core objects
+            $entry = $entry->withSymbol(self::dic()
+                ->ui()
+                ->factory()
+                ->symbol()
+                ->icon()
+                ->standard(constant(Standard::class . "::" . $type), ilSrContainerObjectMenuPlugin::PLUGIN_NAME)
+                ->withIsOutlined(true));
+        } else {
+            // Other core objects & plugin objects
+            $icon = ilObject::_getIcon($obj_id);
 
-                $icon_outlined = str_replace("/images/icon_", "/images/outlined/icon_", $icon);
-                if ($icon !== $icon_outlined && file_exists($icon_outlined)) {
-                    $icon = $icon_outlined;
-                }
-
-                $entry = $entry->withSymbol(self::dic()->ui()->factory()->symbol()->icon()->custom($icon, ilSrContainerObjectMenuPlugin::PLUGIN_NAME));
+            $icon_outlined = str_replace("/images/icon_", "/images/outlined/icon_", $icon);
+            if ($icon !== $icon_outlined && file_exists($icon_outlined)) {
+                $icon = $icon_outlined;
             }
 
-            $entry = $this->cssMenuIdentifierClass($entry);
+            $entry = $entry->withSymbol(self::dic()->ui()->factory()->symbol()->icon()->custom($icon, ilSrContainerObjectMenuPlugin::PLUGIN_NAME));
         }
+
+        $entry = $this->cssMenuIdentifierClass($entry);
 
         self::dic()->appEventHandler()->raise(IL_COMP_PLUGIN . "/" . ilSrContainerObjectMenuPlugin::PLUGIN_NAME, ilSrContainerObjectMenuPlugin::EVENT_CHANGE_MENU_ENTRY, [
             "entry"  => &$entry, // Unfortunately ILIAS Raise Event System not supports return results so use a referenced variable
@@ -270,11 +266,9 @@ abstract class BaseMenu extends AbstractStaticPluginMainMenuProvider
      */
     protected function symbolArea(AbstractBaseItem $entry) : AbstractBaseItem
     {
-        if (self::version()->is6()) {
-            $entry = $entry->withSymbol(self::dic()->ui()->factory()->symbol()->icon()->standard(Standard::ITGR, ilSrContainerObjectMenuPlugin::PLUGIN_NAME)->withIsOutlined(true));
+        $entry = $entry->withSymbol(self::dic()->ui()->factory()->symbol()->icon()->standard(Standard::ITGR, ilSrContainerObjectMenuPlugin::PLUGIN_NAME)->withIsOutlined(true));
 
-            $entry = $this->cssMenuIdentifierClass($entry);
-        }
+        $entry = $this->cssMenuIdentifierClass($entry);
 
         return $entry;
     }

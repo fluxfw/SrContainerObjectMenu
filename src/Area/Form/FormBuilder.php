@@ -159,7 +159,7 @@ class FormBuilder extends AbstractFormBuilder
     /**
      * @inheritDoc
      */
-    protected function storeData(array $data)/* : void*/
+    protected function storeData(array $data) : void
     {
         if (empty($this->area->getAreaId())) {
             self::srContainerObjectMenu()->areas()->storeArea($this->area);

@@ -66,7 +66,7 @@ final class Repository
     /**
      * @param ContainerObject $container_object
      */
-    public function deleteContainerObject(ContainerObject $container_object)/* : void*/
+    public function deleteContainerObject(ContainerObject $container_object) : void
     {
         $container_object->delete();
 
@@ -88,7 +88,7 @@ final class Repository
     /**
      * @internal
      */
-    public function dropTables()/* : void*/
+    public function dropTables() : void
     {
         self::dic()->database()->dropTable(ContainerObject::TABLE_NAME, false);
     }
@@ -108,7 +108,7 @@ final class Repository
      *
      * @return Area|null
      */
-    public function getArea(ContainerObject $container_object)/* : ?Area*/
+    public function getArea(ContainerObject $container_object) : ?Area
     {
         if (empty($container_object->getContainerObjectId())) {
             return null;
@@ -141,7 +141,7 @@ final class Repository
      *
      * @return ContainerObject|null
      */
-    public function getContainerObjectById(int $container_object_id)/* : ?ContainerObject*/
+    public function getContainerObjectById(int $container_object_id) : ?ContainerObject
     {
         if ($this->container_objects_by_id[$container_object_id] === null) {
             $this->container_objects_by_id[$container_object_id] = ContainerObject::where(["container_object_id" => $container_object_id])->first();
@@ -158,7 +158,7 @@ final class Repository
      *
      * @return ContainerObject[]
      */
-    public function getContainerObjects(/*?*/ int $area_id = null, bool $check_visible = false, bool $allow_no_areas = true) : array
+    public function getContainerObjects(?int $area_id = null, bool $check_visible = false, bool $allow_no_areas = true) : array
     {
         $cache_key = intval($area_id) . "_" . intval($check_visible) . "_" . intval($allow_no_areas);
 
@@ -194,7 +194,7 @@ final class Repository
      *
      * @return string
      */
-    public function getMenuIdentifier(/*?*/ int $container_object_id = null,/*?*/ int $child_obj_ref_id = null,/*?*/ int $position = null) : string
+    public function getMenuIdentifier(?int $container_object_id = null, ?int $child_obj_ref_id = null, ?int $position = null) : string
     {
         $cache_key = intval($container_object_id) . "_" . intval($child_obj_ref_id) . "_" . intval($position);
 
@@ -225,7 +225,7 @@ final class Repository
     /**
      * @internal
      */
-    public function installTables()/* : void*/
+    public function installTables() : void
     {
         ContainerObject::updateDB();
     }
@@ -251,7 +251,7 @@ final class Repository
     /**
      * @param ContainerObject $container_object
      */
-    public function storeContainerObject(ContainerObject $container_object)/* : void*/
+    public function storeContainerObject(ContainerObject $container_object) : void
     {
         $container_object->store();
 

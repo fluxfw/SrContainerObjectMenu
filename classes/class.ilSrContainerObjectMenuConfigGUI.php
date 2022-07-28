@@ -36,7 +36,7 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
     /**
      * @inheritDoc
      */
-    public function performCommand(/*string*/ $cmd)/* : void*/
+    public function performCommand(/*string*/ $cmd) : void
     {
         $this->setTabs();
 
@@ -78,7 +78,7 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
     /**
      *
      */
-    protected function configure()/* : void*/
+    protected function configure() : void
     {
         self::dic()->ctrl()->redirectByClass(ContainerObjectsCtrl::class, ContainerObjectsCtrl::CMD_LIST_CONTAINER_OBJECTS);
     }
@@ -87,7 +87,7 @@ class ilSrContainerObjectMenuConfigGUI extends ilPluginConfigGUI
     /**
      *
      */
-    protected function setTabs()/* : void*/
+    protected function setTabs() : void
     {
         ContainerObjectsCtrl::addTabs();
 

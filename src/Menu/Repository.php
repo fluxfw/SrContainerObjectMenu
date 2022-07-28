@@ -137,7 +137,7 @@ final class Repository
     /**
      * @internal
      */
-    public function dropTables()/* : void*/
+    public function dropTables() : void
     {
         $this->deleteMenuItems(self::srContainerObjectMenu()->containerObjects()->getMenuIdentifier(), false);
     }
@@ -157,7 +157,7 @@ final class Repository
      *
      * @return string|null
      */
-    public function getBaseMenuIdentifier(string $base_menu_identifier)/* : ?string*/
+    public function getBaseMenuIdentifier(string $base_menu_identifier) : ?string
     {
         if ($this->base_menu_identifiers[$base_menu_identifier] === null) {
             $identifications = ilMMItemStorage::where([
@@ -189,7 +189,7 @@ final class Repository
 
         if ($this->menu_css_identifier[$cache_key] === null) {
             if ($css_selector) {
-                $this->menu_css_identifier[$cache_key] = (self::version()->is6() ? "." : "#") . $this->getMenuCSSIdentifier($menu_identifier, false);
+                $this->menu_css_identifier[$cache_key] = "." . $this->getMenuCSSIdentifier($menu_identifier, false);
             } else {
                 $this->menu_css_identifier[$cache_key] = "mm_" . $menu_identifier;
             }
@@ -253,7 +253,7 @@ final class Repository
     /**
      * @internal
      */
-    public function installTables()/* : void*/
+    public function installTables() : void
     {
 
     }
