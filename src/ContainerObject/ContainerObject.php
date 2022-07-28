@@ -81,7 +81,7 @@ class ContainerObject extends ActiveRecord
     /**
      * @param int $area_id
      */
-    public function addAreaId(int $area_id)/* : void*/
+    public function addAreaId(int $area_id) : void
     {
         if (!$this->hasAreaId($area_id)) {
             $this->area_ids[] = $area_id;
@@ -108,7 +108,7 @@ class ContainerObject extends ActiveRecord
     /**
      * @return Area|null
      */
-    public function getArea()/* : ?Area*/
+    public function getArea() : ?Area
     {
         return self::srContainerObjectMenu()->containerObjects()->getArea($this);
     }
@@ -135,7 +135,7 @@ class ContainerObject extends ActiveRecord
     /**
      * @param int[] $area_ids
      */
-    public function setAreaIds(array $area_ids)/* : void*/
+    public function setAreaIds(array $area_ids) : void
     {
         $this->area_ids = array_map("intval", array_values($area_ids));
     }
@@ -146,7 +146,7 @@ class ContainerObject extends ActiveRecord
      *
      * @return string
      */
-    public function getAreaMenuIdentifier(/*?*/ int $position = null) : string
+    public function getAreaMenuIdentifier(?int $position = null) : string
     {
         return (($area = $this->getArea()) !== null ? $area->getMenuIdentifier($position) : "");
     }
@@ -204,7 +204,7 @@ class ContainerObject extends ActiveRecord
     /**
      * @param int $container_object_id
      */
-    public function setContainerObjectId(int $container_object_id)/* : void*/
+    public function setContainerObjectId(int $container_object_id) : void
     {
         $this->container_object_id = $container_object_id;
     }
@@ -215,7 +215,7 @@ class ContainerObject extends ActiveRecord
      *
      * @return string
      */
-    public function getLink(/*?*/ int $child_obj_ref_id = null) : string
+    public function getLink(?int $child_obj_ref_id = null) : string
     {
         return ilLink::_getStaticLink(!empty($child_obj_ref_id) ? $child_obj_ref_id : $this->obj_ref_id);
     }
@@ -227,7 +227,7 @@ class ContainerObject extends ActiveRecord
      *
      * @return string
      */
-    public function getMenuCSSIdentifier(/*?*/ int $child_obj_ref_id = null,/*?*/ int $position = null) : string
+    public function getMenuCSSIdentifier(?int $child_obj_ref_id = null, ?int $position = null) : string
     {
         return self::srContainerObjectMenu()->menu()->getMenuCSSIdentifier($this->getMenuIdentifier($child_obj_ref_id, $position));
     }
@@ -239,7 +239,7 @@ class ContainerObject extends ActiveRecord
      *
      * @return string
      */
-    public function getMenuIdentifier(/*?*/ int $child_obj_ref_id = null,/*?*/ int $position = null) : string
+    public function getMenuIdentifier(?int $child_obj_ref_id = null, ?int $position = null) : string
     {
         return self::srContainerObjectMenu()->containerObjects()->getMenuIdentifier($this->container_object_id, $child_obj_ref_id, $position);
     }
@@ -270,7 +270,7 @@ class ContainerObject extends ActiveRecord
     /**
      * @param int $obj_ref_id
      */
-    public function setObjRefId(int $obj_ref_id)/* : void*/
+    public function setObjRefId(int $obj_ref_id) : void
     {
         $this->obj_ref_id = $obj_ref_id;
     }
@@ -279,7 +279,7 @@ class ContainerObject extends ActiveRecord
     /**
      * @return ilObject|null
      */
-    public function getObject()/* : ?ilObject*/
+    public function getObject() : ?ilObject
     {
         return self::srContainerObjectMenu()->objects()->getObjectByRefId($this->obj_ref_id);
     }
@@ -326,7 +326,7 @@ class ContainerObject extends ActiveRecord
      *
      * @return bool
      */
-    public function isVisible(/*?*/ int $obj_ref_id = null, bool $check_visible = false) : bool
+    public function isVisible(?int $obj_ref_id = null, bool $check_visible = false) : bool
     {
         return (($check_visible ? self::srContainerObjectMenu()
                 ->containerObjects()
@@ -338,7 +338,7 @@ class ContainerObject extends ActiveRecord
     /**
      * @param int $area_id
      */
-    public function removeAreaId(int $area_id)/* : void*/
+    public function removeAreaId(int $area_id) : void
     {
         if ($this->hasAreaId($area_id)) {
             $this->setAreaIds(array_filter($this->area_ids, function (int $area_id_) use ($area_id) : bool {

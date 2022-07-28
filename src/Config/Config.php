@@ -78,7 +78,7 @@ class Config extends ActiveRecord
     /**
      * @param int $config_id
      */
-    public function setConfigId(int $config_id)/* : void*/
+    public function setConfigId(int $config_id) : void
     {
         $this->config_id = $config_id;
     }
@@ -99,7 +99,7 @@ class Config extends ActiveRecord
      *
      * @return string
      */
-    public function getSelectedAreaMenuTitle(/*?*/ string $lang_key = null, bool $use_default_if_not_set = true) : string
+    public function getSelectedAreaMenuTitle(?string $lang_key = null, bool $use_default_if_not_set = true) : string
     {
         return strval(MultilangualTabsInputGUI::getValueForLang($this->selected_area_menu_titles, $lang_key, "selected_area_menu_title", $use_default_if_not_set));
     }
@@ -117,7 +117,7 @@ class Config extends ActiveRecord
     /**
      * @param array $selected_area_menu_titles
      */
-    public function setSelectedAreaMenuTitles(array $selected_area_menu_titles)/* : void*/
+    public function setSelectedAreaMenuTitles(array $selected_area_menu_titles) : void
     {
         $this->selected_area_menu_titles = $selected_area_menu_titles;
     }
@@ -127,7 +127,7 @@ class Config extends ActiveRecord
      * @param string $selected_area_menu_title
      * @param string $lang_key
      */
-    public function setSelectedAreaMenuTitle(string $selected_area_menu_title, string $lang_key)/* : void*/
+    public function setSelectedAreaMenuTitle(string $selected_area_menu_title, string $lang_key) : void
     {
         MultilangualTabsInputGUI::setValueForLang($this->selected_area_menu_titles, $selected_area_menu_title, $lang_key, "selected_area_menu_title");
     }

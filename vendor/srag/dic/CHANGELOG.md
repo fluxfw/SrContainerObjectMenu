@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.35.0]
+- Clean up
+
+## [0.34.1]
+- Use local patch
+
+## [0.34.0]
+- Move `ilias7_core_apply_ilctrl_patch.sh`
+
+## [0.33.2]
+- Use renderAsync in async ilCtrl contexts
+
+## [0.33.1]
+- Not use GeneratePluginReadme
+
+## [0.33.0]
+- ILIAS 7 support
+  - imagePathResolver
+  - resourceStorage
+  - skills
+- Remove ILIAS 5.4 support
+- Min PHP 7.2
+- Remove deprecated legacy fallback dic methods (mainTemplate, rbacadmin, rbacreview, rbacsystem, tree)
+- Remove deprecated clearCache
+
+## [0.32.4]
+- Change utils url
+
 ## [0.32.3]
 - Update urls
 

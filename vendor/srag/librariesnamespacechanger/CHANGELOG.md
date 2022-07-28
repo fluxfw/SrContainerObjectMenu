@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.17.0]
+- Clean up
+
+## [0.16.1]
+- Not use GeneratePluginReadme
+
+## [0.16.0]
+- Min PHP 7.2
+- Remove deprecated PHP7Backport
+- Remove deprecated PHP72Backport
+
+## [0.15.4]
+- Change utils url
+
 ## [0.15.3]
 - Update urls
 

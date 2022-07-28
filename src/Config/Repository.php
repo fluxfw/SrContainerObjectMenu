@@ -55,7 +55,7 @@ final class Repository
     /**
      * @internal
      */
-    public function dropTables()/* : void*/
+    public function dropTables() : void
     {
         self::dic()->database()->dropTable(Config::TABLE_NAME, false);
     }
@@ -90,7 +90,7 @@ final class Repository
     /**
      * @internal
      */
-    public function installTables()/* : void*/
+    public function installTables() : void
     {
         Config::updateDB();
 
@@ -109,7 +109,7 @@ final class Repository
     /**
      * @param Config $config
      */
-    public function storeConfig(Config $config)/* : void*/
+    public function storeConfig(Config $config) : void
     {
         $config->store();
 

@@ -45,7 +45,7 @@ class ConfigCtrl
     /**
      *
      */
-    public static function addTabs()/* : void*/
+    public static function addTabs() : void
     {
         self::dic()
             ->tabs()
@@ -57,7 +57,7 @@ class ConfigCtrl
     /**
      *
      */
-    public function executeCommand()/* : void*/
+    public function executeCommand() : void
     {
         $this->config = self::srContainerObjectMenu()->config()->getConfig();
 
@@ -86,7 +86,7 @@ class ConfigCtrl
     /**
      *
      */
-    protected function editConfig()/* : void*/
+    protected function editConfig() : void
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_CONFIG);
 
@@ -99,7 +99,7 @@ class ConfigCtrl
     /**
      *
      */
-    protected function setTabs()/* : void*/
+    protected function setTabs() : void
     {
 
     }
@@ -108,7 +108,7 @@ class ConfigCtrl
     /**
      *
      */
-    protected function updateConfig()/* : void*/
+    protected function updateConfig() : void
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_CONFIG);
 

@@ -51,7 +51,7 @@ class AreaCtrl
     /**
      *
      */
-    public function executeCommand()/* : void*/
+    public function executeCommand() : void
     {
         $this->area = self::srContainerObjectMenu()->areas()->getAreaById(intval(filter_input(INPUT_GET, self::GET_PARAM_AREA_ID)));
 
@@ -96,7 +96,7 @@ class AreaCtrl
     /**
      *
      */
-    protected function addArea()/* : void*/
+    protected function addArea() : void
     {
         $form = self::srContainerObjectMenu()->areas()->factory()->newFormBuilderInstance($this, $this->area);
 
@@ -107,7 +107,7 @@ class AreaCtrl
     /**
      *
      */
-    protected function back()/* : void*/
+    protected function back() : void
     {
         self::dic()->ctrl()->redirectByClass(AreasCtrl::class, AreasCtrl::CMD_LIST_AREAS);
     }
@@ -116,7 +116,7 @@ class AreaCtrl
     /**
      *
      */
-    protected function createArea()/* : void*/
+    protected function createArea() : void
     {
         $form = self::srContainerObjectMenu()->areas()->factory()->newFormBuilderInstance($this, $this->area);
 
@@ -137,7 +137,7 @@ class AreaCtrl
     /**
      *
      */
-    protected function editArea()/* : void*/
+    protected function editArea() : void
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_AREA);
 
@@ -150,7 +150,7 @@ class AreaCtrl
     /**
      *
      */
-    protected function removeArea()/* : void*/
+    protected function removeArea() : void
     {
         self::srContainerObjectMenu()->areas()->deleteArea($this->area);
 
@@ -163,7 +163,7 @@ class AreaCtrl
     /**
      *
      */
-    protected function removeAreaConfirm()/* : void*/
+    protected function removeAreaConfirm() : void
     {
         $confirmation = new ilConfirmationGUI();
 
@@ -183,7 +183,7 @@ class AreaCtrl
     /**
      *
      */
-    protected function setTabs()/* : void*/
+    protected function setTabs() : void
     {
         self::dic()->tabs()->clearTargets();
 
@@ -212,7 +212,7 @@ class AreaCtrl
     /**
      *
      */
-    protected function updateArea()/* : void*/
+    protected function updateArea() : void
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_AREA);
 

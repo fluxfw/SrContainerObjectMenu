@@ -53,7 +53,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    public function executeCommand()/* : void*/
+    public function executeCommand() : void
     {
         $this->container_object = self::srContainerObjectMenu()->containerObjects()->getContainerObjectById(intval(filter_input(INPUT_GET, self::GET_PARAM_CONTAINER_OBJECT_ID)));
 
@@ -102,7 +102,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    protected function addContainerObject()/* : void*/
+    protected function addContainerObject() : void
     {
         $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormBuilderInstance($this, $this->container_object);
 
@@ -113,7 +113,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    protected function back()/* : void*/
+    protected function back() : void
     {
         self::dic()->ctrl()->redirectByClass(ContainerObjectsCtrl::class, ContainerObjectsCtrl::CMD_LIST_CONTAINER_OBJECTS);
     }
@@ -122,7 +122,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    protected function createContainerObject()/* : void*/
+    protected function createContainerObject() : void
     {
         $form = self::srContainerObjectMenu()->containerObjects()->factory()->newFormBuilderInstance($this, $this->container_object);
 
@@ -143,7 +143,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    protected function editContainerObject()/* : void*/
+    protected function editContainerObject() : void
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_CONTAINER_OBJECT);
 
@@ -156,7 +156,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    protected function removeContainerObject()/* : void*/
+    protected function removeContainerObject() : void
     {
         self::srContainerObjectMenu()->containerObjects()->deleteContainerObject($this->container_object);
 
@@ -169,7 +169,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    protected function removeContainerObjectConfirm()/* : void*/
+    protected function removeContainerObjectConfirm() : void
     {
         $confirmation = new ilConfirmationGUI();
 
@@ -189,7 +189,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    protected function setTabs()/* : void*/
+    protected function setTabs() : void
     {
         self::dic()->tabs()->clearTargets();
 
@@ -218,7 +218,7 @@ class ContainerObjectCtrl
     /**
      *
      */
-    protected function updateContainerObject()/* : void*/
+    protected function updateContainerObject() : void
     {
         self::dic()->tabs()->activateTab(self::TAB_EDIT_CONTAINER_OBJECT);
 

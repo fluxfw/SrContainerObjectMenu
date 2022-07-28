@@ -82,7 +82,7 @@ final class Repository
     /**
      *
      */
-    public function dropTables()/* : void*/
+    public function dropTables() : void
     {
         $this->menu()->factory()->instance()->ensureProvideNoItems();
 
@@ -98,7 +98,7 @@ final class Repository
     /**
      *
      */
-    public function installTables()/* : void*/
+    public function installTables() : void
     {
         $this->menu()->factory()->instance()->ensureProvideNoItems();
 

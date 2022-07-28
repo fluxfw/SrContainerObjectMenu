@@ -100,7 +100,7 @@ class FormBuilder extends AbstractFormBuilder
     /**
      * @inheritDoc
      */
-    protected function storeData(array $data)/* : void*/
+    protected function storeData(array $data) : void
     {
         $this->config->setSelectedAreaMenuTitles((array) $data["selected_area_menu_titles"]);
 
