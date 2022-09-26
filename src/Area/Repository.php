@@ -159,7 +159,13 @@ final class Repository
                     return $area->isVisible();
                 }));
             } else {
-                $this->areas[$check_visible] = array_values(Area::get());
+                $areas = array_values(Area::get());
+
+                usort($areas, function (Area $area1, Area $area2) : int {
+                    return strcasecmp($area1->getTitle(), $area2->getTitle());
+                });
+
+                $this->areas[$check_visible] = $areas;
 
                 foreach ($this->areas[$check_visible] as $area) {
                     $this->areas_by_id[$area->getAreaId()] = $area;

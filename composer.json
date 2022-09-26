@@ -1,7 +1,7 @@
 {
   "name": "srag/srcontainerobjectmenu",
   "description": "Provide repository container objects in main menu as dropdown items",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "type": "project",
   "keywords": [
     "area",
