@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.6.1]
+- Sort container objects and areas
+
 ## [2.6.0]
 - ILIAS 7 support
 - Remove ILIAS 5.4 support

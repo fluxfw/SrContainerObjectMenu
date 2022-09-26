@@ -174,7 +174,13 @@ final class Repository
                             return $this->isSelectedArea($container_object, $area_id, $allow_no_areas);
                         }));
                 } else {
-                    $this->container_objects[$cache_key] = array_values(ContainerObject::get());
+                    $container_objects = array_values(ContainerObject::get());
+
+                    usort($container_objects, function (ContainerObject $container_object1, ContainerObject $container_object2) : int {
+                        return strcasecmp($container_object1->getObjectTitle(), $container_object2->getObjectTitle());
+                    });
+
+                    $this->container_objects[$cache_key] = $container_objects;
 
                     foreach ($this->container_objects[$cache_key] as $container_object) {
                         $this->container_objects_by_id[$container_object->getContainerObjectId()] = $container_object;
